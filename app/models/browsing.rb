@@ -1,0 +1,2 @@
+class Browsing < ApplicationRecord
+end
