@@ -1,4 +1,4 @@
 class Tune < ApplicationRecord
 
-  belong_to :disc
+  belongs_to :disc
 end

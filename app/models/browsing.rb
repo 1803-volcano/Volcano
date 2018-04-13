@@ -1,5 +1,5 @@
 class Browsing < ApplicationRecord
 
-  belong_to :user
-  belong_to :product
+  belongs_to :user
+  belongs_to :product
 end
