@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180413072221) do
+ActiveRecord::Schema.define(version: 20180413081921) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -30,6 +30,48 @@ ActiveRecord::Schema.define(version: 20180413072221) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "browsings", force: :cascade do |t|
+    t.integer "product_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_browsings_on_product_id"
+    t.index ["user_id"], name: "index_browsings_on_user_id"
+  end
+
+  create_table "cart_items", force: :cascade do |t|
+    t.integer "cart_id"
+    t.integer "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cart_id"], name: "index_cart_items_on_cart_id"
+    t.index ["product_id"], name: "index_cart_items_on_product_id"
+  end
+
+  create_table "carts", force: :cascade do |t|
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_carts_on_user_id"
+  end
+
+  create_table "discs", force: :cascade do |t|
+    t.integer "product_id"
+    t.string "disc_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_discs_on_product_id"
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.integer "product_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_favorites_on_product_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "cd_title"
     t.string "artist"
@@ -43,6 +85,41 @@ ActiveRecord::Schema.define(version: 20180413072221) do
     t.boolean "product_flg"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "purchasers", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "p_code"
+    t.string "d_region"
+    t.string "d_street"
+    t.string "d_name"
+    t.string "pay"
+    t.string "status"
+    t.date "p_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_purchasers_on_user_id"
+  end
+
+  create_table "receipts", force: :cascade do |t|
+    t.integer "purchaser_id"
+    t.integer "product_id"
+    t.integer "sale"
+    t.integer "sale_price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_receipts_on_product_id"
+    t.index ["purchaser_id"], name: "index_receipts_on_purchaser_id"
+  end
+
+  create_table "tunes", force: :cascade do |t|
+    t.integer "disc_id"
+    t.integer "order"
+    t.string "song_title"
+    t.date "song_time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["disc_id"], name: "index_tunes_on_disc_id"
   end
 
   create_table "users", force: :cascade do |t|
