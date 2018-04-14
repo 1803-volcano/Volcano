@@ -12,10 +12,4 @@ class UsersController < ApplicationController
  def unsubscribe
  end
 
- def index
- end
-
- def delete
- end
-
 end
