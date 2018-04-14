@@ -5,4 +5,6 @@ class Product < ApplicationRecord
   has_many :receipts
   has_many :browsings
   has_many :favorites
+
+  attachment :picture
 end
