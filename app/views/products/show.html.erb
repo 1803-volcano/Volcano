@@ -7,13 +7,45 @@
 		</div>
 		<div class="col-xs-10">
 
-<p>画像</p>
-<h2>大正義</h2>
-<h3>ポルカドットスティングレイ</h3>
-<hr>
-<h2>価格（税込）：￥5,800</h2>
-<p>カートに入れる</p>
-<p>お気に入り</p>
+
+
+			<h1>商品詳細</h1>
+			<hr>
+
+			<div class="clearfix">
+				<div class="col-xs-5">
+					<%= attachment_image_tag @product, :picture, width: "350", height: "350", format: "jpeg", fallback: "img/no_image.jpg" %>
+				</div>
+
+				<div class="col-xs-7">
+					<h2><%= @product.cd_title %></h2>
+					<h5><b><%= @product.artist %></b></h5>
+					<hr>
+					<h3>価格（税込）：￥<%= @product.price %></h3>
+					<p>カートに入れる</p>
+					<p>お気に入り</p>
+				</div>
+			</div>
+
+			<div>
+				<h5>商品仕様</h5>
+				<label>ジャンル：</label><%= @product.genre %><br>
+				<label>レーベル：</label><%= @product.label %><br>
+				<label>発売日：</label><%= @product.start_date %>
+			</div>
+
+<!-- 			<div>
+				<%= @discs.each do |id| %>
+					<% disc = Disc.find(id) %>
+					<%= disc.disc_name %>
+				<% end %>
+			</div> -->
+
+
+
+
+
+
 
 
 
