@@ -29,16 +29,19 @@ Rails.application.routes.draw do
   get '/carts/:id/complete' => 'carts#camplete'
 
   resources :users, only: [:show, :edit, :update] do
-    resource :purchasers, only: [:index, :show]
-    resource :favorites, only: [:index]
+    resources :purchasers, only: [:index, :show]
+    resources :favorites, only: [:index]
   end
   get '/users/:id/unsubscribe' => 'users#unsubscribe'
 
 
   namespace :admins do
+    resources :top, only: [:show, :edit, :update]
     resources :users, only: [:index]
-
-
+    put '/users/:id' => 'users#delete'
+    resources :products, only: [:new, :create, :edit, :update]
+    get '/products/list' => 'products#list'
+    resources :purchasers, only: [:index, :show, :update]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
