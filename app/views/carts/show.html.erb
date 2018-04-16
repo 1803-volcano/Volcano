@@ -1,1 +1,69 @@
 <p>carts show</P>
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-2">
+			sidebar
+		</div>
+		<div class="col-xs-10">
+			<h1>カート詳細</h1>
+			<hr>
+			<div class="col-xs-9">
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<td></td>
+							<td>商品</td>
+							<td>数量</td>
+							<td>小計</td>
+						</tr>
+					</thead>
+					<tbody>
+						<% @cart_items.each do |item| %>
+						<% product = Product.find(item.product_id) %>
+						<tr>
+							<td><%= attachment_image_tag product, :picture, width: "100", height: "100", format: "jpeg", fallback: "img/no_image.jpg" %></td>
+							<td>
+								タイトル：<%= product.cd_title %><br>
+								アーティスト：<%= product.artist %><br>
+								価格：￥<%= product.price %>
+							</td>
+							<td>
+								<input type="number" min=1 value=1 style="width: 50px;" name="quantity">
+								<%= link_to "カートから削除", cart_cart_items_path(id: item.id, product_id: item.product_id, cart_id: @cart.id), method: :delete %>
+
+								<%= item.id %>
+								<%= item.product_id %>
+
+							</td>
+							<td>￥<%= product.price %></td>
+						</tr>
+
+
+
+						<% end %>
+					</tbody>
+				</table>
+			</div>
+			<div class="col-xs-3">
+			</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+		</div>
+	</div>
+</div>
+
+
+<%= @cart.id %>
+<%= @cart.user_id %>

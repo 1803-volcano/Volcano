@@ -23,7 +23,7 @@
 					<h5><b><%= @product.artist %></b></h5>
 					<hr>
 					<h3>価格（税込）：￥<%= @product.price %></h3>
-					<p>カートに入れる</p>
+					<p><%= link_to "カートに入れる", product_cart_items_path(@product.id), method: :post %></p>
 					<p>お気に入り</p>
 				</div>
 			</div>
