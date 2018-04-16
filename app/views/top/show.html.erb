@@ -1,4 +1,4 @@
-<div class="hed"></div>
+
 <div class="news">
   <div class="theTarget">
     <div style="background-image: url(img/tes1.jpg)"><%= image_tag 'img/tes1.jpg'%></div>
@@ -6,7 +6,7 @@
     <div style="background-image: url(img/tes3.jpg)"><%= image_tag 'img/tes3.jpg'%></div>
     <div style="background-image: url(img/tes4.jpg)"><%= image_tag 'img/tes4.jpg'%></div>
     <div style="background-image: url(img/test7.jpg)"><%= image_tag 'img/test7.jpg'%></div>
-    <div style="background-image: url(img/tes7.jpg)"><%= image_tag 'img/tes7.jpg'%></div>
+    <div style="background-image: url(img/tes5.jpg)"><%= image_tag 'img/tes5.jpg'%></div>
   </div>
 </div>
 
@@ -16,6 +16,24 @@
 <div class="container-fluid text-left">
   <div class="row content">
   	<div class="sidebar col-xs-2 text-left">
+      <% if admin_signed_in? %>
+      <div class="sidebar-line">
+        管理機能一覧
+      </div>
+      <div class="subteki">・商品管理</div>s
+      <p><a href="#">▶︎ 新規商品登録</a></p>
+      <p><a href="#">▶︎ 商品の編集</a></p>
+      <div class="subteki">・受注管理</div>
+      <p><a href="#">▶︎ 注文履歴一覧</a></p>
+      <div class="subteki">・会員情報管理</div>
+      <p><a href="#">▶︎ 会員情報の編集</a></p>
+      <div class="subteki">・その他</div>
+      <p><a href="#">▶︎ 会員Topページへ</a></p>
+      <% end %>
+
+      <div class="sidebar-line">
+        CDジャンル
+      </div>
   	  <p><a href="#">▶︎ J-POP</a></p>
       <p><a href="#">▶︎ ロック＆ポップス</a></p>
       <p><a href="#">▶︎ R＆B/ソウル</a></p>
@@ -26,9 +44,34 @@
       <p><a href="#">▶︎ アニメ</a></p>
     </div>
   	<div class="main col-xs-10 text-left">
-    <div>新着情報</div>
-    
-
+    <div class="main-line">新着情報</div>
+      <div class="mainseet">
+        <div class="img"><%= image_tag 'img/fon1.jpg'%>Black Pink</div>
+      </div>
+      <div class="mainseet">
+        <div class="img"><%= image_tag 'img/fon3.jpg'%>Black Pink</div>
+      </div>
+      <div class="mainseet">
+        <div class="img"><%= image_tag 'img/fon4.jpg'%>Black Pink</div>
+      </div>
+      <div class="mainseet">
+        <div class="img"><%= image_tag 'img/fon6.jpg'%>Black Pink</div>
+      </div>
+      <div class="mainseet">
+        <div class="img"><%= image_tag 'img/fon7.jpg'%>Black Pink</div>
+      </div>
+      <div class="mainseet">
+        <div class="img"><%= image_tag 'img/fon8.jpg'%>Black Pink</div>
+      </div>
+      <div class="mainseet">
+        <div class="img"><%= image_tag 'img/fon10.jpg'%>Black Pink</div>
+      </div>
+      <div class="mainseet">
+        <div class="img"><%= image_tag 'img/fon5.jpg'%>Black Pink</div>
+      </div>
   	</div>
   </div>
 </div>
+
+
+

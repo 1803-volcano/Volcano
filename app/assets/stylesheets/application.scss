@@ -18,11 +18,22 @@
 
 
 
+
 .hed{
-  height:100px;
+  height:140px;
 }
 .news{
-  height: 500px;
+  height: 490px;
+}
+section {
+  margin-bottom: 2em;
+  font-family: sans-serif;
+}
+img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
 }
 body{
   background-image: url(img/back1.jpg);
@@ -48,12 +59,29 @@ header .headline-sub{
 }
 .sidebar{
   height: 1000px;
-  background-color: green;
   background-image: url(img/sub2.jpg);
+}
+.sidebar-line{
+  font-size: 20px;
+  text-align: center;
+  color: #ffffff;
+}
+.subteki{
+
 }
 .main{
   height: 1000px;
   background-color: #f9f8f6;
+}
+.main-line{
+  font-size: 30px;
+}
+.mainseet{
+  width: 215px;
+  height: 270px;
+  float: left;
+  margin: 0 15px 20px 0;
+  border: 1px solid darkgray;
 }
 footer {
   font-size: 50px;
