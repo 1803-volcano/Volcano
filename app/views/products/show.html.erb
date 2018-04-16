@@ -8,7 +8,8 @@
 		<div class="col-xs-10">
 
 
-
+			<%= link_to "前のページに戻る", :back %>
+			<%= link_to "TOP画面に戻る", products_path %>
 			<h1>商品詳細</h1>
 			<hr>
 
@@ -27,19 +28,30 @@
 				</div>
 			</div>
 
-			<div>
-				<h5>商品仕様</h5>
-				<label>ジャンル：</label><%= @product.genre %><br>
-				<label>レーベル：</label><%= @product.label %><br>
-				<label>発売日：</label><%= @product.start_date %>
-			</div>
+			<div class="col-xs-offset-1", style="margin-top:40px; margin-bottom:120px;">
 
-<!-- 			<div>
-				<%= @discs.each do |id| %>
-					<% disc = Disc.find(id) %>
-					<%= disc.disc_name %>
-				<% end %>
-			</div> -->
+				<div>
+					<h5>商品仕様</h5>
+					<label>ジャンル：</label><%= @product.genre %><br>
+					<label>レーベル：</label><%= @product.label %><br>
+					<label>発売日：</label><%= @product.start_date %>
+				</div>
+
+				<div style="margin-top:80px;">
+					<% @discs.each do |disc| %>
+						<h6 style="margin-top: 30px;"><b>[ <%= disc.disc_name %> ]</b></h6>
+						<% tunes = Tune.where(disc_id: disc.id).pluck(:id) %>
+						<% num = 1 %>
+						<% tunes.each do |music| %>
+							<% tune = Tune.find(music) %>
+							<h5><%= num %>.<%= tune.song_title %></h5>
+							<% num += 1 %>
+						<% end %>
+					<% end %>
+					<!-- tuneについてはpluckとfindで探す方法でしかできなかった。原因は不明 -->
+				</div>
+
+			</div>
 
 
 

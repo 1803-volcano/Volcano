@@ -7,7 +7,7 @@ class ProductsController < ApplicationController
 
  def show
  	@product = Product.find(params[:id])
- 	# @discs = Disc.where(product_id: params[:id]).pluck(:id)
+ 	@discs = Disc.where(product_id: params[:id])
  end
 
 end
