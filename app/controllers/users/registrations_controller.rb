@@ -5,7 +5,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
    before_action :configure_account_update_params, only: [:update]
 
    def after_sign_up_path_for(resource)
-     top_path(current_user.id)
+     root_path(current_admin.id)
    end
 
   # GET /resource/sign_up

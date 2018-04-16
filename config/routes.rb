@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     :passwords => 'users/passwords'
   }
 
-  resources :top, only: [:show]
+  root 'top#show'
 
   resources :products, only: [:index, :show] do
     resource :cart_items, only: [:create]
