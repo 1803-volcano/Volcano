@@ -1,6 +1,6 @@
 class CartsController < ApplicationController
 	before_action :create, only:[:show]
-
+	#completeの前にカートを作るアクションを追加する！！！！！
  def create
  	if cart = Cart.where(user_id: current_user.id).last
  		@cart = cart
@@ -8,8 +8,6 @@ class CartsController < ApplicationController
 	 	@cart = current_user.carts.build #userと関連付け
 	 	@cart.save
 	end
-	#ストロングパラメータは使わなくてもいいのか
-	#これだとログインしてないときに行くとエラーになりそうなどで、ログイン前はリンクを張らない表示させないか、他の方法を用いるかifとか
  end
 
  def show
