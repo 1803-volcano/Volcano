@@ -64,13 +64,9 @@ body{
 header{
 }
 header .headline{
-  font-size: 50px;
+  font-size: 70px;
   color: #ffffff;
-  letter-spacing: 0.2em;
-}
-header .headline-sub{
-  color: #ffffff;
-  font-size: 15px;
+  letter-spacing: 0.1em;
 }
 .header-top{
   width: 100%;
@@ -80,8 +76,12 @@ header .headline-sub{
   background-position: center;
 }
 .sidebar{
-  height: 1000px;
+  height: 700px;
   background-image: url(img/sub2.jpg);
+  justify-content: center;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 120px;
 }
 .sidebar-line{
   font-size: 20px;
@@ -90,11 +90,12 @@ header .headline-sub{
   color: #ffffff;
 }
 .subteki{
-
+  color: #ffff;
+  text-arign: center;
 }
 .main{
-  height: 1000px;
-  background-color: #f9f8f6;
+  height: auto;
+  #background-color: #f9f8f6;
 }
 .main-line{
   font-size: 30px;

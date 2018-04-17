@@ -6,15 +6,15 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link href="https://fonts.googleapis.com/css?family=Playball" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cormorant+Unicase|Jacques+Francois+Shadow" rel="stylesheet">
     <script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
   </head>
 
   <body>
   	<header class="navbar-fixed-top">
   	<div class="header-top">
-  	  <div class="container headline" style="font-family: 'Playball', cursive;">Volcano</div>
-  	  <div class="container headline-sub" style="margin: 0 180px;">On Line Shop</div>
+  	  <div class="container headline" style="font-family: 'Cormorant Unicase', serif;">Volcano
+      </div>
     </div>
     <div class="header_bottom">
       <nav class="navbar navbar-inverse">
@@ -29,7 +29,7 @@
               <% if user_signed_in? %>
                 <%= User.find(current_user.id).name_sei %>  様　　　
               <% elsif admin_signed_in? %>
-                管理者　様     
+                管理者　様　　　
               <% else %>
                 ようこそゲスト　様　　　
               <% end %>
