@@ -14,10 +14,15 @@
 				<th>フリガナ</th>
 				<td>セイ<%= f.text_field :name_kana_sei, placeholder:"例）シブヤ" %>メイ<%= f.text_field :name_kana_mei, placeholder:"例）タロウ" %>（全角カナ）</td>
 			  </tr>
-			  <!-- <tr>
+			  <tr>
 				<th>生年月日</th>
-				<td><%= f.date_field :birthday %></td>
-			  </tr> -->
+				<td><%= f.date_select(:birthday,
+					   start_year: 1930,
+                       end_year:   (Time.now.year),
+                       default:    Date.new(1930, 1, 1),
+                       date_separator: '/') %>
+                </td>
+			  </tr>
 			  <tr>
 				<th>性別</th>
 				<td><%= f.radio_button :sex, "male" %>男性 　

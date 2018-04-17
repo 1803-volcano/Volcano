@@ -17,20 +17,28 @@
             <%= f.password_field :password_confirmation, :size=>"60", autocomplete: "off", placeholder:"確認のためにもう一度" %></td>
         <tr>
           <th>氏名</th>
-          <td>姓　<%= f.text_field :name_sei, placeholder:"例）渋谷" %>名　<%= f.text_field :name_mei, placeholder:"例）太郎" %>（全角）</td>
+          <td>姓　<input type="text" name="user[name_sei]" placeholder="例）渋谷" required> 名　<input type="text" name="user[name_mei]" placeholder="例）太郎" required>（全角）</td>
         </tr>
         <tr>
           <th>フリガナ</th>
-          <td>セイ<%= f.text_field :name_kana_sei, placeholder:"例）シブヤ" %>メイ<%= f.text_field :name_kana_mei, placeholder:"例）タロウ" %>（全角カナ）</td>
+          <td>セイ<input type="text" name="user[name_kana_sei]" placeholder="例）シブヤ" required>   メイ<input type="text" name="user[name_kana_mei]" placeholder="例）タロウ" required>（全角カナ）</td>
         </tr>
-        <!-- <tr>
+        <tr>
           <th>生年月日</th>
-          <td><%= f.date_field :birthday %></td>
-        </tr> -->
+          <td>
+            <td><%= f.date_select(:birthday,
+                       start_year: 1930,
+                       end_year:   (Time.now.year),
+                       default:    Date.new(1930, 1, 1),
+                       date_separator: '/') %>
+            </td>
+        </tr>
         <tr>
           <th>性別</th>
-          <td> <%= f.radio_button :sex, "male" %>男性 　
-               <%= f.radio_button :sex, "female" %>女性　</td>
+          <td>
+            <input type="radio" name="user[sex]" value="male">  男　
+            <input type="radio" name="user[sex]" value="female">  女
+          </td>
         </tr>
         <tr>
           <th>郵便番号</th>
@@ -39,7 +47,7 @@
         </tr>
         <tr>
           <th>都道府県</th>
-          <td><input type="text" name="user[region]" size='22'placeholder="例）東京都" required></td>
+          <td><input type="text" name="user[region]" size='22' placeholder="例）東京都" required></td>
         </tr>
         <tr>
           <th>市区町村以下</th>
@@ -51,6 +59,7 @@
         </tr>
       </tbody>
       </table>
+      <input type="hidden" name="user[customer_flg]" value="0">
     <div class="actions button1">
     <%= f.submit "新規会員登録", class:"btn btn-md btn-block btn-danger" %>
       </div>
