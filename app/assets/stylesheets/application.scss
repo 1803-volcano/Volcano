@@ -23,7 +23,7 @@
   height:140px;
 }
 .news{
-  height: 490px;
+  height: 500px;
 }
 section {
   margin-bottom: 2em;
@@ -64,6 +64,7 @@ header .headline-sub{
 .sidebar-line{
   font-size: 20px;
   text-align: center;
+  padding: 40px 0 20px 0;
   color: #ffffff;
 }
 .subteki{
@@ -75,6 +76,7 @@ header .headline-sub{
 }
 .main-line{
   font-size: 30px;
+  padding: 40px 0 20px 0;
 }
 .mainseet{
   width: 215px;
@@ -83,10 +85,10 @@ header .headline-sub{
   margin: 0 15px 20px 0;
   border: 1px solid darkgray;
 }
-footer {
+  footer {
   font-size: 50px;
-  width: 100%;
-  height: 500px;
+  width: 1100px;
+  height: 100%;
   text-align: center;
   padding: 50px 0;
   #background-color: rgba( 0, 0, 0, 0.5);
