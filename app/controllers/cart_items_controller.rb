@@ -5,14 +5,13 @@ class CartItemsController < ApplicationController
  	cart = Cart.where(user_id: current_user.id).last
  	existing_items = CartItem.where(cart_id: cart.id).pluck(:product_id)
 
- 	if existing_items.include?(params[:product_id])
+ 	if existing_items.any?{ |w| w == product.id }　#すでにあるものかどうかの判断は、any?で行う
  		redirect_to cart_path(cart)
  	else
 	 	@cart_item = product.cart_items.build(cart_id: cart.id)
 	 	@cart_item.save
 	 	redirect_to cart_path(cart)
  	end
- 	#すでにあるものの判断を考える
  end
 
  def destroy

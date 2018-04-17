@@ -1,7 +1,9 @@
 class ProductsController < ApplicationController
 
  def index
- 	@products = Product.page(params[:page]).reverse_order
+ 	# @search = Product.search(params[:q])
+ 	@products = @search.result
+ 	# @products = Product.page(params[:page]).reverse_order
  	#並び順も変えられる
  end
 

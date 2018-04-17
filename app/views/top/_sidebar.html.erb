@@ -17,12 +17,14 @@
   <div class="sidebar-line">
     CDジャンル
   </div>
-  <p><a href="#">▶︎ J-POP</a></p>
-  <p><a href="#">▶︎ ロック＆ポップス</a></p>
-  <p><a href="#">▶︎ R＆B/ソウル</a></p>
-  <p><a href="#">▶︎ ヒップホップ</a></p>
-  <p><a href="#">▶︎ クラブ/ダンス</a></p>
-  <p><a href="#">▶︎ ワールド</a></p>
-  <p><a href="#">▶︎ 洋楽</a></p>
-  <p><a href="#">▶︎ アニメ</a></p>
+  <p><%= link_to "▶ J-POP", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"J-POP", "commit"=>"Search" }}) %></p>
+  <p><%= link_to "▶ ロック＆ポップス", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"ロック＆ポップス", "commit"=>"Search" }}) %></p>
+  <p><%= link_to "▶ R＆B/ソウル", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"R＆B/ソウル", "commit"=>"Search" }}) %></p>
+  <p><%= link_to "▶ ヒップホップ", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"ヒップホップ", "commit"=>"Search" }}) %></p>
+  <p><%= link_to "▶ クラブ/ダンス", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"クラブ/ダンス", "commit"=>"Search" }}) %></p>
+  <p><%= link_to "▶ ワールド", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"ワールド", "commit"=>"Search" }}) %></p>
+  <p><%= link_to "▶ 洋楽", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"洋楽", "commit"=>"Search" }}) %></p>
+  <p><%= link_to "▶ アニメ", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"アニメ", "commit"=>"Search" }}) %></p>
 </div>
+
+<!--/の判定が怪しいので注意するべし-->
