@@ -27,6 +27,20 @@
             </button>
             <a class="navbar-brand" href="#">ようこそゲスト様</a>
           </div>
+
+          <!--検索窓-->
+          <%= search_form_for @search do |f| %>
+          <span class="input-group">
+            <%= f.text_field :cd_title_or_artist_or_genre_or_label_cont, class: "form-control", style: "margin: 8px 0;", placeholder: "キーワードを入力" %>
+            <span class="input-group-btn">
+              <button type="submit" name="commit" value="検索" class="btn btn-default" data-disable-with="検索中">
+                <i class="glyphicon glyphicon-search" ></i>
+              </button>
+            </span>
+          <span>
+          <% end %>
+
+          <!--ナビゲーション-->
           <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
               <% if user_signed_in? %>
@@ -46,7 +60,7 @@
       </nav>
     </div>
     </header>
-    
+
     <div class="hed"></div>
     <div class="container">
     <%= yield %>
