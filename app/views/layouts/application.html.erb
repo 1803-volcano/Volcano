@@ -29,7 +29,7 @@
           <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
               <% if user_signed_in? %>
-              <li><a href="/users/show/<%= current_user.id %>" class="glyphicon glyphicon glyphicon-star"> マイページ</a></li>
+              <li><a href="/users/<%= current_user.id %>" class="glyphicon glyphicon glyphicon-star"> マイページ</a></li>
               <li><a href="/carts/<%= current_user.id %>" class="glyphicon glyphicon-shopping-cart""> カート</a></li>
               <li><a href="/users/sign_out" class="glyphicon glyphicon-log-out" data-method="delete"> ログアウト</a></li>
               <% elsif admin_signed_in? %>
