@@ -17,8 +17,21 @@
  @import "bootstrap";
 
 
-
-
+.table {
+  border: solid 1px #e8e8e8;
+  padding:10px;/* セル内に余白を空ける */
+  margin: 50px 50px 50px 50px;
+}
+.table th{
+  background-color: rgba( 0, 0, 0, 0.3);
+  height: 80px;
+  width: 250px;
+}
+.midashi{
+  font-size: 50px;
+  margin: 50px 0 0 0;
+  text-align: center;
+}
 .hed{
   height:140px;
 }
@@ -85,11 +98,15 @@ header .headline-sub{
   margin: 0 15px 20px 0;
   border: 1px solid darkgray;
 }
-  footer {
+footer {
   font-size: 50px;
   width: 1100px;
   height: 100%;
   text-align: center;
   padding: 50px 0;
   #background-color: rgba( 0, 0, 0, 0.5);
+}
+.button1{
+  width: 600px;
+  margin: auto;
 }

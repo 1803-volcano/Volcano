@@ -1,74 +1,61 @@
-<p>users edit</p>
-
 <div class="container">
-	<div class="row">
-		<div class="col-xs-2">
-			sidebar
-		</div>
-		<div class="col-xs-10">
-			<h1>ユーザ情報の編集</h1>
-			<hr>
-			<%= form_for(@user) do |f| %>
-			<table class="table table-striped">
-				<tbody>
-					<tr>
-						<td>メールアドレス</td>
-						<td><%= f.email_field :email %></td>
-					</tr>
+  <div class="row">
+	<%= render 'top/sidebar' %>
+	<div class="col-xs-10 text-left">
+	  <div class="midashi">会員情報の編集</div>
+	  <hr>
+	    <%= form_for(@user) do |f| %>
+		  <table class="table">
+			<tbody>
+			  <tr>
+				<th>氏名</th>
+				<td>姓<%= f.text_field :name_sei, placeholder:"例）渋谷" %>名<%= f.text_field :name_mei, placeholder:"例）太郎" %></td>
+			  </tr>
+			  <tr>
+				<th>フリガナ</th>
+				<td>セイ<%= f.text_field :name_kana_sei, placeholder:"例）シブヤ" %>メイ<%= f.text_field :name_kana_mei, placeholder:"例）タロウ" %></td>
+			  </tr>
+			  <tr>
+				<th>生年月日</th>
+				<td><%= f.date_field :birthday %></td>
+			  </tr>
+			  <tr>
+				<th>性別</th>
+				<td>男性<%= f.radio_button :sex, "male" %>
+					女性<%= f.radio_button :sex, "female" %>
+				</td>
+			  </tr>
+			  <tr>
+				<th>郵便番号</th>
+				<td><%= f.text_field :postal_code, placeholder:"例）1235678" %></td>
+			  </tr>
+			  <tr>
+				<th>都道府県</th>
+				<td><%= f.text_field :region, :size=>"30", placeholder:"例）東京都" %></td>
+			  </tr>
+			  <tr>
+				<th>市区町村以下</th>
+				<td><%= f.text_field :street, :size=>"60", placeholder:"例）港区麻布１−２−３タワーマンション２０１" %></td>
+			  </tr>
+			  <tr>
+				<th>電話番号</th>
+				<td><%= f.text_field :phone, :size=>"60", placeholder:"例）09012345678"  %></td>
+			  </tr>
+			  <tr>
+				<th>メールアドレス</th>
+				<td><%= f.email_field :email, :size=>"60", placeholder:"例）abc@volcano.ne.jp"  %></td>
+			  </tr>
 						<!-- password -->
-					<tr>
-						<td>氏名</td>
-						<td>姓<%= f.text_field :name_sei %>名<%= f.text_field :name_mei %></td>
-					</tr>
-
-					<tr>
-						<td>フリガナ</td>
-						<td>セイ<%= f.text_field :name_kana_sei %>メイ<%= f.text_field :name_kana_mei %></td>
-					</tr>
-					<tr>
-						<td>生年月日</td>
-						<td><%= f.date_field :birthday %></td>
-					</tr>
-					<tr>
-						<td>性別</td>
-						<td>男性<%= f.radio_button :sex, "male" %>
-							女性<%= f.radio_button :sex, "female" %>
-						</td>
-					</tr>
-					<tr>
-						<td>郵便番号</td>
-						<td><%= f.text_field :postal_code %></td>
-					</tr>
-					<tr>
-						<td>都道府県</td>
-						<td><%= f.text_field :region %></td>
-					</tr>
-					<tr>
-						<td>市区町村以下</td>
-						<td><%= f.text_field :street %></td>
-					</tr>
-					<tr>
-						<td>電話番号</td>
-						<td><%= f.text_field :phone %></td>
-					</tr>
-					<tr>
-						<td>クレジットカード</td>
-						<td><%= f.text_field :credit_card %></td>
-					</tr>
-
-				</tbody>
-			</table>
-			<%= f.submit "送信" %>
-
-			<% end %>
-
-
-
-
-
-
-
-
+			  <!-- <tr>
+				<th width="150" height="70">クレジットカード</th>
+				<td><%= f.text_field :credit_card %></td>
+			  </tr> -->
+			</tbody>
+		  </table>
+		<div class="button1">
+			<%= f.submit "編集", class:"btn btn-md btn-block btn-danger" %>
 		</div>
+	  <% end %>
 	</div>
+  </div>
 </div>
