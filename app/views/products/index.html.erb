@@ -6,50 +6,34 @@
 			sidebar
 		</div>
 		<div class="col-xs-10">
-<h1>商品一覧</h1>
-<table class = "table">
-	<tbody>
-		<tr>
-			<td>画像</td>
+			<h1>商品一覧</h1>
+			<%= page_entries_info @products %>
+			<table class = "table">
+				<tbody>
+					<% @products.each do |product| %>
+					<tr>
+						<td width="100", height="100">
+							<%= attachment_image_tag product, :picture, width: "100", height: "100", format: "jpeg", fallback: "img/no_image.jpg" %></td>
 
-			<td>
-				<label>CDタイトル: </label>大正義<br>
+							<td>
+							<label>CDタイトル: </label><%= link_to product.cd_title, product_path(product) %><br>
 
-			<label>アーティスト: </label>ポルカドットスティングレイ
-			</td>
+							<label>アーティスト: </label><%= product.artist %>
+						</td>
 
-			<td>￥5,800</td>
+						<td>￥<%= product.price %></td>
 
-			<td>
-				<span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span><br>
-				お気に入りに追加
-			</td>
-		</tr>
-		<tr>
-			<td>画像</td>
-
-			<td>
-				<label>CDタイトル: </label>大正義<br>
-
-			<label>アーティスト: </label>ポルカドットスティングレイ
-			</td>
-
-			<td>￥5,800</td>
-
-			<td>
-				<span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span><br>
-				お気に入りに追加
-			</td>
-		</tr>
-	</tbody>
-</table>
-
+						<td>
+							<span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span><br>
+							お気に入りに追加
+						</td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
 	</div>
 </div>
 
 
-
-
-
-
-
+<%= paginate @products %>

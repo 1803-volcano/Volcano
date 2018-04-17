@@ -1,0 +1,74 @@
+<p>users edit</p>
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-2">
+			sidebar
+		</div>
+		<div class="col-xs-10">
+			<h1>ユーザ情報の編集</h1>
+			<hr>
+			<%= form_for(@user) do |f| %>
+			<table class="table table-striped">
+				<tbody>
+					<tr>
+						<td>メールアドレス</td>
+						<td><%= f.email_field :email %></td>
+					</tr>
+						<!-- password -->
+					<tr>
+						<td>氏名</td>
+						<td>姓<%= f.text_field :name_sei %>名<%= f.text_field :name_mei %></td>
+					</tr>
+
+					<tr>
+						<td>フリガナ</td>
+						<td>セイ<%= f.text_field :name_kana_sei %>メイ<%= f.text_field :name_kana_mei %></td>
+					</tr>
+					<tr>
+						<td>生年月日</td>
+						<td><%= f.date_field :birthday %></td>
+					</tr>
+					<tr>
+						<td>性別</td>
+						<td>男性<%= f.radio_button :sex, "male" %>
+							女性<%= f.radio_button :sex, "female" %>
+						</td>
+					</tr>
+					<tr>
+						<td>郵便番号</td>
+						<td><%= f.text_field :postal_code %></td>
+					</tr>
+					<tr>
+						<td>都道府県</td>
+						<td><%= f.text_field :region %></td>
+					</tr>
+					<tr>
+						<td>市区町村以下</td>
+						<td><%= f.text_field :street %></td>
+					</tr>
+					<tr>
+						<td>電話番号</td>
+						<td><%= f.text_field :phone %></td>
+					</tr>
+					<tr>
+						<td>クレジットカード</td>
+						<td><%= f.text_field :credit_card %></td>
+					</tr>
+
+				</tbody>
+			</table>
+			<%= f.submit "送信" %>
+
+			<% end %>
+
+
+
+
+
+
+
+
+		</div>
+	</div>
+</div>
