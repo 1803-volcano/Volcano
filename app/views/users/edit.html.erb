@@ -1,5 +1,5 @@
 <div class="row">
-<%= render 'top/sidebar' %>
+<%= render partial: "top/sidebar" %>
   <div class="col-xs-10 text-left">
     <div class="midashi">会員情報の編集</div>
     <hr>
@@ -8,25 +8,25 @@
 			<tbody>
 			  <tr>
 				<th>氏名</th>
-				<td>姓<%= f.text_field :name_sei, placeholder:"例）渋谷" %>名<%= f.text_field :name_mei, placeholder:"例）太郎" %></td>
+                <td>姓　<%= f.text_field :name_sei, placeholder:"例）渋谷" %>名　<%= f.text_field :name_mei, placeholder:"例）太郎" %>（全角）</td>
 			  </tr>
 			  <tr>
 				<th>フリガナ</th>
-				<td>セイ<%= f.text_field :name_kana_sei, placeholder:"例）シブヤ" %>メイ<%= f.text_field :name_kana_mei, placeholder:"例）タロウ" %></td>
+				<td>セイ<%= f.text_field :name_kana_sei, placeholder:"例）シブヤ" %>メイ<%= f.text_field :name_kana_mei, placeholder:"例）タロウ" %>（全角カナ）</td>
 			  </tr>
-			  <tr>
+			  <!-- <tr>
 				<th>生年月日</th>
 				<td><%= f.date_field :birthday %></td>
-			  </tr>
+			  </tr> -->
 			  <tr>
 				<th>性別</th>
-				<td>男性<%= f.radio_button :sex, "male" %>
-					女性<%= f.radio_button :sex, "female" %>
+				<td><%= f.radio_button :sex, "male" %>男性 　
+                    <%= f.radio_button :sex, "female" %>女性　</td>
 				</td>
 			  </tr>
 			  <tr>
 				<th>郵便番号</th>
-				<td><%= f.text_field :postal_code, placeholder:"例）1235678" %></td>
+				<td>〒<%= f.text_field :postal_code, placeholder:"例）1235678" %>（半角数字　ハイフン入力不要）</td>
 			  </tr>
 			  <tr>
 				<th>都道府県</th>
@@ -38,7 +38,7 @@
 			  </tr>
 			  <tr>
 				<th>電話番号</th>
-				<td><%= f.text_field :phone, :size=>"60", placeholder:"例）09012345678"  %></td>
+				<td><%= f.text_field :phone, :size=>"30", placeholder:"例）09012345678"  %>（半角数字　ハイフン入力不要）</td>
 			  </tr>
 			  <tr>
 				<th>メールアドレス</th>
@@ -51,7 +51,7 @@
 			  </tr> -->
 			</tbody>
 		  </table>
-		<div class="button1">
+		<div class="actions button1">
 		<%= f.submit "編集", class:"btn btn-md btn-block btn-danger" %>
       </div>
     <% end %>

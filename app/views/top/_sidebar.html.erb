@@ -2,6 +2,7 @@
   <% if admin_signed_in? %>
     <div class="sidebar-line">
     管理機能一覧
+    <hr>
     </div>
     <div class="subteki">・商品管理</div>
       <p><a href="#">▶︎ 新規商品登録</a></p>
@@ -16,6 +17,7 @@
 
   <div class="sidebar-line">
     CDジャンル
+    <hr>
   </div>
   <p><%= link_to "▶ J-POP", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"J-POP", "commit"=>"Search" }}) %></p>
   <p><%= link_to "▶ ロック＆ポップス", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"ロック＆ポップス", "commit"=>"Search" }}) %></p>

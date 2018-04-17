@@ -25,13 +25,21 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">ようこそゲスト様</a>
+              <div class="guest-name">
+              <% if user_signed_in? %>
+                <%= User.find(current_user.id).name_sei %>  様　　　
+              <% elsif admin_signed_in? %>
+                管理者　様     
+              <% else %>
+                ようこそゲスト　様　　　
+              <% end %>
+            </div>
           </div>
 
           <!--検索窓-->
           <%= search_form_for @search do |f| %>
           <span class="input-group">
-            <%= f.text_field :cd_title_or_artist_or_genre_or_label_cont, class: "form-control", style: "margin: 8px 0;", placeholder: "キーワードを入力" %>
+            <%= f.text_field :cd_title_or_artist_or_genre_or_label_cont, class: "form-control", :size=>"40",style: "margin: 8px 0;", placeholder: "キーワードを入力" %>
             <span class="input-group-btn">
               <button type="submit" name="commit" value="検索" class="btn btn-default" data-disable-with="検索中">
                 <i class="glyphicon glyphicon-search" ></i>
