@@ -1,22 +1,21 @@
 <div class="row">
-<%= render partial: "top/sidebar" %>
+  <%= render partial: "top/sidebar" %>
   <div class="main col-xs-10 text-left">
     <div class="midashi">アカウント停止について</div>
     <hr>
-<div style="font-size: 20px;" >
- 注意事項</div>
+      <div style="font-size: 20px;" >注意事項</div>
 
 ・退会後、同じIDでの再登録はできません<br>
 
 ・ご購入商品の情報が確認できなくなります
 
 
-<%= form_for(@user) do |f| %>
+      <%= form_for(@user) do |f| %>
 
-<div class="actions button1">
+      <div class="actions button1">
 		<%= f.submit "キャンセル", class:"btn btn-md btn-block btn-danger" %>
 		<input type="hidden" name="user[customer_flg]" value="1">
 		<%= f.submit "退会手続きを進める", class:"btn btn-md btn-block btn-danger" %>
       </div>
-<% end %>
-
+  <% end %>
+</div>

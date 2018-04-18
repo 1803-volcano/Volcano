@@ -1,9 +1,4 @@
-<<<<<<< HEAD
-=======
-	<p>users show</p>
 
->>>>>>> 43d44b19ab771f7402b5ed3c1eae14b2ee5b1aea
-<div class="container">
   <div class="row">
 	<%= render partial: "top/sidebar" %>
 	<div class="main col-xs-10">
@@ -15,11 +10,10 @@
 		  <a class="list-group-item">お気に入り</a><br>
 		  <%= link_to "ユーザ情報の編集", edit_user_path(current_user.id), class:"list-group-item" %><br>
 		  <%= link_to "退会手続き(アカウント停止について）", unsubscribe_user_path(current_user.id), class:"list-group-item" %>
-		  <a href="/users/<%= current_user.id %>/unsubscribe"> 退会手続き(アカウント停止について）</a>
 		</div>
 
 
 
 	</div>
   </div>
-</div>
+
