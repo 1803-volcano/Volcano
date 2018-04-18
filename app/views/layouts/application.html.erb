@@ -78,7 +78,7 @@
     <%= yield %>
     </div>
 
-    <footer class="container">
+    <div class="container">
       <ul class="bxslider">
         <li><div style="background-image: url(img/fon4.jpg)" title="キャプション4"><%= image_tag 'img/fon4.jpg'%></div></li>
         <li><div style="background-image: url(img/fon6.jpg)"><%= image_tag 'img/fon6.jpg'%></div></li>
@@ -87,7 +87,39 @@
         <li><div style="background-image: url(img/fon9.jpg)"><%= image_tag 'img/fon9.jpg'%></div></li>
         <li><div style="background-image: url(img/fon10.jpg)"><%= image_tag 'img/fon10.jpg'%></div></li>
       </ul>
-      Footer 建設予定地
+    </div>
+
+    <footer>
+      <div class="container">
+        <div class="col-xs-4 text-left" style="font-size: 20px;">
+          CDジャンル
+          <hr>
+          <div style="font-size: 20px;">
+            <p><%= link_to "▶ J-POP", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"J-POP", "commit"=>"Search" }}) %></p>
+            <p><%= link_to "▶ ロック＆ポップス", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"ロック＆ポップス", "commit"=>"Search" }}) %></p>
+            <p><%= link_to "▶ R＆B/ソウル", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"R＆B/ソウル", "commit"=>"Search" }}) %></p>
+            <p><%= link_to "▶ ヒップホップ", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"ヒップホップ", "commit"=>"Search" }}) %></p>
+            <p><%= link_to "▶ クラブ/ダンス", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"クラブ/ダンス", "commit"=>"Search" }}) %></p>
+            <p><%= link_to "▶ ワールド", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"ワールド", "commit"=>"Search" }}) %></p>
+            <p><%= link_to "▶ 洋楽", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"洋楽", "commit"=>"Search" }}) %></p>
+            <p><%= link_to "▶ アニメ", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"アニメ", "commit"=>"Search" }}) %></p>
+          </div>
+        </div>
+        <div class="col-xs-4 text-left" style="font-size: 20px;">
+          会員機能
+          <hr>
+          <div style="font-size: 20px;">
+
+          </div>
+        </div>
+        <div class="col-xs-4 text-left" style="font-size: 20px;">
+          その他
+          <hr>
+　        <div style="font-size:20px;">
+
+          </div>
+        </div>
+      </div>
     </footer>
   </body>
 </html>
