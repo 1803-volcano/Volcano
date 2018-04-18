@@ -23,24 +23,23 @@ Rails.application.routes.draw do
   resources :carts, only: [:create, :show] do
     resource :cart_items, only: [:destroy]
   end
-  get '/carts/:id/select' => 'carts#select'
-  get '/carts/:id/confirm' => 'carts#confirm'
+  get '/carts/:id/select' => 'carts#select', as: 'select_cart'
+  get '/carts/:id/confirm' => 'carts#confirm', as: 'confirm_cart'
   post '/carts/:id/confirm' => 'carts#purchase'
-  get '/carts/:id/complete' => 'carts#camplete'
+  get '/carts/:id/complete' => 'carts#complete', as: 'complete_cart'
 
   resources :users, only: [:show, :edit, :update] do
     resources :purchasers, only: [:index, :show]
     resources :favorites, only: [:index]
   end
-  get '/users/:id/unsubscribe' => 'users#unsubscribe'
+  get '/users/:id/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe_user'
 
 
   namespace :admins do
     resources :top, only: [:show, :edit, :update]
     resources :users, only: [:index]
-    put '/users/:id' => 'users#delete'
-    resources :products, only: [:new, :create, :edit, :update]
-    get '/products/list' => 'products#list'
+    put '/users/:id' => 'users#delete', as: 'delete_user'
+    resources :products, only: [:new, :create, :edit, :update, :index, :show]
     resources :purchasers, only: [:index, :show, :update]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
