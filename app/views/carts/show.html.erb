@@ -1,12 +1,14 @@
-<p>carts show</P>
-
 <div class="container">
 	<div class="row">
 		<%= render partial: "top/sidebar" %>
 		<div class="col-xs-10">
 			<h1>カート詳細</h1>
 			<hr>
-			<div class="col-xs-9">
+
+			<!--submitボタンでselectに行くように指定-->
+			<form action= "1/select" >
+
+			<div class="col-xs-8">
 				<table class="table table-striped">
 					<thead>
 						<tr>
@@ -17,8 +19,9 @@
 						</tr>
 					</thead>
 					<tbody>
+						<% total_price = 0 %><!--商品の価格を合計するため-->
 						<% @cart_items.each do |item| %>
-						<% product = Product.find(item.product_id) %>
+						<% product = Product.find(item.product_id) %><!--productをidから探し出す-->
 						<tr>
 							<td><%= attachment_image_tag product, :picture, width: "100", height: "100", format: "jpeg", fallback: "img/no_image.jpg" , style:"width:100px; height:100px;" %></td>
 							<td>
@@ -27,41 +30,33 @@
 								価格：￥<%= product.price %>
 							</td>
 							<td>
-								<input type="number" min=1 value=1 style="width: 50px;" name="quantity">
-								<%= link_to "カートから削除", cart_cart_items_path(id: item.id, product_id: item.product_id, cart_id: @cart.id), method: :delete %>
-
-								<%= item.id %>
-								<%= item.product_id %>
-
+								<!--selectに個数を送る-->
+								<input type="number" min=1 value=1 style="width: 50px;" name="quantity[]"><br>
+								<button class="btn btn-danger" id="cart-item-destroy"><%= link_to "カートから削除", cart_cart_items_path(id: item.id, product_id: item.product_id, cart_id: @cart.id), method: :delete %></button>
 							</td>
-							<td>￥<%= product.price %></td>
+							<td><h4>￥<%= product.price %></h4></td>
+							<% total_price += product.price %>
 						</tr>
-
-
 
 						<% end %>
 					</tbody>
 				</table>
 			</div>
-			<div class="col-xs-3">
+			<div class="col-xs-3 col-xs-offset-1 panel panel-info text-center">
+				<h2 class="">合計 ￥<%= total_price %></h2>
+				<input type="submit" value="レジへ進む" class="btn btn-primary">
 			</div>
 
-
-
-
-
-
-
-
-
-
-
-
+		</form>
 
 		</div>
 	</div>
 </div>
 
 
-<%= @cart.id %>
-<%= @cart.user_id %>
+<style type="text/css">
+		<!--
+		button a{color: #fff; font-size: 16px;}
+		#cart-item-destroy {margin-top: 8px;}
+		-->
+</style>

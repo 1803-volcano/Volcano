@@ -16,6 +16,7 @@ class CartsController < ApplicationController
  end
 
  def select
+ 	@quantity = params[:quantity]
  end
 
  def confirm
