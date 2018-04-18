@@ -14,6 +14,7 @@ class UsersController < ApplicationController
  end
 
  def unsubscribe
+ 	@user = User.find(params[:id])
  end
 
 private

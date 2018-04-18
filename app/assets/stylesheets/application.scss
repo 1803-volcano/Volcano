@@ -94,8 +94,9 @@ header .headline{
   text-arign: center;
 }
 .main{
-  height: auto;
-  #background-color: #f9f8f6;
+  max-height: auto;
+  min-height: 700px;
+
 }
 .main-line{
   font-size: 30px;
