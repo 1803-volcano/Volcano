@@ -8,6 +8,10 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://fonts.googleapis.com/css?family=Cormorant+Unicase|Jacques+Francois+Shadow" rel="stylesheet">
     <script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
+    <script src="common/js/jquery.bxSlider.js"></script>
+    <link rel="stylesheet" href="common/css/jquery.bxslider.css">
+    <script src="jquery.bxslider.js"></script>
+
   </head>
 
   <body>
@@ -75,14 +79,16 @@
     </div>
 
     <footer class="container">
+      <ul class="bxslider">
+        <li><div style="background-image: url(img/fon4.jpg)" title="キャプション4"><%= image_tag 'img/fon4.jpg'%></div></li>
+        <li><div style="background-image: url(img/fon6.jpg)"><%= image_tag 'img/fon6.jpg'%></div></li>
+        <li><div style="background-image: url(img/fon7.jpg)"><%= image_tag 'img/fon7.jpg'%></div></li>
+        <li><div style="background-image: url(img/fon8.jpg)"><%= image_tag 'img/fon8.jpg'%></div></li>
+        <li><div style="background-image: url(img/fon9.jpg)"><%= image_tag 'img/fon9.jpg'%></div></li>
+        <li><div style="background-image: url(img/fon10.jpg)"><%= image_tag 'img/fon10.jpg'%></div></li>
+      </ul>
       Footer 建設予定地
     </footer>
   </body>
 </html>
-
-
-
-
-
-
 
