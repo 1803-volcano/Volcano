@@ -39,8 +39,7 @@ Rails.application.routes.draw do
     resources :top, only: [:show, :edit, :update]
     resources :users, only: [:index]
     put '/users/:id' => 'users#delete'
-    resources :products, only: [:new, :create, :edit, :update]
-    get '/products/list' => 'products#list'
+    resources :products, only: [:new, :create, :edit, :update, :index, :show]
     resources :purchasers, only: [:index, :show, :update]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

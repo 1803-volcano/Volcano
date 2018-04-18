@@ -1,1 +1,36 @@
-<p>products new</p>
+  <h2>商品新規登録</h2>
+
+        <%= form_for(@product) do |f| %>
+          <div class="row">
+            <%= f.text_field :artist, :placeholder => "アーティスト名" %>
+          </div>
+          <div class="row">
+            <%= f.text_field :cd_title, :placeholder => "シングル/アルバム名" %>
+          </div>
+          <div>
+          	<%= f.attachment_field :picture %>
+          </div>
+		  <div class="row">
+            <%= f.text_field :label, :placeholder => "レーベル名" %>
+          </div>
+		  <div class="row">
+            <%= f.text_field :genre, :placeholder => "ジャンル" %>
+          </div>
+          <div class="row">
+            <%= f.text_field :price, :placeholder => "価格" %>
+          </div>
+          <div class="row">
+            <%= f.text_field :start_date, :placeholder => "発売日" %>
+          </div>
+          <div class="row">
+        	<%= form_for(@disc) do |f| %>
+            	<%= f.text_field :disc_name, :placeholder => "ディスク名" %>
+            <% end %>
+          </div>
+          <div class="row">
+            <%= f.text_area :sound_source, :placeholder => "1. 2. 3." %>
+          </div>
+          <div class="row">
+            <%= f.submit '登録',class: "btn btn-primary col-xs-12" %>
+        　</div>
+        <% end %>
