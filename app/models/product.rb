@@ -5,6 +5,7 @@ class Product < ApplicationRecord
   has_many :receipts
   has_many :browsings
   has_many :favorites
+  accepts_nested_attributes_for :discs
 
   attachment :picture
 end

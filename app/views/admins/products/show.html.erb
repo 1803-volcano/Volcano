@@ -1,1 +1,63 @@
-<p>products show</p>
+<div class="container">
+	<div class="row">
+		<%= render partial: "top/sidebar" %>
+		<div class="col-xs-10">
+
+
+			<%= link_to "前のページに戻る", :back %>
+			<%= link_to "TOP画面に戻る", products_path %>
+			<h1>商品詳細</h1>
+			<hr>
+
+			<div class="clearfix">
+				<div class="col-xs-5">
+					<%= attachment_image_tag @product, :picture, width: "350", height: "350", format: "jpeg", fallback: "img/no_image.jpg" %>
+				</div>
+
+				<div class="col-xs-7">
+					<h2><%= @product.cd_title %></h2>
+					<h5><b><%= @product.artist %></b></h5>
+					<hr>
+					<h3>価格（税込）：￥<%= @product.price %></h3>
+					<p><%= link_to "カートに入れる", product_cart_items_path(@product.id), method: :post %></p>
+					<p>お気に入り</p>
+				</div>
+			</div>
+
+			<div class="col-xs-offset-1", style="margin-top:40px; margin-bottom:120px;">
+
+				<div>
+					<h5>商品仕様</h5>
+					<label>ジャンル：</label><%= @product.genre %><br>
+					<label>レーベル：</label><%= @product.label %><br>
+					<label>発売日：</label><%= @product.start_date %>
+				</div>
+
+				<div style="margin-top:80px;">
+					<% @discs.each do |disc| %>
+						<h6 style="margin-top: 30px;"><b>[ <%= disc.disc_name %> ]</b></h6>
+						<% tunes = Tune.where(disc_id: disc.id).pluck(:id) %>
+						<% num = 1 %>
+						<% tunes.each do |music| %>
+							<% tune = Tune.find(music) %>
+							<h5><%= num %>.<%= tune.song_title %></h5>
+							<% num += 1 %>
+						<% end %>
+					<% end %>
+					<!-- tuneについてはpluckとfindで探す方法でしかできなかった。原因は不明 -->
+				</div>
+
+			</div>
+
+
+
+
+
+
+
+
+
+
+		</div>
+	</div>
+</div>

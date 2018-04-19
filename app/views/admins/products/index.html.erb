@@ -1,1 +1,52 @@
-<p>products index</p>
+<div class="container">
+	<div class="row">
+		<%= render partial: "top/sidebar" %>
+		<div class="col-xs-10">
+			<h1 style="display: inline-block;">商品一覧</h1>
+			<div class="pull-right sort">
+				<button class="btn btn-primary" ><%= sort_link(@search, :cd_title, "追加日で並び替え") %></button>
+				<button class="btn btn-success" ><%= sort_link(@search, :price, "価格で並び替え") %></button>
+				<button class="btn btn-danger" ><%= sort_link(@search, :start_date, "発売日で並び替え") %></button>
+			</div>
+
+
+			<table class = "table">
+				<tbody>
+					<% @products.each do |product| %>
+					<tr>
+						<td width="100", height="100">
+							<%= attachment_image_tag product, :picture, width: "100", height: "100", format: "jpeg", fallback: "img/no_image.jpg" %></td>
+
+							<td>
+							<label>CDタイトル: </label><%= link_to product.cd_title, product_path(product) %><br>
+
+							<label>アーティスト: </label><%= product.artist %>
+						</td>
+
+						<td>￥<%= product.price %></td>
+
+						<td>
+							<span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span><br>
+							お気に入りに追加
+						</td>
+						<td>
+							<%= link_to '編集', edit_admins_product_path(product.id) %>
+						</td>
+						<td>
+							<%= link_to '削除'%>
+						</td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+
+<style type="text/css">
+		<!--
+		button a{color: #fff; font-size: 16px;}
+		.sort{display: inline-block; margin:20px 0 10px 0;}
+		-->
+</style>
