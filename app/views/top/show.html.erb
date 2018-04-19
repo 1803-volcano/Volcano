@@ -1,22 +1,22 @@
+<div class="container">
+  <!-- 上部スライダー -->
+      <ul class="center-item">
 
-<div class="news">
-  <div class="theTarget">
-    <div style="background-image: url(img/test7.jpg)"><%= image_tag 'img/test7.jpg'%></div>
-    <div style="background-image: url(img/tes2.jpg)"><%= image_tag 'img/tes2.jpg'%></div>
-    <div style="background-image: url(img/tes3.jpg)"><%= image_tag 'img/tes3.jpg'%></div>
-    <div style="background-image: url(img/tes4.jpg)"><%= image_tag 'img/tes4.jpg'%></div>
-    <div style="background-image: url(img/tes1.jpg)"><%= image_tag 'img/tes1.jpg'%></div>
-    <div style="background-image: url(img/tes5.jpg)"><%= image_tag 'img/tes5.jpg'%></div>
-  </div>
-</div>
+        <li><%= image_tag ('img/test7.jpg') %></li>
+        <li><%= image_tag ("img/tes5.jpg") %></li>
+        <li><%= image_tag ('img/tes4.jpg') %></li>
+        <li><%= image_tag ('img/tes1.jpg') %></li>
+        <li><%= image_tag ('img/tes2.jpg') %></li>
+        <li><%= image_tag ('img/tes3.jpg')%></li>
 
-  <script src="skippr.min.js"></script>
-  <script src="script.js"></script>
+      </ul>
 
-<div class="container-fluid">
+
+
+
   <div class="row content">
   <%= render partial: "top/sidebar" %>
-  	<div class="main col-xs-10 text-left">
+    <div class="main col-xs-10 text-left">
     <div class="main-line">新着情報</div>
       <div class="mainseet">
         <div class="img"><%= image_tag 'img/fon1.jpg'%>Black Pink</div>
@@ -42,9 +42,22 @@
       <div class="mainseet">
         <div class="img"><%= image_tag 'img/fon5.jpg'%>Black Pink</div>
       </div>
-  	</div>
+    </div>
   </div>
+
+<!-- 下部スライダー -->
+    <div class="container">
+      <ul class="multiple-item">
+
+        <li><%= image_tag ('img/fon4.jpg') %></li>
+        <li><%= image_tag ("img/fon6.jpg") %></li>
+        <li><%= image_tag ('img/fon7.jpg') %></li>
+        <li><%= image_tag ('img/fon8.jpg') %></li>
+        <li><%= image_tag ('img/fon9.jpg') %></li>
+        <li><%= image_tag ('img/fon10.jpg')%></li>
+
+      </ul>
+    </div>
+
 </div>
-
-
 

@@ -1,35 +1,32 @@
-<%= render 'top/sidebar' %>
-
 <div class="container">
-	<div class="row">
-		<h1>管理者メニュー</h1>
-				<div class="col-md-6">
-				<h2>１．商品管理</h2>
-					<%= link_to '新規商品登録', new_admins_product_path, class: "btn btn-md btn-default" %>
-				</div>
-				<div class="col-md-6">
-	 				<%= link_to '商品の編集', edit_admins_product_path, class: "btn btn-md btn-default" %>
-	 			</div>
+  <div class="row">
+	<%= render partial: "top/sidebar" %>
+	<div class="main col-xs-10">
+	  <h1 class="midashi", style="margin-bottom:40px;">管理者メニュー</h1>
+	  <hr>
+	  <div class="col-md-6", style="margin-top:0px; margin-bottom:0px;">
+	    <h2 style="text-align: center;">１．商品管理</h2>
+		<%= link_to '新規商品登録', new_admins_product_path,  class: "btn btn-md btn-default btn-block" %>
+        <%= link_to '商品の編集/一覧', admins_products_path, class: "btn btn-md btn-default btn-block" %>
+	  </div>
 
-				<div class="col-md-6">
-				<h2>２．受注管理</h2>
+	  <div class="col-md-6", style="margin-top:0px; margin-bottom:50px;">
+		<h2 style="text-align: center;">２．受注管理</h2>
+        <%= link_to '注文一覧・配送状況', admins_purchasers_path, class: "btn btn-md btn-default btn-block" %>
+	  </div>
 
-	 				<%= link_to '注文一覧・配送状況', admins_products_path, class: "btn btn-md btn-default" %>
-	 			</div>
+	  <div class="col-md-6", style="margin-top:20px; margin-bottom:20px;">
+	    <h2 style="text-align: center;">３．会員情報管理</h2>
+        <%= link_to '会員情報の編集/一覧', admins_users_path, class: "btn btn-md btn-default btn-block" %>
+	  </div>
 
-				<div class="col-md-6">
-				<h2>３．会員情報管理</h2>
-
-					<%= link_to '会員情報の編集', admins_users_path, class: "btn btn-md btn-default" %>
-				</div>
-
-				<div class="col-md-6">
-				<h2>４．その他</h2>
-					<%= link_to '会員Topページへ', root_path, class: "btn btn-md btn-default" %>
-				</div>
-				<div class="col-md-6">
-					<%= link_to 'お問い合わせ管理', class: "btn btn-md btn-default" %>
-				</div>
+	  <div class="col-md-6", style="margin-top:20px; margin-bottom:20px;">
+		<h2 style="text-align: center;">４．その他</h2>
+		<%= link_to '会員Topページへ', root_path, class: "btn btn-md btn-default btn-block" %>
+		<!-- <%= link_to 'お問い合わせ管理', class: "btn btn-md btn-default btn-block" %> //追加機能-->
+	  </div>
 	</div>
+  </div>
 </div>
+
 

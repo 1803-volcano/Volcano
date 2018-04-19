@@ -1,3 +1,39 @@
-index
+<div class="container">
+  <div class="row">
+  <%= render partial: "top/sidebar" %>
+    <div class="col-xs-10">
+	  <h1 style="display: inline-block;">会員一覧</h1>
+	  <div class="pull-right sort">
+	    <button class="btn btn-primary" ><%= sort_link(@search, :name_sei, "名前で並び替え") %></button>
+		<button class="btn btn-success" ><%= sort_link(@search, :region, "住所で並び替え") %></button>
 
-テスト
+	  </div>
+
+      <table class = "table">
+	    <tbody>
+		  <% @users.each do |user| %>
+		    <tr>
+		      <td width="500", height="70">
+		        <label>名前: </label>
+		          <%= user.name_sei %><%= user.name_mei %><br>
+                <label>住所: </label>
+                  <%= user.region %><%= user.street %></td>
+
+				<td>
+				  <%= link_to '詳細 / 編集', admins_user_path(user.id) %>
+			  </td>
+		    </tr>
+		  <% end %>
+		</tbody>
+	  </table>
+	</div>
+  </div>
+</div>
+
+
+<style type="text/css">
+		<!--
+		button a{color: #fff; font-size: 16px;}
+		.sort{display: inline-block; margin:20px 0 10px 0;}
+		-->
+</style>
