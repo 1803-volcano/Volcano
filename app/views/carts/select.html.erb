@@ -4,20 +4,46 @@
     <%= render partial: "top/sidebar" %>
 		<div class="col-xs-10">
 
-			<h1>発送先・支払い方法の選択</h1>
+			<h1>発送先・お支払い方法の選択</h1>
 			<hr>
 
+<form action="confirm">
+			<!--送付先の選択-->
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h2 class="panel-title">発送先の選択</h2>
 				</div>
 				<div class="panel-body">
-					
-					発送先
+					<input type="radio" name="destination" value="exist" checked="checked">現住所に送る
+						<p>〒 <%= current_user.postal_code %></p>
+						<p><%= current_user.region %><%= current_user.street %></p>
+					<input type="radio" name="destination" value="new">上記以外に送る
+						<p>宛名<input type="textfield" name="name"></p>
+						<p>〒 <input type="textfield" name="postal_code" placeholder="ハイフンなし"></p>
+						<p>住所<input type="textfield" name="region" placeholder="例：東京都"><input type="textfield" name="street" placeholder="例："></p>
 				</div>
 			</div>
 
 
+			<!--支払い方法の選択-->
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h2 class="panel-title">お支払い方法の選択</h2>
+				</div>
+				<div class="panel-body">
+					<input type="radio" name="pay" value="cash" checked="checked">
+						<p>代金引換</p>
+					<input type="radio" name="pay" value="credit">
+					<p>クレジットカード</p>
+				</div>
+			</div>
+
+			<!--一番目の""にname。二番目の引数に個数の変数を持たせることでvalueに個数が入る。個数のデータがselectページを経由できる-->
+			<% @quantity.each do |quantity| %>
+				<%= number_field_tag "quantity[]", quantity, style:"display:none;" %><!--表示させない-->
+			<% end %>
+
+			<input type="submit" value="注文確認へ進む" class="btn btn-primary">
 
 
 
@@ -26,10 +52,8 @@
 
 
 
+
+</form>
   		</div>
 	</div>
 </div>
-
-
-
-<%= @quantity[0] %>

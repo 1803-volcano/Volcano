@@ -1,10 +1,94 @@
-<p>carts confirm</p>
+<div class="container">
+	<div class="row">
+    	<%= render partial: "top/sidebar" %>
+		<div class="col-xs-10">
+			<h1>ご注文内容の確認</h1>
+			<hr>
 
-  <div class="row">
-    <%= render partial: "top/sidebar" %>
-	<div class="col-xs-10">
+			<form action="confirm" method="post">
 
 
+			<div class="">
 
-  </div>
+				<table class="table table-hover table-bordered">
+					<thead>
+						<tr class="info">
+							<td></td>
+							<td>商品</td>
+							<td>数量</td>
+							<td>小計</td>
+						</tr>
+					</thead>
+					<tbody>
+						<% total_price = 0 %><!--商品の価格を合計するため-->
+						<% total_quantity = 0 %><!--個数を合計するため-->
+						<% @cart_items.zip(@quantity).each do |item, quantity| %>
+						<% product = Product.find(item.product_id) %><!--productをidから探し出す-->
+						<tr class="active">
+							<td><%= attachment_image_tag product, :picture, width: "100", height: "100", format: "jpeg", fallback: "img/no_image.jpg" , style:"width:100px; height:100px;" %></td>
+							<td>
+								タイトル：<%= product.cd_title %><br>
+								アーティスト：<%= product.artist %><br>
+								価格：￥<%= number_with_delimiter(product.price) %>
+							</td>
+							<td>
+								<%= quantity %> 点<br>
+							</td>
+							<% subtotal = quantity.to_i * product.price %>
+							<td><h4>￥<%= number_with_delimiter(subtotal) %></h4></td>
+							<% total_price += subtotal %><!--合計金額の計算-->
+							<% total_quantity += quantity.to_i %><!--合計点数の計算-->
+						</tr>
+						<!--purchaseアクションに送信する-->
+						<%= number_field_tag "quantity[]", quantity %>
+						<%= number_field_tag "subtotal[]", subtotal %>
+						<%= number_field_tag "product[]", product.id %>
+
+						<% end %>
+						<tr class="active">
+							<td colspan="4">
+								<p class="pull-right" style="margin-bottom:0;">購入数：合計 <%= total_quantity %>点</p><br>
+								<p class="pull-right" style="margin-bottom:0;">送料：￥０</p><br>
+								<h3 class="pull-right">総計： ￥<%= number_with_delimiter(total_price) %>（税込み）</h3>
+							</td>
+					</tbody>
+				</table>
+
+			</div>
+
+		<div class="">
+
+			<div class="panel panel-default col-xs-offset-1">
+				<div class="panel-heading">
+					<h2>ご注文情報</h2>
+				</div>
+				<div class="panel-body">
+					<div class="col-xs-7">
+						<h4>お届け先住所</h4>
+						<p><%= @name %> 様</p>
+						<p>〒 <%= @postal_code %></p>
+						<p><%= @region %><%= @street %></p>
+					</div>
+					<!--purchaseアクションに送信する-->
+					<%= text_field_tag "name", @name %>
+					<%= text_field_tag "postal_code", @postal_code %>
+					<%= text_field_tag "region", @region %>
+
+					<div class="col-xs-5">
+						<h4>お支払い方法</h4>
+						<p><%= @pay %></p>
+					</div>
+					<!--purchaseアクションに送信する-->
+					<%= text_field_tag "pay", @pay %>
+				</div>
+			</div>
+
+		</div>
+
+			<input type="submit" value="注文を確定する" class="btn btn-primary">
+
+			</form>
+
+ 		</div>
+	</div>
 </div>
