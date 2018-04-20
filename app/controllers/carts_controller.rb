@@ -1,8 +1,8 @@
 class CartsController < ApplicationController
-	protect_from_forgery expect: :purchase
-	#外部からのリクエストをはじくみたいなのでpurchaseアクションを除外してあげる
 	before_action :create, only:[:show]
 	#showとcompleteの前にカートを作る
+	protect_from_forgery except: :purchase
+	#外部からのリクエストをはじくみたいなのでpurchaseアクションを除外してあげる
  def create
  	if cart = Cart.where(user_id: current_user.id).last
  		@cart = cart
@@ -28,6 +28,7 @@ class CartsController < ApplicationController
  	@quantity = params[:quantity]
  	#送付先
  	if params[:destination] == "exist"
+ 		@name = current_user.name_sei + current_user.name_mei
  		@postal_code = current_user.postal_code
  		@region = current_user.region
  		@street = current_user.street
@@ -47,7 +48,8 @@ class CartsController < ApplicationController
 
  def purchase
  	purchaser = current_user.purchasers.new#(purchaser_params)
- 	purchaser.user_id = current_user.id
+ 	#purchaser = Purchaser.new
+ 	#purchaser.user_id = current_user.id
  	purchaser.p_code = params[:postal_code]#postal_codeはstring型
  	purchaser.d_name = params[:name]
  	purchaser.d_region = params[:region]
