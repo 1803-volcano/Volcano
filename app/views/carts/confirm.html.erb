@@ -40,9 +40,9 @@
 							<% total_quantity += quantity.to_i %><!--合計点数の計算-->
 						</tr>
 						<!--purchaseアクションに送信する-->
-						<%= number_field_tag "quantity[]", quantity %>
-						<%= number_field_tag "subtotal[]", subtotal %>
-						<%= number_field_tag "product[]", product.id %>
+						<%= number_field_tag "quantity[]", quantity, style:"display:none;" %>
+						<%= number_field_tag "subtotal[]", subtotal, style:"display:none;" %>
+						<%= number_field_tag "product[]", product.id, style:"display:none;" %>
 
 						<% end %>
 						<tr class="active">
@@ -70,16 +70,16 @@
 						<p><%= @region %><%= @street %></p>
 					</div>
 					<!--purchaseアクションに送信する-->
-					<%= text_field_tag "name", @name %>
-					<%= text_field_tag "postal_code", @postal_code %>
-					<%= text_field_tag "region", @region %>
+					<%= text_field_tag "name", @name, style:"display:none;" %>
+					<%= text_field_tag "postal_code", @postal_code, style:"display:none;" %>
+					<%= text_field_tag "region", @region, style:"display:none;" %>
 
 					<div class="col-xs-5">
 						<h4>お支払い方法</h4>
 						<p><%= @pay %></p>
 					</div>
 					<!--purchaseアクションに送信する-->
-					<%= text_field_tag "pay", @pay %>
+					<%= text_field_tag "pay", @pay, style:"display:none;" %>
 				</div>
 			</div>
 
