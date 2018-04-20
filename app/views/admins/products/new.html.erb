@@ -2,47 +2,107 @@
   <div class="row">
     <%= render partial: "top/sidebar" %>
     <div class="col-xs-10">
-  		<h2 class="midashi form-header-title">商品新規登録</h2>
+      <h2 class="midashi form-header-title">商品新規登録</h2>
       <hr>
+      <table class = "table">
+        <tbody>
         <%= form_for(@product, url: admins_products_path) do |f| %>
-          <div class="col-xs-7">
-            <%= f.text_field :artist, :placeholder => "アーティスト名" %>
+          <tr>
+            <td width="500", height="60">
+              <label>タイトル:</label><br>
+              <%= f.text_field :cd_title, :size=>"60", required: true %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label>アーティスト:</label><br>
+              <%= f.text_field :artist, :size=>"60" %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label>ジャケット画像</label><br>
+              <%= f.attachment_field :picture %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label>レーベル</label><br>
+              <%= f.text_field :label %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label>ジャンル</label><br>
+              <%= f.select :genre, [["J-POP", "J-POP"], ["ロック＆ポップス", "ロック＆ポップス"], ["R＆B/ソウル", "R＆B/ソウル"], ["ヒップホップ", "ヒップホップ"], ["クラブ/ダンス", "クラブ/ダンス"], ["ワールド", "ワールド"], ["洋楽", "洋楽"], ["アニメ", "アニメ"]] %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label>価格</label><br>
+              <%= f.text_field :price %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label>発売日</label><br>
+              <%= f.date_field :start_date %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label>ディスク名</label><br>
+              <%= fields_for(@disc) do |disc| %>
+              <%= disc.text_field :disc_name, :placeholder => "ディスク名" %>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label>曲名</label><br>
+              <%= fields_for(@tune) do |tune| %>
+              <%= tune.text_field :song_title %>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
           </div>
-          <div class="col-xs-10">
-            <%= f.text_field :cd_title, :placeholder => "シングル/アルバム名" %>
-          </div>
-          <div>
-          	<h6>ジャケット画像</h6>
-          	<%= f.attachment_field :picture %>
-          </div>
-		  <div class="col">
-            <%= f.text_field :label, :placeholder => "レーベル名" %>
-          </div>
-          <div class="col">
-            <%= f.select :genre, [["J-POP", "J-POP"], ["ロック＆ポップス", "ロック＆ポップス"], ["R＆B/ソウル", "R＆B/ソウル"], ["ヒップホップ", "ヒップホップ"], ["クラブ/ダンス", "クラブ/ダンス"], ["ワールド", "ワールド"], ["洋楽", "洋楽"], ["アニメ", "アニメ"]] %>
-          </div>
-          <div class="col">
-            <%= f.text_field :price, :placeholder => "値段" %>
-          </div>
-          <div class="col">
-            <%= f.date_field :start_date, :placeholder => "発売日" %>
-          </div>
-          <div class="col">
-            	<%= fields_for(@disc) do |disc| %>
-            		<%= disc.text_field :disc_name, :placeholder => "ディスク名" %><br>
-
-				  <%= fields_for(@tune) do |tune| %>
-            		<%= tune.text_field :song_title, :placeholder => "曲名" %><br>
-            	  <% end %>
-            	<% end %>
-          </div>
+        </tbody>
+      </table>
 
           <!-- <div class="col">音楽データ
             <%= f.text_area :sound_source, :placeholder => "1. 2. 3." %>
           </div> -->
           <div class="col">
-            <%= f.submit '登録',class: "btn btn-primary" %>
-        　</div>
-        <% end %>
+        <%= f.submit '登録',class: "btn btn-primary" %>
+    　</div>
+    <% end %>
+
+<!-- 入力フォーム追加機能 -->
+
+  <table class = "table">
+    <thead>
+      <tr>
+        <td></td>
+        <td>曲名</td>
+        <td>収録時間</td>
+      </tr>
+    </thead>
+  </table>
+<form class="repeater">
+  <div data-repeater-list="products">
+    <div data-repeater-item>
+      <input type="text" name="t_neme" size='60' placeholder="例）曲名" >
+      <input type="text" name="t_number" placeholder="例）3:27">
+      <input data-repeater-delete type="button" value="削除"/>
     </div>
+  </div>
+  <input data-repeater-create type="button" value="入力フォームを追加"/>
+</form>
+
+
+
+
+  </div>
 </div>
+
+

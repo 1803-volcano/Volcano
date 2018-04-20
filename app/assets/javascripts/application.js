@@ -11,13 +11,29 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require turbolinks
 //= require jquery
 //= require bootstrap-sprockets
 //= require_tree .
 
 
-$(function() { //上部スライダーjquery
+
+//入力フォーム追加機能
+$(document).ready(function () {
+  'use strict';
+  $('.repeater').repeater({
+    defaultValues: {
+      't_name': '',
+      't_number': '',
+    },
+    show: function () {
+      $(this).slideDown();
+    }
+  });
+});
+
+
+//上部スライダーjquery
+$(function() {
     $('.center-item').slick({
           infinite: true,
           dots:true,
@@ -35,7 +51,8 @@ $(function() { //上部スライダーjquery
 });
 
 
-$(function() { //下部スライダーjquery
+//下部スライダーjquery
+$(function() {
     $('.multiple-item').slick({
           infinite: true,
           dots:true,
