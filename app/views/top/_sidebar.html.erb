@@ -5,28 +5,28 @@
     <hr>
     </div>
     <div class="subteki">・商品管理</div>
-      <p><a href="#">▶︎ 新規商品登録</a></p>
-      <p><a href="#">▶︎ 商品の編集</a></p>
+      <p><%= link_to " ▶︎ 新規商品登録", new_admins_product_path %></p>
+      <p><%= link_to " ▶︎ 商品の編集/一覧", admins_products_path %></p>
     <div class="subteki">・受注管理</div>
-      <p><a href="#">▶︎ 注文履歴一覧</a></p>
+      <p><%= link_to " ▶︎ 注文履歴一覧", admins_purchasers_path %></p>
     <div class="subteki">・会員情報管理</div>
-      <p><a href="#">▶︎ 会員情報の編集</a></p>
+      <p><%= link_to " ▶︎ 会員情報の編集/一覧", admins_users_path %></p>
     <div class="subteki">・その他</div>
-      <p><a href="#">▶︎ 会員Topページへ</a></p>
+      <p><%= link_to " ▶︎ 会員Topページへ", root_path %></p>
   <% end %>
 
   <div class="sidebar-line">
     CDジャンル
     <hr>
   </div>
-  <p><%= link_to "▶ J-POP", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"J-POP", "commit"=>"Search" }}) %></p>
-  <p><%= link_to "▶ ロック＆ポップス", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"ロック＆ポップス", "commit"=>"Search" }}) %></p>
-  <p><%= link_to "▶ R＆B/ソウル", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"R＆B/ソウル", "commit"=>"Search" }}) %></p>
-  <p><%= link_to "▶ ヒップホップ", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"ヒップホップ", "commit"=>"Search" }}) %></p>
-  <p><%= link_to "▶ クラブ/ダンス", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"クラブ/ダンス", "commit"=>"Search" }}) %></p>
-  <p><%= link_to "▶ ワールド", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"ワールド", "commit"=>"Search" }}) %></p>
-  <p><%= link_to "▶ 洋楽", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"洋楽", "commit"=>"Search" }}) %></p>
-  <p><%= link_to "▶ アニメ", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"アニメ", "commit"=>"Search" }}) %></p>
+  <p><%= link_to " ▶ J-POP", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"J-POP", "commit"=>"Search" }}) %></p>
+  <p><%= link_to " ▶ ロック＆ポップス", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"ロック＆ポップス", "commit"=>"Search" }}) %></p>
+  <p><%= link_to " ▶ R＆B/ソウル", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"R＆B/ソウル", "commit"=>"Search" }}) %></p>
+  <p><%= link_to " ▶ ヒップホップ", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"ヒップホップ", "commit"=>"Search" }}) %></p>
+  <p><%= link_to " ▶ クラブ/ダンス", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"クラブ/ダンス", "commit"=>"Search" }}) %></p>
+  <p><%= link_to " ▶ ワールド", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"ワールド", "commit"=>"Search" }}) %></p>
+  <p><%= link_to " ▶ 洋楽", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"洋楽", "commit"=>"Search" }}) %></p>
+  <p><%= link_to " ▶ アニメ", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"アニメ", "commit"=>"Search" }}) %></p>
 </div>
 
 <!--/の判定が怪しいので注意するべし-->

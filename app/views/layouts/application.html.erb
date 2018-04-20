@@ -8,16 +8,22 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://fonts.googleapis.com/css?family=Cormorant+Unicase|Jacques+Francois+Shadow" rel="stylesheet">
     <script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
-    <script src="common/js/jquery.bxSlider.js"></script>
-    <link rel="stylesheet" href="common/css/jquery.bxslider.css">
-    <script src="jquery.bxslider.js"></script>
 
-  </head>
+<!-- jquery読み込み様だが、今回は必要なし 画像エラーもrequire turbolinksを削除することで機能する
+    <link rel="stylesheet" type="text/css" href="slick.css" media="screen">
+　　<link rel="stylesheet" type="text/css" href="slick-theme.css" media="screen">
+
+　　<script src="slick.min.js"></script>
+-->
+
+
+</head>
+
 
   <body>
-  	<header class="navbar-fixed-top">
-  	<div class="header-top">
-  	  <div class="container headline" style="font-family: 'Cormorant Unicase', serif;">Volcano
+    <header class="navbar-fixed-top">
+    <div class="header-top">
+      <div class="container headline" style="font-family: 'Cormorant Unicase', serif;">Volcano
       </div>
     </div>
     <div class="header_bottom">
@@ -74,20 +80,9 @@
     </header>
 
     <div class="hed"></div>
-    <div class="container">
-    <%= yield %>
-    </div>
 
-    <div class="container">
-      <ul class="bxslider">
-        <li><div style="background-image: url(img/fon4.jpg)" title="キャプション4"><%= image_tag 'img/fon4.jpg'%></div></li>
-        <li><div style="background-image: url(img/fon6.jpg)"><%= image_tag 'img/fon6.jpg'%></div></li>
-        <li><div style="background-image: url(img/fon7.jpg)"><%= image_tag 'img/fon7.jpg'%></div></li>
-        <li><div style="background-image: url(img/fon8.jpg)"><%= image_tag 'img/fon8.jpg'%></div></li>
-        <li><div style="background-image: url(img/fon9.jpg)"><%= image_tag 'img/fon9.jpg'%></div></li>
-        <li><div style="background-image: url(img/fon10.jpg)"><%= image_tag 'img/fon10.jpg'%></div></li>
-      </ul>
-    </div>
+    <%= yield %>
+
 
     <footer>
       <div class="container">
