@@ -26,7 +26,7 @@ class Admins::ProductsController < ApplicationController
     @product.save
     @disc.save
     @tune.save
-    redirect_to admins_top_path(current_admin.id)
+    redirect_to admins_products_path(current_admin.id)
  end
 
  def edit
@@ -34,6 +34,13 @@ class Admins::ProductsController < ApplicationController
  end
 
  def update
+ 	product = Product.find(params[:id])
+    disc = @product.discs.build(disc_params)
+    tune = @disc.tunes.build(tune_params)
+    product.update(product_params)
+    disc.update(product.discs_params)
+    tune.update(disc.tunes_params)
+    redirect_to admins_top_path(current_admin.id)
  end
 
  def list

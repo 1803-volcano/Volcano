@@ -18,7 +18,7 @@
 							<%= attachment_image_tag product, :picture, width: "100", height: "100", format: "jpeg", fallback: "img/no_image.jpg" %></td>
 
 							<td>
-							<label>CDタイトル: </label><%= link_to product.cd_title, product_path(product) %><br>
+							<label>CDタイトル: </label><%= link_to product.cd_title, admins_product_path(product) %><br>
 
 							<label>アーティスト: </label><%= product.artist %>
 						</td>
@@ -31,9 +31,6 @@
 						</td>
 						<td>
 							<%= link_to '編集', edit_admins_product_path(product.id) %>
-						</td>
-						<td>
-							<%= link_to '削除'%>
 						</td>
 					</tr>
 					<% end %>

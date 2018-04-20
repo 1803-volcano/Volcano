@@ -1,0 +1,60 @@
+<div class="container">
+<div class="row">
+<%= render partial: "top/sidebar" %>
+  <div class="main col-xs-10 text-left">
+    <div class="midashi">会員情報詳細</div>
+    <hr>
+		  <table class="table">
+			<tbody>
+			  <tr>
+				<th>氏名</th>
+                <td><%= @user.name_sei %> <%= @user.name_mei %>
+                </td>
+			  </tr>
+			  <tr>
+				<th>フリガナ</th>
+				<td><%= @user.name_kana_sei %> <%= @user.name_kana_mei %></td>
+			  </tr>
+			  <tr>
+				<th>生年月日</th>
+				<td><%= @user.birthday %>
+                </td>
+			  </tr>
+			  <tr>
+				<th>性別</th>
+				<td><%= @user.sex %>
+				</td>
+			  </tr>
+			  <tr>
+				<th>郵便番号</th>
+				<td>〒<%= @user.postal_code %></td>
+			  </tr>
+			  <tr>
+				<th>都道府県</th>
+				<td><%= @user.region %></td>
+			  </tr>
+			  <tr>
+				<th>市区町村以下</th>
+				<td><%= @user.street %></td>
+			  </tr>
+			  <tr>
+				<th>電話番号</th>
+				<td><%= @user.phone %></td>
+			  </tr>
+			  <tr>
+				<th>メールアドレス</th>
+				<td><%= @user.email %></td>
+			  </tr>
+						<!-- password -->
+			  <<tr>
+				<th width="150" height="70">クレジットカード</th>
+				<td><%= @user.credit_card %></td>
+			  </tr>
+			</tbody>
+		  </table>
+		<div class="actions button1">
+		<%= link_to "編集", edit_user_path(@user.id), class:"btn btn-md btn-block btn-danger" %>
+      </div>
+  </div>
+</div>
+</div>
