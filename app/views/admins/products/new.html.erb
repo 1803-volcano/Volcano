@@ -1,14 +1,14 @@
-<%= render 'top/sidebar' %>
-
 <div class="container">
-	<div class="row">
-		<div class="col">
-  		<h2>商品新規登録</h2>
+  <div class="row">
+    <%= render partial: "top/sidebar" %>
+    <div class="col-xs-10">
+  		<h2 class="midashi form-header-title">商品新規登録</h2>
+      <hr>
         <%= form_for(@product, url: admins_products_path) do |f| %>
-          <div class="col">
+          <div class="col-xs-7">
             <%= f.text_field :artist, :placeholder => "アーティスト名" %>
           </div>
-          <div class="col">
+          <div class="col-xs-10">
             <%= f.text_field :cd_title, :placeholder => "シングル/アルバム名" %>
           </div>
           <div>
@@ -25,7 +25,7 @@
             <%= f.text_field :price, :placeholder => "値段" %>
           </div>
           <div class="col">
-            <%= f.text_field :start_date, :placeholder => "発売日" %>
+            <%= f.date_field :start_date, :placeholder => "発売日" %>
           </div>
           <div class="col">
             	<%= fields_for(@disc) do |disc| %>
