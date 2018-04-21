@@ -2,6 +2,7 @@ class FavoritesController < ApplicationController
 
  def index
     @favorites = Favorite.where(user_id: current_user.id).all
+    @browsings = Browsing.where(user_id: current_user.id).all
  end
 
  def create
@@ -10,14 +11,13 @@ class FavoritesController < ApplicationController
     @favorite = Favorite.new(product_id: @product_id, user_id: @user_id)
 
     @favorite.save
-    redirect_to favorites_path(current_user)
+    redirect_back(fallback_location: root_path)##ページの再読み込み
  end
 
  def destroy
     @favorite = Favorite.find(params[:id])
-
     if @favorite.destroy
-      redirect_to user_path(current_user)
+       redirect_back(fallback_location: root_path)
     end
  end
 
