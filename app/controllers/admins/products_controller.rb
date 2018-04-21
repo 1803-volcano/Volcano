@@ -20,13 +20,50 @@ class Admins::ProductsController < ApplicationController
  end
 
  def create
- 	@product = Product.new(product_params)
-    @disc = @product.discs.build(disc_params)
-    @tune = @disc.tunes.build(tune_params)
-    @product.save
-    @disc.save
-    @tune.save
-    redirect_to admins_products_path(current_admin.id)
+ 	#product
+    product = Product.new(product_params)
+    product.cd_title = params[:cd_title]
+    product.artist = params[:artist]
+    product.picture = params[:picture]
+    product.label = params[:label]
+    product.genre = params[:genre]
+    product.price = params[:price]
+    product.start_date = params[:start_date]
+    product.save
+
+    #disc
+    params[:disc_name].each do |name|
+        disc = product.discs.build(disc_params)
+        disc.disc_name = name
+        disc.save
+        num.push(disc)#配列としてdiscを順に持たせる
+    end
+
+    #tune
+    order = 1
+    params[:song_title].zip(params[:song_time], num ).each do |title, time, discn|
+        tune = discn.tunes.build(tune_params)
+        tune.song_title = title
+        tune.song_time = time
+        tune.order = order
+        tune.save
+        order += 1
+    end
+
+
+
+
+
+
+
+
+  #@product = Product.new(product_params)
+    #@disc = @product.discs.build(disc_params)
+    #@tune = @disc.tunes.build(tune_params)
+    #@product.save
+    #@disc.save
+    #@tune.save
+    redirect_to admins_top_path(current_admin.id)
  end
 
  def edit

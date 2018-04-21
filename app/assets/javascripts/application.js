@@ -19,17 +19,28 @@
 
 //入力フォーム追加機能
 $(document).ready(function () {
-  'use strict';
   $('.repeater').repeater({
-    defaultValues: {
-      't_name': '',
-      't_number': '',
-    },
+      //initEmpty: true,
+    //defaultValues: {
+        //'ディスク名': 'disc_name'
+    //},
+    isFirstItemUndeletable: true,//一番最初のものを削除できなくする
+
     show: function () {
-      $(this).slideDown();
-    }
+        $(this).slideDown();
+    },
+    hide: function (deleteElement) {
+        if(confirm('本当に消しますか？')) {
+            $(this).slideUp(deleteElement);
+        }
+    },
+    repeaters: [{
+      selector: '.inner-repeater'
+    }]
   });
 });
+//一番下の文で、ディスクにソングをネストしている
+
 
 
 //上部スライダーjquery
