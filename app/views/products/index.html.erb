@@ -30,6 +30,11 @@
 						<td>
 							<span class="glyphicon glyphicon-play-circle" aria-hidden="true"></span><br>
 							お気に入りに追加
+							<div>
+
+                            <%= link_to "このイベントをクリップ", add_product_path(product), method: :post %>
+                            
+                            </div>
 						</td>
 					</tr>
 					<% end %>

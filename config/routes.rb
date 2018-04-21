@@ -16,9 +16,14 @@ Rails.application.routes.draw do
 
   resources :products, only: [:index, :show] do
     resource :cart_items, only: [:create]
-    resource :browsings, only: [:create, :destroy]
-    resource :favorites, only: [:create, :destroy]
+    #resource :browsings, only: [:create, :destroy]
+    #resource :favorites, only: [:create, :destroy]
+    member do
+      post "add", to: "favorites#create"
+    end
   end
+  resources :favorites, only: [:destroy, :index]
+
 
   resources :carts, only: [:create, :show] do
     resource :cart_items, only: [:destroy]
@@ -30,7 +35,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :edit, :update] do
     resources :purchasers, only: [:index, :show]
-    resources :favorites, only: [:index]
+    #resources :favorites, only: [:index]
   end
   get '/users/:id/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe_user'
 
@@ -44,5 +49,3 @@ Rails.application.routes.draw do
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
-
-
