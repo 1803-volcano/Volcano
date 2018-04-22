@@ -5,40 +5,41 @@
             <h2 class="midashi form-header-title">商品新規登録</h2>
             <hr>
 
-
-
+<!-- <form action="./" method="post"> -->
+<%= form_for(@product, url: admins_products_path) do |f| %>
+<!--tableのなかだと、各一つ分しか反応しないからダメ-->
             <table class = "table">
                 <tbody>
-                    <form action="../" method="post">
 
                     <tr>
                         <td width="500", height="60">
                             <label>タイトル:</label><br>
-                            <input type="text" name="cd_title" size="60" required>
+                            <input type="text" name="cd_title" size="60"><!--required-->
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <label>アーティスト:</label><br>
-                            <input type="text" name="artist" size="60" required>
+                            <input type="text" name="artist" size="60"><!--required-->
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <label>ジャケット画像</label><br>
-                            <input type="file" name="picture" size="60" required>
+                            <!-- <input type="file" name="picture" size="60" required> -->
+                            <%= f.attachment_field :picture %>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <label>レーベル</label><br>
-                            <input type="text" name="label" size="60" required>
+                            <input type="text" name="label" size="60" ><!--required-->
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <label>ジャンル</label><br>
-                            <select name="genre" required>
+                            <select name="genre" ><!--required-->
                                 <option value="J-POP">J-POP</option>
                                 <option value="ロック＆ポップス">ロック＆ポップス</option>
                                 <option value="R＆B/ソウル">R＆B/ソウル</option>
@@ -53,37 +54,32 @@
                     <tr>
                         <td>
                             <label>価格</label><br>
-                            <input type="number" name="price" size="60" min=1 required>
+                            <input type="number" name="price" size="60" min=1 ><!--required-->
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <label>発売日</label><br>
-                            <input type="date" name="start_date" required>
+                            <input type="date" name="start_date" ><!--required-->
                         </td>
                     </tr>
-                    <!-- <tr>
-                        <td>
-                            <label>ディスク名</label><br>
-                            <input type="text" name="disc_name" placeholder="ディスク名" required>
-                      </td>
-                    </tr> -->
+
                     <tr>
                         <!--外側-->
                         <td class="repeater">
-                            <div data-repeater-list="outer-list">
+                            <div data-repeater-list="disc">
                                 <div data-repeater-item>
                                     <label>ディスク名</label><br>
-                                    <input type="text" name="disc_name" placeholder="例）ディスク名" required />
+                                    <input type="text" name="disc_name" placeholder="例）ディスク名"  /><!--required-->
                                     <input data-repeater-delete type="button" value="ディスクを削除" />
 
                                     <!--内側ー-->
                                     <div class="inner-repeater">
                                         <label>曲名</label><br>
-                                        <div data-repeater-list="inner-list">
+                                        <div data-repeater-list="song">
                                             <div data-repeater-item>
                                                 <input type="text" name="song_title" placeholder="例）曲名" />
-                                                <input type="text" name="song_time" placeholder="例）3:27">
+                                                <input type="time" name="song_time">
                                                 <input data-repeater-delete type="button" value="曲を削除" />
                                             </div>
                                         </div>
@@ -98,9 +94,15 @@
                     </tr>
                     <tr>
                         <td>
-                          <!--type="file"の方がいいか requiredはまだつけてない-->
+
                             <label>音楽データ</label><br>
-                            <input type="text" name="sound_source" placeholder="音源">
+                            <input type="file" name="sound_source" placeholder="音源">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>在庫数</label><br>
+                            <input type="number" name="stock" placeholder="在庫数">
                         </td>
                     </tr>
                     <tr>
@@ -108,10 +110,11 @@
                             <input type="submit" name="commit" value="登録する" class="btn btn-primary">
                         </td>
                     </tr>
-                    </form>
+
                 </tbody>
             </table>
-
+<!-- </form> -->
+<% end %>
 
 
 
@@ -120,39 +123,3 @@
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
-<!-- もともとの入力フォーム追加機能
-
-  <table class = "table">
-    <thead>
-      <tr>
-        <td></td>
-        <td>曲名</td>
-        <td>収録時間</td>
-      </tr>
-    </thead>
-  </table>
-<form class="repeater">
-  <div data-repeater-list="products">
-    <div data-repeater-item>
-      <input type="text" name="t_neme" size='60' placeholder="例）曲名" >
-      <input type="text" name="t_number" placeholder="例）3:27">
-      <input data-repeater-delete type="button" value="削除"/>
-    </div>
-  </div>
-  <input data-repeater-create type="button" value="入力フォームを追加"/>
-</form>
-
-
-
-
-  </div>
-</div>
--->
-

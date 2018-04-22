@@ -1,4 +1,5 @@
 class Admins::ProductsController < ApplicationController
+    protect_from_forgery except: :create
 
  def index
  	# @search = Product.search(params[:q])
@@ -14,57 +15,55 @@ class Admins::ProductsController < ApplicationController
 
 
  def new
- 	@product = Product.new
- 	@disc = Disc.new
- 	@tune = Tune.new
+ 	@product = Product.new#refileを使用するため strongparamsに反応するようにするため
+
+    #検証
+    # @cd_title = params[:cd_title]
+    # @disc = params[:disc]
+    # @disc_name = @disc["0"]["disc_name"]
+    # @song_title =@disc["0"]["song"]["0"]["song_title"]
+    # @song_time = @disc["0"]["song"]["0"]["song_time"]
+
  end
 
  def create
- 	#product
-    product = Product.new(product_params)
-    product.cd_title = params[:cd_title]
-    product.artist = params[:artist]
-    product.picture = params[:picture]
-    product.label = params[:label]
-    product.genre = params[:genre]
-    product.price = params[:price]
-    product.start_date = params[:start_date]
-    product.save
+    @product = Product.new(product_params)
+    @product.cd_title = params[:cd_title]
+    @product.artist = params[:artist]
+    @product.picture_id = params[:picture]
+    @product.label = params[:label]
+    @product.genre = params[:genre]
+    @product.price = params[:price]
+    @product.start_date = params[:start_date]
+    @product.sound_source = params[:sound_source]
+    @product.stock = params[:stock]
+    @product.product_flg = false
+    @product.save
 
     #disc
-    params[:disc_name].each do |name|
-        disc = product.discs.build(disc_params)
-        disc.disc_name = name
+    #num = 0
+    params[:disc].each do |key, name|#ハッシュだから、キーと値の両方になる キーに"0"値に"disc_name"と"song"の集合体が入る
+        disc = @product.discs.build
+        disc.disc_name = name["disc_name"]#disc_nameを指定する
         disc.save
-        num.push(disc)#配列としてdiscを順に持たせる
+
+        #tune
+        order = 1
+        songs = name["song"]
+        songs.each do |keyn, song|#keynに"0"値に"song_title"と"song_time"の集合体が入る
+            tune = disc.tunes.build
+            tune.song_title = song["song_title"]
+            tune.song_time = song["song_time"]
+            tune.order = order
+            tune.save
+            order += 1
+        end
     end
-
-    #tune
-    order = 1
-    params[:song_title].zip(params[:song_time], num ).each do |title, time, discn|
-        tune = discn.tunes.build(tune_params)
-        tune.song_title = title
-        tune.song_time = time
-        tune.order = order
-        tune.save
-        order += 1
-    end
-
-
-
-
-
-
-
-
-  #@product = Product.new(product_params)
-    #@disc = @product.discs.build(disc_params)
-    #@tune = @disc.tunes.build(tune_params)
-    #@product.save
-    #@disc.save
-    #@tune.save
-    redirect_to admins_top_path(current_admin.id)
+    redirect_to product_path(@product)
+    #redirect_to admins_top_path(current_admin.id)
  end
+
+
 
  def edit
  	@product = Product.find(params[:id])
@@ -85,7 +84,7 @@ class Admins::ProductsController < ApplicationController
 
 private
 	def product_params
-		params.require(:product).permit(:artist, :sound_source, :picture, :cd_title, :picture_id, :price, :label, :genre, :stock, :start_date)
+		params.require(:product).permit(:artist, :sound_source, :picture, :cd_title, :picture_id, :price, :label, :genre, :stock, :start_date, :product_flg)
 	end
 
 	def disc_params
@@ -93,7 +92,7 @@ private
 	end
 
 	def tune_params
-		params.require(:tune).permit(:song_title)
+		params.require(:tune).permit(:song_title, :song_time)
 	end
 
 end
