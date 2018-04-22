@@ -1,5 +1,5 @@
 <div class="container">
-	<div class="row">
+	<div class="row content">
 		<%= render partial: "top/sidebar" %>
 		<div class="col-xs-10">
 			<h1 style="display: inline-block;">商品一覧</h1>
@@ -63,3 +63,7 @@
 		.sort{display: inline-block; margin:20px 0 10px 0;}
 		-->
 </style>
+
+
+<!-- 下部スライダー -->
+<%= render 'top/browsing', commites: @commites, product: @product %>

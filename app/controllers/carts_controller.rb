@@ -15,10 +15,12 @@ class CartsController < ApplicationController
  def show
  	# @cart = Cart.where(user_id: current_user.id).last
  	@cart_items = CartItem.where(cart_id: @cart.id)
+ 	@commites = Browsing.last(10) ##最新１０件取得
  end
 
  def select
  	@quantity = params[:quantity]
+ 	@commites = Browsing.last(10) ##最新１０件取得
  end
 
  def confirm
@@ -27,6 +29,7 @@ class CartsController < ApplicationController
  	#個数
  	@quantity = params[:quantity]
  	#送付先
+ 	@commites = Browsing.last(10) ##最新１０件取得
  	if params[:destination] == "exist"
  		@name = current_user.name_sei + current_user.name_mei
  		@postal_code = current_user.postal_code
@@ -73,6 +76,7 @@ class CartsController < ApplicationController
  end
 
  def complete
+ 	@commites = Browsing.last(10) ##最新１０件取得
  end
 
 private

@@ -1,6 +1,6 @@
 <div class="container">
   <!-- 上部スライダー -->
-      <ul class="center-item">
+      <ul class="bxslider-top">
 
         <li><%= image_tag ('img/test7.jpg') %></li>
         <li><%= image_tag ("img/tes5.jpg") %></li>
@@ -11,7 +11,7 @@
 
       </ul>
 
-
+<div class="container">
   <div class="row content">
   <%= render partial: "top/sidebar" %>
     <div class="main col-xs-10 text-left">
@@ -55,15 +55,7 @@
 
     </div>
   </div>
-
-<!-- 下部スライダー -->
-    <div class="container">
-      <ul class="multiple-item">
-        <% @commites.each do |c| %>
-          <li><%= attachment_image_tag @product, :picture, fallback: "img/no_image.jpg" %></li>
-        <% end %>
-      </ul>
-    </div>
-
 </div>
-
+</div>
+<!-- 下部スライダー -->
+<%= render 'top/browsing', commites: @commites, product: @product %>

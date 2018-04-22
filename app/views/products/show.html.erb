@@ -1,5 +1,5 @@
 <div class="container">
-	<div class="row">
+	<div class="row content">
 		<%= render partial: "top/sidebar" %>
 		<div class="col-xs-10">
 
@@ -65,15 +65,9 @@
 
 			</div>
 
-
-
-
-
-
-
-
-
-
 		</div>
 	</div>
 </div>
+
+<!-- 下部スライダー -->
+<%= render 'top/browsing', commites: @commites, product: @product %>
