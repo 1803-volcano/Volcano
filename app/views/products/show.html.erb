@@ -19,6 +19,8 @@
 					<h5><b><%= @product.artist %></b></h5>
 					<hr>
 					<h3>価格（税込）：￥<%= @product.price %></h3>
+
+                    <% if user_signed_in? %>
 					<p><%= link_to "カートに入れる", product_cart_items_path(@product.id), method: :post %></p>
 
 
@@ -35,6 +37,7 @@
                           <%= link_to "お気に入りに追加", add_product_path(@product), method: :post %>
                         </button>
                       </li>
+                    <% end %>
                     <% end %>
 
 				</div>
