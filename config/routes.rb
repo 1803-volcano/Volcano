@@ -16,10 +16,12 @@ Rails.application.routes.draw do
 
   resources :products, only: [:index, :show] do
     resource :cart_items, only: [:create]
-    #resource :browsings, only: [:create, :destroy]
-    #resource :favorites, only: [:create, :destroy]
+    resource :browsings, only: [:create, :destroy]
+    resources :favorites, only: [:destroy]
     member do
       post "add", to: "favorites#create"
+
+      #post "add", to: "browsings#create"
     end
   end
   resources :favorites, only: [:destroy, :index]

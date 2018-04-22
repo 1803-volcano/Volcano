@@ -18,9 +18,14 @@
 			  </td>
 
 			  <td>￥<%= product.price %></td>
+			  <td>
 
+                     <button type="button" class="btn btn-danger" ><%= link_to "削除", favorite_path(favorite),
+                      method: :delete  %></button>
+		      </td>
 			</tr>
 		  <% end %>
+
 		</tbody>
 	  </table>
 	</div>
@@ -35,3 +40,5 @@
 		-->
 </style>
 
+<!-- 下部スライダー -->
+<%= render 'top/browsing', commites: @commites, product: @product %>

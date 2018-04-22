@@ -1,6 +1,6 @@
 <div class="container">
   <!-- 上部スライダー -->
-      <ul class="center-item">
+      <ul class="bxslider-top">
 
         <li><%= image_tag ('img/test7.jpg') %></li>
         <li><%= image_tag ("img/tes5.jpg") %></li>
@@ -11,13 +11,11 @@
 
       </ul>
 
-
-
-
+<div class="container">
   <div class="row content">
   <%= render partial: "top/sidebar" %>
     <div class="main col-xs-10 text-left">
-    <div class="main-line">新着情報</div>
+      <h1 class="main-line">New Release</h1>
       <div class="mainseet">
         <div class="img"><%= image_tag 'img/fon1.jpg'%>Black Pink</div>
       </div>
@@ -42,22 +40,22 @@
       <div class="mainseet">
         <div class="img"><%= image_tag 'img/fon5.jpg'%>Black Pink</div>
       </div>
+
+
+<!-- オススメランダム表示　-->
+      <h1 class="main-line">Recommended</h1>
+      <% @recommends.each do |r| %>
+        <div class="mainseet">
+          <div class="img"><%= attachment_image_tag @product, :picture, fallback: "img/no_image.jpg" %>
+          <h4><%= r.cd_title %></h4>
+          <h5><b><%= r.artist %></b></h5>
+          </div>
+        </div>
+      <% end %>
+
     </div>
   </div>
-
-<!-- 下部スライダー -->
-    <div class="container">
-      <ul class="multiple-item">
-
-        <li><%= image_tag ('img/fon4.jpg') %></li>
-        <li><%= image_tag ("img/fon6.jpg") %></li>
-        <li><%= image_tag ('img/fon7.jpg') %></li>
-        <li><%= image_tag ('img/fon8.jpg') %></li>
-        <li><%= image_tag ('img/fon9.jpg') %></li>
-        <li><%= image_tag ('img/fon10.jpg')%></li>
-
-      </ul>
-    </div>
-
 </div>
-
+</div>
+<!-- 下部スライダー -->
+<%= render 'top/browsing', commites: @commites, product: @product %>
