@@ -20,10 +20,11 @@
 //入力フォーム追加機能
 $(document).ready(function () {
   $('.repeater').repeater({
-      //initEmpty: true,
-    //defaultValues: {
-        //'ディスク名': 'disc_name'
-    //},
+      initEmpty: false,
+    defaultValues: {
+        'disc_name': ''
+    },
+
     isFirstItemUndeletable: true,//一番最初のものを削除できなくする
 
     show: function () {
@@ -40,6 +41,8 @@ $(document).ready(function () {
   });
 });
 //一番下の文で、ディスクにソングをネストしている
+
+
 
 
 

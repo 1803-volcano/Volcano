@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180417161449) do
+ActiveRecord::Schema.define(version: 20180421064744) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -116,7 +116,7 @@ ActiveRecord::Schema.define(version: 20180417161449) do
     t.integer "disc_id"
     t.integer "order"
     t.string "song_title"
-    t.date "song_time"
+    t.time "song_time"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["disc_id"], name: "index_tunes_on_disc_id"
