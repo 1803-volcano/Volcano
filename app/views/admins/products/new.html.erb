@@ -14,13 +14,13 @@
                     <tr>
                         <td width="500", height="60">
                             <label>タイトル:</label><br>
-                            <input type="text" name="cd_title" size="60"><!--required-->
+                            <input type="text" name="cd_title" size="60" required>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <label>アーティスト:</label><br>
-                            <input type="text" name="artist" size="60"><!--required-->
+                            <input type="text" name="artist" size="60" required>
                         </td>
                     </tr>
                     <tr>
@@ -33,13 +33,13 @@
                     <tr>
                         <td>
                             <label>レーベル</label><br>
-                            <input type="text" name="label" size="60" ><!--required-->
+                            <input type="text" name="label" size="60" required>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <label>ジャンル</label><br>
-                            <select name="genre" ><!--required-->
+                            <select name="genre" required>
                                 <option value="J-POP">J-POP</option>
                                 <option value="ロック＆ポップス">ロック＆ポップス</option>
                                 <option value="R＆B/ソウル">R＆B/ソウル</option>
@@ -54,13 +54,13 @@
                     <tr>
                         <td>
                             <label>価格</label><br>
-                            <input type="number" name="price" size="60" min=1 ><!--required-->
+                            <input type="number" name="price" size="60" min=0 required>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <label>発売日</label><br>
-                            <input type="date" name="start_date" ><!--required-->
+                            <input type="date" name="start_date" required />
                         </td>
                     </tr>
 
@@ -70,7 +70,7 @@
                             <div data-repeater-list="disc">
                                 <div data-repeater-item>
                                     <label>ディスク名</label><br>
-                                    <input type="text" name="disc_name" placeholder="例）ディスク名"  /><!--required-->
+                                    <input type="text" name="disc_name" placeholder="例）ディスク名" required />
                                     <input data-repeater-delete type="button" value="ディスクを削除" />
 
                                     <!--内側ー-->
@@ -78,8 +78,8 @@
                                         <label>曲名</label><br>
                                         <div data-repeater-list="song">
                                             <div data-repeater-item>
-                                                <input type="text" name="song_title" placeholder="例）曲名" />
-                                                <input type="time" name="song_time">
+                                                <input type="text" name="song_title" placeholder="例）曲名" required/>
+                                                <input type="time" name="song_time" required/>
                                                 <input data-repeater-delete type="button" value="曲を削除" />
                                             </div>
                                         </div>
@@ -102,7 +102,7 @@
                     <tr>
                         <td>
                             <label>在庫数</label><br>
-                            <input type="number" name="stock" placeholder="在庫数">
+                            <input type="number" name="stock" min=0 placeholder="在庫数" required/>
                         </td>
                     </tr>
                     <tr>
