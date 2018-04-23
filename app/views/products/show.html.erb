@@ -55,18 +55,33 @@
 				<div style="margin-top:80px;">
 					<% @discs.each do |disc| %>
 						<h6 style="margin-top: 30px;"><b>[ <%= disc.disc_name %> ]</b></h6>
-						<% tunes = Tune.where(disc_id: disc.id).pluck(:id) %>
-						<% num = 1 %>
-						<% tunes.each do |music| %>
-							<% tune = Tune.find(music) %>
-							<h5><%= num %>.<%= tune.song_title %></h5>
-							<% num += 1 %>
-						<% end %>
+						<% tunes = Tune.order(:order).where(disc_id: disc.id).pluck(:id) %>
+						<table>
+							<thead>
+								<tr>
+									<th colspan="2">タイトル</th>
+									<th>再生時間</th>
+								</tr>
+							</thead>
+							<tbody>
+								<% tunes.each do |music| %>
+									<% tune = Tune.find(music) %>
+									<tr>
+										<td><%= tune.order %>.<%= tune.song_title %></td>
+										<td>　　　　　　　</td>
+										<td><%= tune.song_time.strftime('%H:%M') %></td>
+									</tr>
+								<% end %>
+							</tbody>
+						</table>
 					<% end %>
 					<!-- tuneについてはpluckとfindで探す方法でしかできなかった。原因は不明 -->
 				</div>
 
 			</div>
+
+			<!--音源-->
+			<iframe src="<%= @product.sound_source %>" width="100%" height="354" frameborder="0" allowtransparency="true" marginHeight="50"></iframe>
 
 		</div>
 	</div>
