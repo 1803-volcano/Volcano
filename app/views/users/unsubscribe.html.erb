@@ -1,7 +1,20 @@
 <div class="container">
   <div class="row">
   <%= render partial: "top/sidebar" %>
-  <div class="main col-xs-10 text-left">
+    <div class="main col-xs-10 text-left">
+
+
+      <!-- 上部リンク -->
+      <div clas="link-top", style="margin: 20px; text-decoration: underline;">
+        <span class="nav-list-item">
+          <%= link_to "前のページに戻る", :back %>
+        </span>
+        <span class="nav-list-item", style="float: right; text-decoration: underline;">
+          <%= link_to "TOP画面に戻る", root_path %>
+        </span>
+      </div>
+
+
     <div class="midashi">アカウント停止について</div>
     <hr>
       <div style="font-size: 20px;" >注意事項</div>
@@ -11,13 +24,13 @@
 ・ご購入商品の情報が確認できなくなります
 
 
-      <%= form_for(@user) do |f| %>
+    <%= form_for(@user) do |f| %>
 
-      <button type="button" class="btn btn-info" >
-		     <%= link_to "キャンセル", user_path(current_user) %>
-      </button>
-    <%= f.text_field :customer_flg, :size=>"60", placeholder:"例）abc@volcano.ne.jp"  %>
-		<%= f.submit "退会手続きを進める", class:"btn btn-md btn-block btn-danger" %>
+        <button type="button" class="btn btn-info", style="width: 200px;">
+		       <%= link_to "キャンセル", user_path(current_user) %>
+        </button>
+        <input type="hidden" name="user[customer_flg]" value="true">
+		    <%= f.submit "退会手続きを進める", class:"btn btn-md btn-danger mt-20" %>
       </div>
   <% end %>
   </div>

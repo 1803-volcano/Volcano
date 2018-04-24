@@ -2,9 +2,20 @@
   <div class="row content">
     <%= render partial: "top/sidebar" %>
     <div class="col-xs-10">
+
+      <!-- 上部リンク -->
+      <div clas="link-top", style="margin: 20px; text-decoration: underline;">
+        <span class="nav-list-item">
+          <%= link_to "前のページに戻る", :back %>
+        </span>
+        <span class="nav-list-item", style="float: right; text-decoration: underline;">
+          <%= link_to "TOP画面に戻る", root_path %>
+        </span>
+      </div>
+
+
       <h1 class="midashi">注文履歴一覧</h1>
       <hr>
-
 
 	  <table class = "table table table-hover">
 	    <tbody>
@@ -36,7 +47,7 @@
 
 			  </td>
 			  <td>
-			  	<p><%= link_to "詳細へ", user_purchaser_path(user_id: current_user, id: p) %></a>
+			  	<p><%= link_to "詳細へ", user_purchaser_path(user_id: current_user, id: p) %></p>
 			  </td>
 			</tr>
 		  <% end %>

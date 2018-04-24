@@ -1,7 +1,8 @@
 class TopController < ApplicationController
 
  def show
- 	@recommends = Product.order("RANDOM()").limit(8) ##ランダム１０件取得
+ 	@nouveaus = Product.order(created_at: :desc).limit(8) ##最新アイテム８件取得
+ 	@recommends = Product.order("RANDOM()").limit(8) ##ランダム８件取得
  	@commites = Browsing.last(10) ##最新１０件取得
  end
 

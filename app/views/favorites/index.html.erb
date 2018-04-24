@@ -2,8 +2,21 @@
   <div class="row">
 	<%= render partial: "top/sidebar" %>
     <div class="col-xs-10">
-      <h1 style="display: inline-block;">お気に入り一覧</h1>
 
+
+      <!-- 上部リンク -->
+      <div clas="link-top", style="margin: 20px; text-decoration: underline;">
+        <span class="nav-list-item">
+          <%= link_to "前のページに戻る", :back %>
+        </span>
+        <span class="nav-list-item", style="float: right; text-decoration: underline;">
+          <%= link_to "TOP画面に戻る", root_path %>
+        </span>
+      </div>
+
+
+      <h1 class="midashi">お気に入り一覧</h1>
+      <hr>
 
 	    <table class = "table table table-hover">
 		  <tbody>
