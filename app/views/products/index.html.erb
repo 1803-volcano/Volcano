@@ -31,11 +31,13 @@
                         <% if user_signed_in? %>
                             <%= link_to product_browsings_path(product), method: :post do %>
                             <i class="glyphicon glyphicon-play-circle" aria-hidden="true" style="font-size: 40px; color: orange;"></i>
-                            <% end %>詳細ページへ<br>
+                            詳細ページへ<br>
+                            <% end %>
                         <% else %>
                             <%= link_to product_path(product) do %>
                             <i class="glyphicon glyphicon-play-circle" aria-hidden="true" style="font-size: 40px; color: orange;"></i>
-                            <% end %>詳細ページへ<br>
+                            詳細ページへ<br>
+                            <% end %>
                         <% end %>
 
                         <% if user_signed_in? %>

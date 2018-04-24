@@ -1,10 +1,63 @@
-<p>purchasers index</p>
-
-  <div class="row">
+<div class="container">
+  <div class="row content">
     <%= render partial: "top/sidebar" %>
-	<div class="col-xs-10">
+    <div class="col-xs-10">
+      <h1 class="midashi">注文履歴一覧</h1>
+      <hr>
 
 
+	  <table class = "table table table-hover">
+	    <tbody>
+		  <% @purchasers.each do |p| %>
+		  <% receipts = Receipt.where(purchaser_id: p.id) %>
+		  <tr>
+            <td>
+		      <% total_price = 0 %><!--商品の価格を合計するため-->
+	          <% total_quantity = 0 %><!--個数を合計するため-->
+		      <% receipts.each do |receipt| %>
 
+		        <% product = Product.find(receipt.product_id) %>
+                <%= product.cd_title %> / <%= product.artist %><br>
+
+              	<% subtotal = receipt.sale.to_i * receipt.sale_price.to_i %>
+              	<% total_price += subtotal %><!--合計金額の計算-->
+				<% total_quantity += receipt.sale.to_i %><!--合計点数の計算-->
+
+		      <% end %>
+		      <td>
+		      	購入数：合計 <%= total_quantity %>点<br>
+				総計： ￥<%= number_with_delimiter(total_price) %>（税込み）
+			  </td>
+		      </td>
+			  <td>
+			    <label>購入日 : </label> <%= p.created_at.strftime('%Y年%m月%d日') %><br>
+
+			    <label>発送状況 : </label> <%= p.status %>
+
+			  </td>
+			  <td>
+			  	<p><%= link_to "詳細へ", user_purchaser_path(user_id: current_user, id: p) %></a>
+			  </td>
+			</tr>
+		  <% end %>
+		</tbody>
+	  </table>
+	</div>
   </div>
 </div>
+
+
+<style type="text/css">
+		<!--
+		button a{color: #fff; font-size: 16px;}
+		.sort{display: inline-block; margin:20px 0 10px 0;}
+		-->
+</style>
+
+
+
+<!-- 下部スライダー -->
+<%= render 'top/browsing', commites: @commites, product: @product %>
+
+
+

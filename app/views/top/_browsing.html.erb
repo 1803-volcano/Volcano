@@ -2,6 +2,7 @@
     <div class="container">
       <ul class="bxslider-bottom">
         <% commites.each do |c| %>
+        <% product = Product.find(c.product_id) %>
           <li><%= attachment_image_tag product, :picture, fallback: "img/no_image.jpg" %></li>
         <% end %>
       </ul>

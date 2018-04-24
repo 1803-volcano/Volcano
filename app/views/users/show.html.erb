@@ -6,7 +6,7 @@
 	  <div class="midashi">マイページ</div>
 		<hr>
 		<div class="list-group">
-	      <%= link_to "購入履歴", class:"list-group-item" %><br>
+	      <%= link_to "購入履歴", user_purchasers_path(current_user.id), class:"list-group-item" %><br>
 		  <%= link_to "お気に入り", favorites_path, class:"list-group-item" %><br>
 		  <%= link_to "ユーザ情報の編集", edit_user_path(current_user.id), class:"list-group-item" %><br>
 		  <%= link_to "退会手続き(アカウント停止について）", unsubscribe_user_path(current_user.id), class:"list-group-item" %>
