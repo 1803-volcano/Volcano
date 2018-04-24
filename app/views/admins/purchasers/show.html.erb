@@ -1,0 +1,91 @@
+<div class="container">
+	<div class="row content">
+		<%= render partial: "top/sidebar" %>
+		<div class="col-xs-10">
+
+
+			<%= link_to "前のページに戻る", :back %>
+			<%= link_to "TOP画面に戻る", products_path %>
+			<h1>商品詳細</h1>
+			<hr>
+
+			<div class="clearfix">
+				<div class="col-xs-5">
+					<%= attachment_image_tag @product, :picture, width: "350", height: "350", format: "jpeg", fallback: "img/no_image.jpg" %>
+				</div>
+
+				<div class="col-xs-7">
+					<h2><%= @product.cd_title %></h2>
+					<h5><b><%= @product.artist %></b></h5>
+					<hr>
+					<h3>価格（税込）：￥<%= @product.price %></h3>
+
+                    <% if user_signed_in? %>
+					<p><%= link_to "カートに入れる", product_cart_items_path(@product.id), method: :post %></p>
+
+
+                    <% if @product.favorited_by?(current_user) %>
+                      <% favorite = Favorite.find_by(user_id: current_user, product_id: @product.id) %>
+                      <li>
+                        <button type="button" class="btn btn-danger" >
+                           <%= link_to "お気に入り　解除", favorite_path(id: favorite.id), method: :delete %>
+                         </button>
+                      </li>
+                    <% else %>
+                      <li>
+                        <button type="button" class="btn btn-info" >
+                          <%= link_to "お気に入りに追加", add_product_path(@product), method: :post %>
+                        </button>
+                      </li>
+                    <% end %>
+                    <% end %>
+
+				</div>
+			</div>
+
+			<div class="col-xs-offset-1", style="margin-top:40px; margin-bottom:120px;">
+
+				<div>
+					<h5>商品仕様</h5>
+					<label>ジャンル：</label><%= @product.genre %><br>
+					<label>レーベル：</label><%= @product.label %><br>
+					<label>発売日：</label><%= @product.start_date %>
+				</div>
+
+				<div style="margin-top:80px;">
+					<% @discs.each do |disc| %>
+						<h6 style="margin-top: 30px;"><b>[ <%= disc.disc_name %> ]</b></h6>
+						<% tunes = Tune.order(:order).where(disc_id: disc.id).pluck(:id) %>
+						<table>
+							<thead>
+								<tr>
+									<th colspan="2">タイトル</th>
+									<th>再生時間</th>
+								</tr>
+							</thead>
+							<tbody>
+								<% tunes.each do |music| %>
+									<% tune = Tune.find(music) %>
+									<tr>
+										<td><%= tune.order %>.<%= tune.song_title %></td>
+										<td>　　　　　　　</td>
+										<td><%= tune.song_time.strftime('%H:%M') %></td>
+									</tr>
+								<% end %>
+							</tbody>
+						</table>
+					<% end %>
+					<!-- tuneについてはpluckとfindで探す方法でしかできなかった。原因は不明 -->
+				</div>
+
+			</div>
+
+			<!--音源-->
+			<iframe src="<%= @product.sound_source %>" width="100%" height="354" frameborder="0" allowtransparency="true" marginHeight="50"></iframe>
+
+		</div>
+	</div>
+</div>
+
+<!-- 下部スライダー -->
+<%= render 'top/browsing', commites: @commites, product: @product %>
