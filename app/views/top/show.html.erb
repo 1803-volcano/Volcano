@@ -46,7 +46,7 @@
       <h1 class="main-line">Recommended</h1>
       <% @recommends.each do |r| %>
         <div class="mainseet">
-          <div class="img"><%= attachment_image_tag @product, :picture, fallback: "img/no_image.jpg" %>
+          <div class="img"><%= attachment_image_tag r, :picture, fallback: "img/no_image.jpg" %>
           <h4><%= r.cd_title %></h4>
           <h5><b><%= r.artist %></b></h5>
           </div>

@@ -56,9 +56,9 @@
           <th>電話番号</th>
           <td><input type="tel" name="user[phone]" size='50' placeholder="例）09012345678" required>（半角数字　ハイフン入力不要）</td>
         </tr>
+        <input type="hidden" name="user[customer_flg]" value="false">
       </tbody>
       </table>
-      <input type="hidden" name="user[customer_flg]" value="false">
     <div class="actions button1">
     <%= f.submit "新規会員登録", class:"btn btn-md btn-block btn-danger" %>
       </div>
