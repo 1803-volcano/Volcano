@@ -70,12 +70,12 @@ class Admins::ProductsController < ApplicationController
  end
 
  def update
- 	product = Product.find(params[:id])
-    disc = @product.discs.build(disc_params)
+ 	@product = Product.find(params[:id])
+    @disc = @product.discs.build(disc_params)
     tune = @disc.tunes.build(tune_params)
-    product.update(product_params)
-    disc.update(product.discs_params)
-    tune.update(disc.tunes_params)
+    @product.update(@product_params)
+    @disc.update(@product.discs_params)
+    tune.update(@disc.tunes_params)
     redirect_to admins_top_path(current_admin.id)
  end
 
@@ -84,17 +84,10 @@ class Admins::ProductsController < ApplicationController
 
 private
 	def product_params
-		params.require(:product).permit(:artist, :sound_source, :picture, :cd_title, :picture_id, :price, :label, :genre, :stock, :start_date, :product_flg)
+		params.require(:product).permit( :artist, :sound_source, :picture, :cd_title, :picture_id, :price, :label, :genre, :stock, :start_date, :product_flg, 
+        { discs_attributes: [:id, :product_id :song_title, :song_time, :_destroy, 
+        { tunes_attributes: [:id, :disc_id, :song_title, :song_time, :_destroy] }] })
 	end
-
-	def disc_params
-		params.require(:disc).permit(:disc_name)
-	end
-
-	def tune_params
-		params.require(:tune).permit(:song_title, :song_time)
-	end
-
 end
 
 
