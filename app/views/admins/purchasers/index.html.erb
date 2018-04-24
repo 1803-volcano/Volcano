@@ -1,0 +1,78 @@
+<div class="container">
+	<div class="row content">
+		<%= render partial: "top/sidebar" %>
+		<div class="col-xs-10">
+			<h1 style="display: inline-block;">商品一覧</h1>
+
+			<!--並び替え機能-->
+			<div class="pull-right sort">
+				<button class="btn btn-primary" ><%= sort_link(@search, :cd_title, "追加日で並び替え") %></button>
+				<button class="btn btn-success" ><%= sort_link(@search, :price, "価格で並び替え") %></button>
+				<button class="btn btn-danger" ><%= sort_link(@search, :start_date, "発売日で並び替え") %></button>
+			</div>
+
+
+			<table class = "table">
+				<tbody>
+					<% @products.each do |product| %>
+					<tr>
+						<td width="150", height="100">
+							<%= attachment_image_tag product, :picture, width: "100", height: "100", format: "jpeg", fallback: "img/no_image.jpg" %></td>
+
+							<td>
+							<label>CDタイトル: </label><%= product.cd_title %><br>
+
+							<label>アーティスト: </label><%= product.artist %>
+						</td>
+
+						<td>￥<%= product.price %></td>
+
+						<td>
+                        <% if user_signed_in? %>
+                            <%= link_to product_browsings_path(product), method: :post do %>
+                            <i class="glyphicon glyphicon-play-circle" aria-hidden="true" style="font-size: 40px; color: orange;"></i>
+                            詳細ページへ<br>
+                            <% end %>
+                        <% else %>
+                            <%= link_to product_path(product) do %>
+                            <i class="glyphicon glyphicon-play-circle" aria-hidden="true" style="font-size: 40px; color: orange;"></i>
+                            詳細ページへ<br>
+                            <% end %>
+                        <% end %>
+
+                        <% if user_signed_in? %>
+                            <% if product.favorited_by?(current_user) %>
+                                <% favorite = Favorite.find_by(user_id: current_user, product_id: product.id) %>
+
+                                <%= link_to favorite_path(id: favorite.id), method: :delete do %>
+                                    <i class="glyphicon glyphicon-star" aria-hidden="true" style="font-size: 40px; color: gold;"></i>お気に入りを解除<br>
+                                <% end %>
+                            <% else %>
+                                <%= link_to add_product_path(product), method: :post do %>
+                                    <i class="glyphicon glyphicon-star-empty" aria-hidden="true" style="font-size: 40px;"></i>お気に入りに追加<br>
+                                <% end %>
+                            <% end %>
+                        <% end %>
+
+
+
+						</td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+
+<style type="text/css">
+		<!--
+		button a{color: #fff; font-size: 16px;}
+		.sort{display: inline-block; margin:20px 0 10px 0;}
+		-->
+</style>
+
+
+<!-- 下部スライダー -->
+<%= render 'top/browsing', commites: @commites, product: @product %>

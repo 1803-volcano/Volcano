@@ -13,9 +13,10 @@
 
       <%= form_for(@user) do |f| %>
 
-      <div class="actions button1">
-		<%= f.submit "キャンセル", class:"btn btn-md btn-block btn-danger" %>
-		<input type="hidden" name="user[customer_flg]" value="1">
+      <button type="button" class="btn btn-info" >
+		     <%= link_to "キャンセル", user_path(current_user) %>
+      </button>
+    <%= f.text_field :customer_flg, :size=>"60", placeholder:"例）abc@volcano.ne.jp"  %>
 		<%= f.submit "退会手続きを進める", class:"btn btn-md btn-block btn-danger" %>
       </div>
   <% end %>
