@@ -15,6 +15,7 @@ class CartsController < ApplicationController
  def show
  	# @cart = Cart.where(user_id: current_user.id).last
  	@cart_items = CartItem.where(cart_id: @cart.id)
+ 	@item_count = @cart_items.count
  	@commites = Browsing.last(10) ##最新１０件取得
  end
 
