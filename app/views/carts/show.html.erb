@@ -6,12 +6,12 @@
 			<hr>
 
 			<!--submitボタンでselectに行くように指定-->
-			<form action= "1/select" >
+			<form action= "<%= @cart.id %>/select" >
 
 			<div class="col-xs-8">
-				<table class="table table-striped">
+				<table class="table  table-hover table-bordered">
 					<thead>
-						<tr>
+						<tr class="info">
 							<td></td>
 							<td>商品</td>
 							<td>数量</td>
@@ -23,7 +23,7 @@
 						<% total_price = 0 %><!--商品の価格を合計するため-->
 						<% @cart_items.each do |item| %>
 						<% product = Product.find(item.product_id) %><!--productをidから探し出す-->
-						<tr>
+						<tr class="active">
 							<td><%= attachment_image_tag product, :picture, width: "100", height: "100", format: "jpeg", fallback: "img/no_image.jpg" , style:"width:100px; height:100px;" %></td>
 							<% pricenum = "price" + num.to_s %>
 							<td>
@@ -75,36 +75,3 @@
 <!-- 下部スライダー -->
 <%= render 'top/browsing', commites: @commites, product: @product %>
 
-
-
-<script type="text/javascript">
-<!--
-function calculate(){
-	var add = 0;//totalの前身
-	var i = 1;//回数、id名
-	item = $('.item_count').val();//ビューから変数を受け取る
-	do{
-		i.toString();//string型にしてid名に入れる
-		var priced = document.getElementById(`price${i}`).textContent;//pタグやh4タグなどテキストから
-		var quantity = document.getElementById(`quantity${i}`).value;//inputなどから
-		price = priced.split(",").join("");//,ついてきたカンマをとる
-		var sum = price * quantity;
-		sub = addFigure(sum)//,カンマをとる関数の呼び出し
-		document.getElementById(`sum${i}`).textContent = sub;//ビューへ送る
-		add += sum;
-		Number(i);//integerへ戻す
-		i += 1;
-	}while(i <= item);
-
-	total = addFigure(add)
- 	document.getElementById("allsum").textContent = total;
-}
-
-function addFigure(str) {
- var num = new String(str).replace(/,/g, "");
- while(num != (num = num.replace(/^(-?\d+)(\d{3})/, "$1,$2")));
- return num;
-}
--->
-</script>
-<!--.valueはinput .textContentはtext形式のh4やpなど-->
