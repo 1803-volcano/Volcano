@@ -89,3 +89,31 @@ $(function() {
           ]
      });
 });
+
+function calculate(){
+  var add = 0;//totalの前身
+  var i = 1;//回数、id名
+  item = $('.item_count').val();//ビューから変数を受け取る
+  do{
+    i.toString();//string型にしてid名に入れる
+    var priced = document.getElementById(`price${i}`).textContent;//pタグやh4タグなどテキストから
+    var quantity = document.getElementById(`quantity${i}`).value;//inputなどから
+    price = priced.split(",").join("");//,ついてきたカンマをとる
+    var sum = price * quantity;
+    sub = addFigure(sum)//,カンマをとる関数の呼び出し
+    document.getElementById(`sum${i}`).textContent = sub;//ビューへ送る
+    add += sum;
+    Number(i);//integerへ戻す
+    i += 1;
+  }while(i <= item);
+
+  total = addFigure(add)
+  document.getElementById("allsum").textContent = total;
+}
+
+function addFigure(str) {
+ var num = new String(str).replace(/,/g, "");
+ while(num != (num = num.replace(/^(-?\d+)(\d{3})/, "$1,$2")));
+ return num;
+}
+//.valueはinput .textContentはtext形式のh4やpなど
