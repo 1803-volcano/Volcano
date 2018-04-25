@@ -47,8 +47,13 @@
 					<!-- tuneについてはpluckとfindで探す方法でしかできなかった。原因は不明 -->
 				</div>
 			</div>
-			<div class= "btn btn-sm btn-danger col-xs-10 col-xs-offset-1 text-center">
-				<%= link_to '編集', edit_admins_product_path(@product.id) %>
+			<div class= "btn btn-md btn-danger mt-20">
+				<%= link_to '編集', edit_admins_product_path(@product.id), :style => "color:white;" %>
+			</div>
+				<%= form_for(@product) do |f| %>
+        			<input type="hidden" name="product[product_flg]" value="false">
+		    		<%= f.submit '商品情報削除', class:"btn btn-md btn-danger mt-20", data: { confirm: "本当に削除しますか？"} %>
+  				<% end %>
 			</div>
 
 		</div>

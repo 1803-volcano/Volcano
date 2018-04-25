@@ -37,7 +37,7 @@ class Admins::ProductsController < ApplicationController
     @product.start_date = params[:start_date]
     @product.sound_source = params[:sound_source]
     @product.stock = params[:stock]
-    @product.product_flg = false
+    @product.product_flg = true
     @product.save
 
     #disc
@@ -78,7 +78,7 @@ class Admins::ProductsController < ApplicationController
     end
  end
 
- def list
+ def destroy
  end
 
 #親子関係を明示するため、以下のように記載。
