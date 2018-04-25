@@ -62,17 +62,19 @@
                     </tr>
                     <tr>
                         <td>
-                            <label>ディスク名</label><br>
-                                <%= f.fields_for :discs do |d| %>
+                            <%= f.fields_for :discs do |d| %>
+                                <label>ディスク名</label><br>
                                     <%= d.text_field :disc_name %>
-                                    <%= d.link_to_remove "ディスクを削除" %>
-                                    <label>曲名</label><br>
+                                    <%= d.link_to_remove "ディスクを削除" %><br>
                                     <%= d.fields_for :tunes do |t| %>
+                                        <label>曲名</label><br>
                                         <%= t.text_field :song_title %>
+                                        <%= t.time_field :song_time %>
+                                        <br>
                                         <%= t.link_to_remove "曲を削除" %>
                                     <% end %>
-                                    <%= d.link_to_add "曲を追加", :tunes %>
-                                <% end %>
+                                        <%= d.link_to_add "曲を追加", :tunes %>
+                            <% end %>
                                 <%= f.link_to_add "ディスクを追加", :discs %>
                         </td>
                     </tr>

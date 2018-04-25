@@ -70,25 +70,65 @@ class Admins::ProductsController < ApplicationController
  end
 
  def update
- 	@product = Product.find(params[:id])
-    @disc = @product.discs.build(disc_params)
-    tune = @disc.tunes.build(tune_params)
-    @product.update(@product_params)
-    @disc.update(@product.discs_params)
-    tune.update(@disc.tunes_params)
-    redirect_to admins_top_path(current_admin.id)
+    @product = Product.find(params[:id])
+    if @product.update(product_params)#データがあるか否かで書き分け
+        redirect_to admins_products_path(admin_id: current_admin.id, product_id: @product.id)
+    else
+        render :edit
+    end
  end
 
  def list
  end
 
+#親子関係を明示するため、以下のように記載。
+#accepts_nested_attributes_for時のkeyは"属性名_attributes"となる。
 private
-	def product_params
-		params.require(:product).permit( :artist, :sound_source, :picture, :cd_title, :picture_id, :price, :label, :genre, :stock, :start_date, :product_flg, 
-        { discs_attributes: [:id, :product_id, :song_title, :song_time, :_destroy, 
-        { tunes_attributes: [:id, :disc_id, :song_title, :song_time, :_destroy] }] })
-	end
+    def product_params
+        params.require(:product).permit(
+        :artist,
+        :sound_source,
+        :picture,
+        :cd_title,
+        :picture_id,
+        :price,
+        :label,
+        :genre,
+        :stock,
+        :start_date,
+        :product_flg,
+        :_destroy,{
+            discs_attributes:[
+            :id,
+            :product_id,
+            :disc_name,
+            :_destroy,{
+                    tunes_attributes:[
+                    :id,
+                    :disc_id,
+                    :song_title,
+                    :song_time,
+                    :_destroy
+                    ]
+                }
+            ]
+        }
+    )
+    end
 end
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
