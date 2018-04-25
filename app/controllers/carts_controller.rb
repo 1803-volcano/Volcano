@@ -26,12 +26,12 @@ class CartsController < ApplicationController
  end
 
  def confirm
+ 	@commites = Browsing.last(10) ##最新１０件取得
  	cart = Cart.where(user_id: current_user.id).last
  	@cart_items = CartItem.where(cart_id: cart.id)
  	#個数
  	@quantity = params[:quantity]
  	#送付先
- 	@commites = Browsing.last(10) ##最新１０件取得
  	if params[:destination] == "exist"
  		@name = current_user.name_sei + current_user.name_mei
  		@postal_code = current_user.postal_code
@@ -69,6 +69,9 @@ class CartsController < ApplicationController
  		receipt.sale_price = subtotal.to_i
  		receipt.product_id = product.to_i
  		receipt.save
+ 		productn = Product.find(receipt.product_id)
+ 		salen = productn.stock - receipt.sale
+ 		productn.update(stock: salen)
  	end
 
 	cart = current_user.carts.build

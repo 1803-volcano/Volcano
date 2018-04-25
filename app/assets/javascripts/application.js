@@ -90,6 +90,7 @@ $(function() {
      });
 });
 
+//個数と各値段から小計と合計を計算する
 function calculate(){
   var add = 0;//totalの前身
   var i = 1;//回数、id名
@@ -117,3 +118,29 @@ function addFigure(str) {
  return num;
 }
 //.valueはinput .textContentはtext形式のh4やpなど
+
+//送付先選択の際にformの表示非表示 新しい場所に対してはvalidateの設定
+function newDestination(){
+  document.getElementById(`forml`).style.display = "";//displayの設定変更
+  n = document.getElementById(`namel`);
+  p = document.getElementById(`postall`);//変数に取得
+  r = document.getElementById(`regionl`);
+  s = document.getElementById(`streetl`);
+  n.setAttribute("required", "");
+  p.setAttribute("required", "");//属性の追加
+  r.setAttribute("required", "");
+  s.setAttribute("required", "");
+}
+
+function defaultDestination() {
+  document.getElementById(`forml`).style.display = "none";
+  n = document.getElementById(`namel`);
+  p = document.getElementById(`postall`);
+  r = document.getElementById(`regionl`);
+  s = document.getElementById(`streetl`);
+  n.removeAttribute("required");
+  p.removeAttribute("required");//属性の削除
+  r.removeAttribute("required");
+  s.removeAttribute("required");
+}
+

@@ -74,10 +74,12 @@
 		  </div>
 		</div>
 
-		<form action="" method="put">
+		<!--<form action= "<%= @purchaser.id %>"  method="post">
+			<input type="hidden" value="PUT" name="_method">
 			<div class="form-group form-group-lg col-xs-offset-2">
 				<label class="control-label col-xs-5 h2 text-right">発送状況変更：</label>
 				<div class="col-xs-4">
+
 					<select name="status" class="form-control" style="margin:17px;">
 						<option value="発送準備中">発送準備中</option>
 						<option value="発送中">発送中</option>
@@ -87,10 +89,26 @@
 			</div>
 			<div class="form-group form-group-lg">
 				<div class="">
+					<input type="hidden" value= <%= @purchaser.id %> name="purchaser">
 					<input type="submit" value="変更する" class="form-control btn btn-primary" %>
 				</div>
 			</div>
-		</form>
+		</form>-->
+
+		<%= form_for(@purchaser, url: admins_purchaser_path) do |f| %>
+			<div class="form-group form-group-lg col-xs-offset-2">
+				<label class="control-label col-xs-5 h2 text-right">発送状況変更：</label>
+				<div class="col-xs-4">
+					<% transport = "発送準備中", "発送中", "出荷済み" %>
+					<%= f.select :status, transport, {}, {class:"form-control", style: "margin: 14px;"} %>
+ 				</div>
+			</div>
+			<div class="form-group form-group-lg">
+				<div class="">
+					<input type="submit" value="変更する" class="form-control btn btn-primary" %>
+				</div>
+			</div>
+		<% end %>
 
 	  </div>
  	</div>

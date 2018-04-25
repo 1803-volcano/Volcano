@@ -1,5 +1,7 @@
 class Admins::PurchasersController < ApplicationController
 
+	protect_from_forgery except: :update
+
  def index
  	@purchasers = Purchaser.all
 
@@ -8,10 +10,17 @@ class Admins::PurchasersController < ApplicationController
  def show
  	@purchaser = Purchaser.find(params[:id])
 	@receipts = Receipt.where(purchaser_id: params[:id])
-
  end
 
  def update
+ 	purchaser = Purchaser.find(params[:id])
+ 	purchaser.update(purchaser_params)
+ 	redirect_to admins_purchaser_path(purchaser)
  end
 
+private
+
+ def purchaser_params
+ 	params.require(:purchaser).permit(:p_code, :d_name, :d_region, :d_street, :pay, :status)
+ end
 end

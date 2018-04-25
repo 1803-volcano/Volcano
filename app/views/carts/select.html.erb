@@ -28,14 +28,18 @@
 					<h2 class="panel-title">発送先の選択</h2>
 				</div>
 				<div class="panel-body">
-					<input type="radio" name="destination" value="exist" checked="checked">現住所に送る
+					<input type="radio" name="destination" value="exist" checked="checked" id="defaultl" onclick="defaultDestination()">現住所に送る
 						<p>〒 <%= current_user.postal_code %></p>
 						<p><%= current_user.region %><%= current_user.street %></p>
-					<input type="radio" name="destination" value="new">上記以外に送る
-						<p>宛名<input type="textfield" name="name"></p>
-						<p>〒　<input type="textfield" name="postal_code" placeholder="例）1235678" onKeyUp="AjaxZip3.zip2addr(this,'','region','street');">（半角数字　ハイフン入力不要）</p>
-						<p>住所<input type="textfield" name="region" placeholder="例）東京都">
-						<input type="textfield" name="street" size='50'></p>
+					<input type="radio" name="destination" value="new" id="newl" onclick="newDestination()">上記以外に送る
+
+					<div id="forml" style="display: none;">
+						<p>宛名<input type="textfield" name="name" id="namel"></p>
+						<p>〒　<input type="number" name="postal_code" placeholder="例）1235678" onKeyUp="AjaxZip3.zip2addr(this,'','region','street');" id="postall">（半角数字　ハイフン入力不要）</p>
+						<p>住所<input type="textfield" name="region" placeholder="例）東京都" id="regionl">
+						<input type="textfield" name="street" size='50' id="streetl"></p>
+					</div>
+
 				</div>
 			</div>
 
@@ -69,5 +73,9 @@
 	</div>
 </div>
 
+<form id="new-region-form">
+</form>
 <!-- 下部スライダー -->
 <%= render 'top/browsing', commites: @commites, product: @product %>
+
+
