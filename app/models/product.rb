@@ -7,7 +7,7 @@ class Product < ApplicationRecord
   has_many :users, through: :browsings
   has_many :favorites, dependent: :destroy
   has_many :users, through: :favorites
-  accepts_nested_attributes_for :discs
+  accepts_nested_attributes_for :discs, allow_destroy: true #まとめて削除するため
 
   attachment :picture
 
