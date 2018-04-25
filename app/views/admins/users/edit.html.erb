@@ -1,0 +1,83 @@
+<div class="container">
+  <div class="row">
+  <%= render partial: "top/sidebar" %>
+    <div class="main col-xs-10 text-left">
+
+
+      <!-- 上部リンク -->
+      <div clas="link-top", style="margin: 20px; text-decoration: underline;">
+        <span class="nav-list-item">
+          <%= link_to "前のページに戻る", :back %>
+        </span>
+        <span class="nav-list-item", style="float: right; text-decoration: underline;">
+          <%= link_to "TOP画面に戻る", root_path %>
+        </span>
+      </div>
+
+
+      <h1 class="midashi">会員情報の編集</h1>
+      <hr>
+	  <%= form_for(@user) do |f| %>
+		<table class="table">
+	      <tbody>
+			<tr>
+			  <th>氏名</th>
+              <td>姓　<%= f.text_field :name_sei, placeholder:"例）渋谷" %>名　<%= f.text_field :name_mei, placeholder:"例）太郎" %>（全角）</td>
+			</tr>
+			<tr>
+			  <th>フリガナ</th>
+			  <td>セイ<%= f.text_field :name_kana_sei, placeholder:"例）シブヤ" %>メイ<%= f.text_field :name_kana_mei, placeholder:"例）タロウ" %>（全角カナ）</td>
+			</tr>
+			<tr>
+		      <th>生年月日</th>
+			  <td><%= f.date_select(:birthday,
+					   start_year: 1930,
+                       end_year:   (Time.now.year),
+                       default:    Date.new(1930, 1, 1),
+                       date_separator: '/') %>
+              </td>
+			</tr>
+			<tr>
+			  <th>性別</th>
+			  <td><%= f.radio_button :sex, "male" %>男性 　
+                    <%= f.radio_button :sex, "female" %>女性　</td>
+			  </td>
+			</tr>
+			<tr>
+			  <th>郵便番号</th>
+			  <td>〒<%= f.text_field :postal_code, placeholder:"例）1235678" %>（半角数字　ハイフン入力不要）</td>
+			</tr>
+			<tr>
+			  <th>都道府県</th>
+			  <td><%= f.text_field :region, :size=>"30", placeholder:"例）東京都" %></td>
+			</tr>
+			<tr>
+			  <th>市区町村以下</th>
+			  <td><%= f.text_field :street, :size=>"60", placeholder:"例）港区麻布１−２−３タワーマンション２０１" %></td>
+			</tr>
+			<tr>
+			  <th>電話番号</th>
+			  <td><%= f.text_field :phone, :size=>"30", placeholder:"例）09012345678"  %>（半角数字　ハイフン入力不要）</td>
+			</tr>
+			<tr>
+			  <th>メールアドレス</th>
+			  <td><%= f.email_field :email, :size=>"60", placeholder:"例）abc@volcano.ne.jp"  %></td>
+			</tr>
+			<tr>
+			  <th>flg</th>
+			  <td><%= f.text_field :customer_flg, :size=>"60", placeholder:"例）abc@volcano.ne.jp"  %></td>
+			</tr>
+						<!-- password -->
+			  <!-- <tr>
+				<th width="150" height="70">クレジットカード</th>
+				<td><%= f.text_field :credit_card %></td>
+			  </tr> -->
+		  </tbody>
+		</table>
+		<div class="actions button1" style="margin-bottom: 50px;">
+		<%= f.submit "編集", class:"btn btn-md btn-block btn-danger" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

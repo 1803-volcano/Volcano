@@ -1,27 +1,58 @@
 <div class="container">
   <div class="row">
   <%= render partial: "top/sidebar" %>
-    <div class="col-xs-10">
-	  <h1 style="display: inline-block;">会員一覧</h1>
-	  <div class="pull-right sort">
-	    <button class="btn btn-primary" ><%= sort_link(@search, :name_sei, "名前で並び替え") %></button>
-		<button class="btn btn-success" ><%= sort_link(@search, :region, "住所で並び替え") %></button>
+    <div class="main col-xs-10 text-left">
 
-	  </div>
 
-      <table class = "table">
+<!-- 上部リンク -->
+      <div clas="link-top", style="margin: 20px; text-decoration: underline;">
+        <span class="nav-list-item">
+          <%= link_to "前のページに戻る", :back %>
+        </span>
+        <span class="nav-list-item", style="float: right; text-decoration: underline;">
+          <%= link_to "TOP画面に戻る", admins_top_path(current_admin) %>
+        </span>
+      </div>
+
+      <div class="", style="width: 90%;">
+	  <h1 class="midashi">会員一覧</h1>
+	  <hr>
+
+
+	  	<!--並び替え機能-->
+	  <div class="pull-left sort", style="margin: 0 0 0 60px; background-color: rgba( 0, 0, 0, 0.1);">
+		Search Sort <span class="glyphicon glyphicon-search"></span>:
+        <button type="button" class="btn btn-link">
+          <%= sort_link(@search, :name_sei, "名前で並び替え") %>
+        </button>
+        <button type="button" class="btn btn-link">
+          <%= sort_link(@search, :region, "住所で並び替え") %>
+        </button>
+      </div>
+
+
+      <table class = "table table table-hover table-bordered", style="width: 90%;">
+	  	<thead>
+	  		<tr class="info">
+	  			<td width="600">会員情報</td>
+	  			<td>詳細リンク</td>
+	  		</tr>
+	  	</thead>
 	    <tbody>
 		  <% @users.each do |user| %>
-		    <tr>
-		      <td width="500", height="70">
-		        <label>名前: </label>
-		          <%= user.name_sei %><%= user.name_mei %><br>
-                <label>住所: </label>
-                  <%= user.region %><%= user.street %>
-                </td>
+		    <tr class="active">
+		      <td height="70">
+		        <label>名前 : </label>
+		        <%= user.name_sei %><%= user.name_mei %><br>
+                <label>住所 : </label>
+                <%= user.region %><%= user.street %><br>
+                <label>TEL : </label>
+                <%= user.phone %><br>
+              </td>
 
-				<td>
-				  <%= link_to '詳細 / 編集', admins_user_path(user.id) %>
+			  <td>
+				<%= link_to '会員情報詳細', admins_user_path(user.id) %>
+
 			  </td>
 		    </tr>
 		  <% end %>
@@ -30,11 +61,11 @@
 	</div>
   </div>
 </div>
-
+</div>
 
 <style type="text/css">
 		<!--
-		button a{color: #fff; font-size: 16px;}
-		.sort{display: inline-block; margin:20px 0 10px 0;}
+		button a{color: black; font-size: 15px;}
+		.sort{display: inline-block; margin:20px 10px 0 0;}
 		-->
 </style>
