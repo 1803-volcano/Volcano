@@ -4,6 +4,14 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  #def active_for_authentication?
+    #super && self.customer_flg?
+  #end
+
+  def inactive_message
+    self.customer_flg? ? super : :special_condition_is_not_valid
+  end
+
   has_many :carts
   has_many :purchasers
   has_many :browsings, dependent: :destroy #関連付くイベントが削除されると中間テーブルも削除される

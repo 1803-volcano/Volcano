@@ -85,7 +85,7 @@ class Admins::ProductsController < ApplicationController
 private
 	def product_params
 		params.require(:product).permit( :artist, :sound_source, :picture, :cd_title, :picture_id, :price, :label, :genre, :stock, :start_date, :product_flg, 
-        { discs_attributes: [:id, :product_id :song_title, :song_time, :_destroy, 
+        { discs_attributes: [:id, :product_id, :song_title, :song_time, :_destroy, 
         { tunes_attributes: [:id, :disc_id, :song_title, :song_time, :_destroy] }] })
 	end
 end

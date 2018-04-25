@@ -1,6 +1,7 @@
 class BrowsingsController < ApplicationController
+    #before_action :authenticate_user!
 
- def create
+    def create
         product = Product.find(params[:product_id])
         browsing = current_user.browsings.new(product_id: product.id)
         browsing.save

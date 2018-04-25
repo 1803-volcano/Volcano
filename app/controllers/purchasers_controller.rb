@@ -1,4 +1,5 @@
 class PurchasersController < ApplicationController
+ #before_action :authenticate_user!
 
  def index
  	@purchasers = Purchaser.where(user_id: current_user.id).all
