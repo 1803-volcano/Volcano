@@ -2,13 +2,33 @@
 	<div class="row content">
 		<%= render partial: "top/sidebar" %>
 		<div class="col-xs-10">
-			<h1 style="display: inline-block;">商品一覧</h1>
+
+<!-- 上部リンク -->
+      <div clas="link-top", style="margin: 20px; text-decoration: underline;">
+        <span class="nav-list-item">
+          <%= link_to "前のページに戻る", :back %>
+        </span>
+        <span class="nav-list-item", style="float: right; text-decoration: underline;">
+          <%= link_to "TOP画面に戻る", root_path %>
+        </span>
+      </div>
+
+
+			<h1 class="midashi">商品一覧</h1>
+			<hr>
 
 			<!--並び替え機能-->
-			<div class="pull-right sort">
-				<button class="btn btn-primary" ><%= sort_link(@search, :cd_title, "追加日で並び替え") %></button>
-				<button class="btn btn-success" ><%= sort_link(@search, :price, "価格で並び替え") %></button>
-				<button class="btn btn-danger" ><%= sort_link(@search, :start_date, "発売日で並び替え") %></button>
+			<div class="pull-right sort", style="margin: 0 0 0 60px; background-color: rgba( 0, 0, 0, 0.1);">
+				Search Sort <span class="glyphicon glyphicon-search"></span>:
+                <button type="button" class="btn btn-link">
+                    <%= sort_link(@search, :cd_title, "追加日で並び替え") %>
+                </button>
+                <button type="button" class="btn btn-link">
+                    <%= sort_link(@search, :price, "価格で並び替え") %>
+                </button>
+				<button type="button" class="btn btn-link">
+                    <%= sort_link(@search, :start_date, "発売日で並び替え") %>
+                </button>
 			</div>
 
 
@@ -30,13 +50,17 @@
 						<td>
                         <% if user_signed_in? %>
                             <%= link_to product_browsings_path(product), method: :post do %>
-                            <i class="glyphicon glyphicon-play-circle" aria-hidden="true" style="font-size: 40px; color: orange;"></i>
-                            詳細ページへ<br>
+                            <button type="button" class="btn btn-link", style="display: block;">
+                                <span class="glyphicon glyphicon-play-circle" aria-hidden="true" style="font-size: 30px; color: orange;"></span>
+                            詳細ページへ
+                            </button>
                             <% end %>
                         <% else %>
                             <%= link_to product_path(product) do %>
-                            <i class="glyphicon glyphicon-play-circle" aria-hidden="true" style="font-size: 40px; color: orange;"></i>
-                            詳細ページへ<br>
+                            <button type="button" class="btn btn-link", style="display: block;">
+                                <span class="glyphicon glyphicon-play-circle" aria-hidden="true" style="font-size: 30px; color: orange;"></span>
+                            詳細ページへ
+                            </button>
                             <% end %>
                         <% end %>
 
@@ -45,11 +69,17 @@
                                 <% favorite = Favorite.find_by(user_id: current_user, product_id: product.id) %>
 
                                 <%= link_to favorite_path(id: favorite.id), method: :delete do %>
-                                    <i class="glyphicon glyphicon-star" aria-hidden="true" style="font-size: 40px; color: gold;"></i>お気に入りを解除<br>
+                                    <button type="button" class="btn btn-link", style="display: block;">
+                                        <span class="glyphicon glyphicon-star" aria-hidden="true" style="font-size: 30px; color: gold;"></span>
+                                        お気に入り解除
+                                    </button>
                                 <% end %>
                             <% else %>
                                 <%= link_to add_product_path(product), method: :post do %>
-                                    <i class="glyphicon glyphicon-star-empty" aria-hidden="true" style="font-size: 40px;"></i>お気に入りに追加<br>
+                                    <button type="button" class="btn btn-link", style="display: block;">
+                                        <span class="glyphicon glyphicon-star" aria-hidden="true" style="font-size: 30px; color: #444444;"></span>
+                                        お気に入り追加
+                                    </button>
                                 <% end %>
                             <% end %>
                         <% end %>
@@ -68,8 +98,8 @@
 
 <style type="text/css">
 		<!--
-		button a{color: #fff; font-size: 16px;}
-		.sort{display: inline-block; margin:20px 0 10px 0;}
+		button a{color: black; font-size: 15px;}
+		.sort{display: inline-block; margin: 20px 10px 0 0;}
 		-->
 </style>
 

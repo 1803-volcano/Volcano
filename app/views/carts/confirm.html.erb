@@ -2,7 +2,21 @@
 	<div class="row">
     	<%= render partial: "top/sidebar" %>
 		<div class="col-xs-10">
-			<h1>ご注文内容の確認</h1>
+
+
+
+        <!-- 上部リンク -->
+            <div clas="link-top", style="margin: 20px; text-decoration: underline;">
+                <span class="nav-list-item">
+                    <%= link_to "前のページに戻る", :back %>
+                </span>
+                <span class="nav-list-item", style="float: right; text-decoration: underline;">
+                    <%= link_to "TOP画面に戻る", root_path %>
+                </span>
+            </div>
+
+
+			<h1 class="midashi">ご注文内容の確認</h1>
 			<hr>
 
 			<form action="confirm" method="post">
@@ -51,12 +65,13 @@
 								<p class="pull-right" style="margin-bottom:0;">送料：￥０</p><br>
 								<h3 class="pull-right">総計： ￥<%= number_with_delimiter(total_price) %>（税込み）</h3>
 							</td>
+						</tr>
 					</tbody>
 				</table>
 
 			</div>
 
-		<div class="">
+		    <div class="", style="margin-bottom: 100px;">
 
 			<div class="panel panel-default col-xs-offset-1">
 				<div class="panel-heading">
@@ -83,12 +98,12 @@
 				</div>
 			</div>
 
-		</div>
-
-			<input type="submit" value="注文を確定する" class="btn btn-primary">
+			<input type="submit" value="注文を確定する" class="btn btn-primary btn-primary btn-md btn-block">
 
 			</form>
 
+
+        </div>
  		</div>
 	</div>
 </div>

@@ -2,6 +2,16 @@
  	<div class="row">
     	<%= render partial: "top/sidebar" %>
 		<div class="col-xs-10">
+
+			        <!-- 上部リンク -->
+        <div clas="link-top", style="margin: 20px; text-decoration: underline;">
+
+            <span class="nav-list-item", style="float: right; text-decoration: underline;">
+              <%= link_to "TOP画面に戻る", root_path %>
+            </span>
+        </div>
+
+
 			<div class="text-center thanks">
 				<div><!--縦位置を揃えるための箱-->
 					<h1>お買い上げありがとうございます。</h1>
@@ -9,7 +19,6 @@
 				</div>
 			</div>
 			<%= image_tag 'img/test4.jpg'%>
-			
 
 
  		</div>

@@ -4,9 +4,23 @@
     <%= render partial: "top/sidebar" %>
 		<div class="col-xs-10">
 
-			<h1>発送先・お支払い方法の選択</h1>
-			<hr>
 
+
+        <!-- 上部リンク -->
+        <div clas="link-top", style="margin: 20px; text-decoration: underline;">
+            <span class="nav-list-item">
+               <%= link_to "前のページに戻る", :back %>
+            </span>
+            <span class="nav-list-item", style="float: right; text-decoration: underline;">
+              <%= link_to "TOP画面に戻る", root_path %>
+            </span>
+        </div>
+
+
+
+			<h1 class="midashi">発送先・お支払い方法の選択</h1>
+			<hr>
+<div class="", style="margin: 0 100px 100px 100px;">
 <form action="confirm">
 			<!--送付先の選択-->
 			<div class="panel panel-default">
@@ -19,8 +33,9 @@
 						<p><%= current_user.region %><%= current_user.street %></p>
 					<input type="radio" name="destination" value="new">上記以外に送る
 						<p>宛名<input type="textfield" name="name"></p>
-						<p>〒 <input type="textfield" name="postal_code" placeholder="ハイフンなし"></p>
-						<p>住所<input type="textfield" name="region" placeholder="例：東京都"><input type="textfield" name="street" placeholder="例："></p>
+						<p>〒　<input type="textfield" name="postal_code" placeholder="例）1235678" onKeyUp="AjaxZip3.zip2addr(this,'','region','street');">（半角数字　ハイフン入力不要）</p>
+						<p>住所<input type="textfield" name="region" placeholder="例）東京都">
+						<input type="textfield" name="street" size='50'></p>
 				</div>
 			</div>
 
@@ -43,12 +58,13 @@
 				<%= number_field_tag "quantity[]", quantity, style:"display:none;" %><!--表示させない-->
 			<% end %>
 
-			<input type="submit" value="注文確認へ進む" class="btn btn-primary">
+			<input type="submit" value="注文確認へ進む" class="btn btn-primary btn-md btn-block">
 
 
 
 
 </form>
+</div>
   		</div>
 	</div>
 </div>

@@ -1,61 +1,58 @@
-<div class="container">
-  <!-- 上部スライダー -->
-      <ul class="bxslider-top">
 
-        <li><%= image_tag ('img/test7.jpg') %></li>
-        <li><%= image_tag ("img/tes5.jpg") %></li>
-        <li><%= image_tag ('img/tes4.jpg') %></li>
-        <li><%= image_tag ('img/tes1.jpg') %></li>
-        <li><%= image_tag ('img/tes2.jpg') %></li>
-        <li><%= image_tag ('img/tes3.jpg')%></li>
+<!-- 上部スライダー -->
+  <ul class="bxslider-top">
 
-      </ul>
+    <li><%= image_tag ('img/test7.jpg') %></li>
+    <li><%= image_tag ("img/tes5.jpg") %></li>
+    <li><%= image_tag ('img/tes4.jpg') %></li>
+    <li><%= image_tag ('img/tes1.jpg') %></li>
+    <li><%= image_tag ('img/tes2.jpg') %></li>
+    <li><%= image_tag ('img/tes3.jpg')%></li>
 
-<div class="container">
-  <div class="row content">
-  <%= render partial: "top/sidebar" %>
-    <div class="main col-xs-10 text-left">
-      <h1 class="main-line">New Release</h1>
-      <div class="mainseet">
-        <div class="img"><%= image_tag 'img/fon1.jpg'%>Black Pink</div>
-      </div>
-      <div class="mainseet">
-        <div class="img"><%= image_tag 'img/fon3.jpg'%>Black Pink</div>
-      </div>
-      <div class="mainseet">
-        <div class="img"><%= image_tag 'img/fon4.jpg'%>Black Pink</div>
-      </div>
-      <div class="mainseet">
-        <div class="img"><%= image_tag 'img/fon6.jpg'%>Black Pink</div>
-      </div>
-      <div class="mainseet">
-        <div class="img"><%= image_tag 'img/fon7.jpg'%>Black Pink</div>
-      </div>
-      <div class="mainseet">
-        <div class="img"><%= image_tag 'img/fon8.jpg'%>Black Pink</div>
-      </div>
-      <div class="mainseet">
-        <div class="img"><%= image_tag 'img/fon10.jpg'%>Black Pink</div>
-      </div>
-      <div class="mainseet">
-        <div class="img"><%= image_tag 'img/fon5.jpg'%>Black Pink</div>
-      </div>
+  </ul>
+
+
+  <div class="container">
+    <div class="row content">
+    <%= render partial: "top/sidebar" %>
+      <div class="col-xs-10 text-left">
+
+<!-- 新着商品表示　-->
+        <div class="main-top">
+          <h1 class="main-line">ーNew Releaseー</h1>
+          <hr>
+          <% @nouveaus.each do |n| %>
+          <div class="mainseet">
+            <a href="/products/<%= n.id %>", style="text-decoration: none; color: #6c6b6b;">
+              <%= attachment_image_tag n, :picture, fallback: "img/no_image.jpg" %>
+              <h4><%= n.cd_title %></h4>
+              <h5><%= n.artist %></h5>
+            </a>
+          </div>
+          <% end %>
+        </div>
 
 
 <!-- オススメランダム表示　-->
-      <h1 class="main-line">Recommended</h1>
-      <% @recommends.each do |r| %>
-        <div class="mainseet">
-          <div class="img"><%= attachment_image_tag r, :picture, fallback: "img/no_image.jpg" %>
-          <h4><%= r.cd_title %></h4>
-          <h5><b><%= r.artist %></b></h5>
+        <div class="main-bottom">
+          <h1 class="main-line">ーRecommendedー</h1>
+          <hr>
+          <% @recommends.each do |r| %>
+          <div class="mainseet">
+            <a href="/products/<%= r.id %>", style="text-decoration: none; color: #6c6b6b;">
+              <%= attachment_image_tag r, :picture, fallback: "img/no_image.jpg" %>
+            <h4><%= r.cd_title %></h4>
+            <h5><%= r.artist %></h5>
+            </a>
           </div>
+          <% end %>
         </div>
-      <% end %>
+      </div>
 
     </div>
   </div>
-</div>
-</div>
+
 <!-- 下部スライダー -->
 <%= render 'top/browsing', commites: @commites, product: @product %>
+
+
