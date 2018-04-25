@@ -29,7 +29,7 @@
         <button type="button" class="btn btn-info", style="width: 200px;">
 		       <%= link_to "キャンセル", user_path(current_user) %>
         </button>
-        <input type="hidden" name="user[customer_flg]" value="true">
+        <input type="hidden" name="user[customer_flg]" value="false">
 		    <%= f.submit "退会手続きを進める", class:"btn btn-md btn-danger mt-20" %>
       </div>
   <% end %>

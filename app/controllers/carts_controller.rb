@@ -1,4 +1,5 @@
 class CartsController < ApplicationController
+#before_action :authenticate_user!
 	before_action :create, only:[:show]
 	#showとcompleteの前にカートを作る
 	protect_from_forgery except: :purchase

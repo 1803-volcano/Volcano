@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="main row inputmenu" style="width: 70%; margin-bottom: 50px;">
+  <div class="main row inputmenu" style="width: 80%; margin-bottom: 50px;">
     <h1 class="midashi">新規会員登録</h1>
     <hr>
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -58,7 +58,7 @@
           <th>電話番号</th>
           <td><input type="tel" name="user[phone]" size='50' placeholder="例）09012345678" required>（半角数字　ハイフン入力不要）</td>
         </tr>
-        <input type="hidden" name="user[customer_flg]" value="false">
+        <input type="hidden" name="user[customer_flg]" value="true">
       </tbody>
       </table>
     <div class="actions button1">
