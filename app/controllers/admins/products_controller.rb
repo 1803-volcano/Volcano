@@ -1,4 +1,5 @@
 class Admins::ProductsController < ApplicationController
+#before_action :authenticate_admin!
     protect_from_forgery except: :create
 
  def index

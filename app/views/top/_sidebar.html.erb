@@ -12,6 +12,7 @@
     <div class="subteki">・会員情報管理</div>
       <p><%= link_to " ▶︎ 会員情報の編集/一覧", admins_users_path %></p>
     <div class="subteki">・その他</div>
+      <p><%= link_to " ▶︎ 管理Topページへ", admins_top_path(current_admin) %></p>
       <p><%= link_to " ▶︎ 会員Topページへ", root_path %></p>
   <% end %>
 

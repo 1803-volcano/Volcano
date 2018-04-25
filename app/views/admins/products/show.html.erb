@@ -1,12 +1,21 @@
 <div class="container">
-	<div class="row">
+	<div class="row content">
 		<%= render partial: "top/sidebar" %>
 		<div class="col-xs-10">
 
+       <!-- 上部リンク -->
+        <div clas="link-top", style="margin: 20px; text-decoration: underline;">
+          <span class="nav-list-item">
+            <%= link_to "前のページに戻る", :back %>
+          </span>
+          <span class="nav-list-item", style="float: right; text-decoration: underline;">
+            <%= link_to "管理TOP画面に戻る", admins_top_path(current_admin) %>
+          </span>
+        </div>
 
-			<%= link_to "前のページに戻る", :back %>
-			<%= link_to "TOP画面に戻る", products_path %>
-			<h1>商品詳細</h1>
+
+            <div class="", style="width:80%; margin: 0 0 0 50px;">
+			<h1 class="midashi">商品詳細</h1>
 			<hr>
 
 			<div class="clearfix">
@@ -16,11 +25,10 @@
 
 				<div class="col-xs-7">
 					<h2><%= @product.cd_title %></h2>
-					<h5><b><%= @product.artist %></b></h5>
+					<h4><b><%= @product.artist %></b></h4>
 					<hr>
 					<h3>価格（税込）：￥<%= @product.price %></h3>
-					<p><%= link_to "カートに入れる", product_cart_items_path(@product.id), method: :post %></p>
-					<p>お気に入り</p>
+                    <h4>在庫数　：<%= @product.stock %></h4>
 				</div>
 			</div>
 
@@ -36,26 +44,41 @@
 				<div style="margin-top:80px;">
 					<% @discs.each do |disc| %>
 						<h6 style="margin-top: 30px;"><b>[ <%= disc.disc_name %> ]</b></h6>
-						<% tunes = Tune.where(disc_id: disc.id).pluck(:id) %>
-						<% num = 1 %>
-						<% tunes.each do |music| %>
-							<% tune = Tune.find(music) %>
-							<h5><%= num %>.<%= tune.song_title %></h5>
-							<% num += 1 %>
-						<% end %>
+						<% tunes = Tune.order(:order).where(disc_id: disc.id).pluck(:id) %>
+						<table class="table-hover table-bordered">
+							<thead>
+								<tr>
+									<th width="300px;">タイトル</th>
+									<th>再生時間</th>
+								</tr>
+							</thead>
+							<tbody>
+								<% tunes.each do |music| %>
+									<% tune = Tune.find(music) %>
+									<tr>
+										<td><%= tune.order %>.<%= tune.song_title %></td>
+										<td><%= tune.song_time.strftime('%H:%M') %></td>
+									</tr>
+								<% end %>
+							</tbody>
+						</table>
 					<% end %>
 					<!-- tuneについてはpluckとfindで探す方法でしかできなかった。原因は不明 -->
 				</div>
 			</div>
+
+			<!--音源-->
+			<iframe src="<%= @product.sound_source %>" width="100%" height="354" frameborder="0" allowtransparency="true" marginHeight="50"></iframe>
+
+
 			<div class= "btn btn-md btn-danger mt-20">
 				<%= link_to '編集', edit_admins_product_path(@product.id), :style => "color:white;" %>
 			</div>
-				<%= form_for(@product) do |f| %>
-        			<input type="hidden" name="product[product_flg]" value="false">
-		    		<%= f.submit '商品情報削除', class:"btn btn-md btn-danger mt-20", data: { confirm: "本当に削除しますか？"} %>
-  				<% end %>
-			</div>
-
+			<%= form_for(@product) do |f| %>
+        		<input type="hidden" name="product[product_flg]" value="false">
+		    	<%= f.submit '商品情報削除', class:"btn btn-md btn-danger mt-20", data: { confirm: "本当に削除しますか？"} %>
+  			<% end %>
+            </div>
 		</div>
 	</div>
 </div>
