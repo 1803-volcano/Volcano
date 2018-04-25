@@ -28,29 +28,35 @@
 					<hr>
 					<h3>価格（税込）：￥<%= @product.price %></h3>
 
+
+                    <!-- カート、お気にボタン　-->
                     <% if user_signed_in? %>
+                        <%= link_to product_cart_items_path(@product.id), method: :post do %>
+                            <button type="button" class="btn btn-info", style="display: inline-block; height: 80px; width: 200px; background-color: #440000;">
+                                <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true" style="font-size: 30px; color: gold;"></span><br>
+                                カートに入れる
+                            </button>
+                        <% end %>
 
-                    <span>
-                        <button type="button" class="btn btn-lg btn-warning" >
-                          <%= link_to "  カートに入れる　", product_cart_items_path(@product.id), method: :post %>
-                        </button>
-                    </span>
+                        <% if @product.favorited_by?(current_user) %>
+                        <% favorite = Favorite.find_by(user_id: current_user, product_id: @product.id) %>
+                            <%= link_to favorite_path(id: favorite.id), method: :delete do %>
+                                <button type="button" class="btn btn-danger", style="display: inline-block; height: 80px; width: 200px;">
+                                    <span class="glyphicon glyphicon-star" aria-hidden="true" style="font-size: 30px; color: gold;"></span><br>
+                                    お気に入り解除
+                                </button>
+                            <% end %>
+                        <% else %>
+                            <%= link_to add_product_path(@product), method: :post do %>
+                                <button type="button" class="btn btn-info", style="display: inline-block; height: 80px; width: 200px; background-color: #444444;">
+                                    <span class="glyphicon glyphicon-star" aria-hidden="true" style="font-size: 30px;"></span><br>
+                                    お気に入り追加
+                                </button>
+                            <% end %>
+                        <% end %>
+                    <% end %>
 
-                    <% if @product.favorited_by?(current_user) %>
-                      <% favorite = Favorite.find_by(user_id: current_user, product_id: @product.id) %>
-                      <span>
-                        <button type="button" class="btn btn-lg btn-danger" >
-                           <%= link_to "お気に入り解除", favorite_path(id: favorite.id), method: :delete %>
-                        </button>
-                      </span>
-                    <% else %>
-                      <span>
-                        <button type="button" class="btn btn-lg btn-info" >
-                          <%= link_to "お気に入り追加", add_product_path(@product), method: :post %>
-                        </button>
-                      </span>
-                    <% end %>
-                    <% end %>
+
 
 				</div>
 			</div>
