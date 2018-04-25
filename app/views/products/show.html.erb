@@ -31,12 +31,18 @@
 
                     <!-- カート、お気にボタン　-->
                     <% if user_signed_in? %>
-                        <%= link_to product_cart_items_path(@product.id), method: :post do %>
-                            <button type="button" class="btn btn-info", style="display: inline-block; height: 80px; width: 200px; background-color: #440000;">
-                                <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true" style="font-size: 30px; color: gold;"></span><br>
-                                カートに入れる
-                            </button>
-                        <% end %>
+
+
+                    	<% if @product.stock == 0 %>
+                    		<%= image_tag "img/soldout.jpg", style: "height: 80px; width: 200px; border: solid 5px black;" %>
+                    	<% else %>
+	                        <%= link_to product_cart_items_path(@product.id), method: :post do %>
+	                            <button type="button" class="btn btn-info", style="display: inline-block; height: 80px; width: 200px; background-color: #440000;">
+	                                <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true" style="font-size: 30px; color: gold;"></span><br>
+	                                カートに入れる
+	                            </button>
+	                        <% end %>
+	                    <% end %>
 
                         <% if @product.favorited_by?(current_user) %>
                         <% favorite = Favorite.find_by(user_id: current_user, product_id: @product.id) %>

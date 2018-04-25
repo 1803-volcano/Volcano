@@ -52,12 +52,12 @@
 							<% quantitynum = "quantity" + num.to_s %>
 							<td>
 								<!--selectに個数を送る-->
-								<input type="number" min=1 value=1 style="width: 50px;" name="quantity[]" id=<%= quantitynum %> ><br>
+								<input type="number" min=1 value=1 style="width: 50px;" name="quantity[]" id=<%= quantitynum %> max=<%= product.stock %> ><br>
 								<button class="btn btn-danger" id="cart-item-destroy"><%= link_to "カートから削除", cart_cart_items_path(id: item.id, product_id: item.product_id, cart_id: @cart.id), method: :delete %></button>
 							</td>
 							<% sumnum = "sum" + num.to_s %>
 							<td>
-								<h4>￥<span id=<%= sumnum %>></span></h4>
+								<h4>￥<span id=<%= sumnum %>><%= number_with_delimiter(product.price) %></span></h4>
 							</td>
 							<% total_price += product.price %>
 						</tr>
@@ -68,8 +68,8 @@
 				</table>
 			</div>
 			<div class="col-xs-3 col-xs-offset-1 panel panel-info text-center">
-				<h2 class="">合計 ￥<span id="allsum"></span></h2>
-				<input type="button" class="btn btn-primary" value="合計" onclick="calculate()"><!--クリックで関数を呼ぶ-->
+				<h2 class="">合計 ￥<span id="allsum"><%= number_with_delimiter(total_price) %></span></h2>
+				<input type="button" class="btn btn-primary" value="再計算" onclick="calculate()"><!--クリックで関数を呼ぶ-->
 				<input type="submit" value="レジへ進む" class="btn btn-primary">
 			</div>
 
