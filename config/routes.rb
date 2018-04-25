@@ -44,7 +44,7 @@ Rails.application.routes.draw do
 
   namespace :admins do
     resources :top, only: [:show, :edit, :update]
-    resources :users, only: [:index, :show]
+    resources :users, only: [:index, :show, :update, :edit]
     put '/users/:id' => 'users#delete', as: 'delete_user'
     resources :products, only: [:new, :create, :edit, :update, :index, :show]
     resources :purchasers, only: [:index, :show, :update]

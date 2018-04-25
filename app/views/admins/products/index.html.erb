@@ -2,11 +2,33 @@
 	<div class="row">
 		<%= render partial: "top/sidebar" %>
 		<div class="col-xs-10">
-			<h1 style="display: inline-block;">商品一覧</h1>
-			<div class="pull-right sort">
-				<button class="btn btn-primary" ><%= sort_link(@search, :cd_title, "追加日で並び替え") %></button>
-				<button class="btn btn-success" ><%= sort_link(@search, :price, "価格で並び替え") %></button>
-				<button class="btn btn-danger" ><%= sort_link(@search, :start_date, "発売日で並び替え") %></button>
+
+<!-- 上部リンク -->
+      <div clas="link-top", style="margin: 20px; text-decoration: underline;">
+        <span class="nav-list-item">
+          <%= link_to "前のページに戻る", :back %>
+        </span>
+        <span class="nav-list-item", style="float: right; text-decoration: underline;">
+          <%= link_to "TOP画面に戻る", root_path %>
+        </span>
+      </div>
+
+
+			<h1 class="midashi">商品一覧</h1>
+			<hr>
+
+			<!--並び替え機能-->
+			<div class="pull-right sort", style="margin: 0 0 0 60px; background-color: rgba( 0, 0, 0, 0.1);">
+				Search Sort <span class="glyphicon glyphicon-search"></span>:
+                <button type="button" class="btn btn-link">
+                    <%= sort_link(@search, :cd_title, "追加日で並び替え") %>
+                </button>
+                <button type="button" class="btn btn-link">
+                    <%= sort_link(@search, :price, "価格で並び替え") %>
+                </button>
+				<button type="button" class="btn btn-link">
+                    <%= sort_link(@search, :start_date, "発売日で並び替え") %>
+                </button>
 			</div>
 
 
@@ -43,7 +65,7 @@
 
 <style type="text/css">
 		<!--
-		button a{color: #fff; font-size: 16px;}
+		button a{color: black; font-size: 15px;}
 		.sort{display: inline-block; margin:20px 0 10px 0;}
 		-->
 </style>
