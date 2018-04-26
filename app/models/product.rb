@@ -11,6 +11,8 @@ class Product < ApplicationRecord
 
   attachment :picture
 
+  enum product_flg: { false: false, true: true }
+
   def favorited_by?(user)
         favorites.where(user_id: user.id).exists?
   end
