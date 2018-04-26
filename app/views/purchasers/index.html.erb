@@ -17,11 +17,19 @@
       <h1 class="midashi">注文履歴一覧</h1>
       <hr>
 
-	  <table class = "table table table-hover">
+	  <table class = "table table-hover table-bordered">
+	  	<thead>
+	  		<tr class="info">
+	  			<td>商品情報</td>
+	  			<td>購入数 / 合計金額</td>
+	  			<td>購入日 / 発送状況</td>
+	  			<td>詳細リンク</td>
+	  		</tr>
+	  	</thead>
 	    <tbody>
 		  <% @purchasers.each do |p| %>
 		  <% receipts = Receipt.where(purchaser_id: p.id) %>
-		  <tr>
+		  <tr>   
             <td>
 		      <% total_price = 0 %><!--商品の価格を合計するため-->
 	          <% total_quantity = 0 %><!--個数を合計するため-->
