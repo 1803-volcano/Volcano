@@ -8,14 +8,14 @@
       <tbody>
         <tr>
           <th>メールアドレス</th>
-          <td><%= f.email_field :email, :size=>"60", autofocus: true, autocomplete: "email", placeholder:"例）abc@volcano.ne.jp" %><br />
+          <td><%= f.email_field :email, :size=>"60", autofocus: true, autocomplete: "email", placeholder:"例）abc@volcano.ne.jp", required: true %><br />
               ＊このメールアドレスがログイン時に必要になります</td>
         </tr>
         <tr>
           <th>パスワード</th>
-          <td><%= f.password_field :password, :size=>"60", autocomplete: "off", placeholder:"例）volcano1234" %>（半角英数字）<br />
+          <td><%= f.password_field :password, :size=>"60", autocomplete: "off", placeholder:"例）volcano1234", required: true %>（半角英数字）<br />
             ＊６〜１２文字で設定してください<br />
-            <%= f.password_field :password_confirmation, :size=>"60", autocomplete: "off", placeholder:"確認のためにもう一度" %></td>
+            <%= f.password_field :password_confirmation, :size=>"60", autocomplete: "off", placeholder:"確認のためにもう一度", required: true %></td>
         </tr>
         <tr>
           <th>氏名</th>
