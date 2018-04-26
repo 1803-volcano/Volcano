@@ -26,7 +26,7 @@
 					<h2><%= @product.cd_title %></h2>
 					<h4><b><%= @product.artist %></b></h4>
 					<hr>
-					<h3>価格（税込）：￥<%= @product.price %></h3>
+					<h3>価格（税込）：￥<%= number_with_delimiter(@product.price) %></h3>
 
 
                     <!-- カート、お気にボタン　-->

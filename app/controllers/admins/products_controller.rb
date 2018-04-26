@@ -1,10 +1,10 @@
 class Admins::ProductsController < ApplicationController
+    #before_action :authenticate_admin!
     protect_from_forgery except: :create
 
  def index
  	# @search = Product.search(params[:q])
- 	@search = Product.search(params[:q])
-    @products = @search.result && Product.true #検索かつフラグtrueのデータ
+    @products = @search.result
  	# @products = Product.page(params[:page]).reverse_order
  	#並び順も変えられる
  end
@@ -72,11 +72,20 @@ class Admins::ProductsController < ApplicationController
 
  def update
     @product = Product.find(params[:id])
-    if @product.update(product_params)#データがあるか否かで書き分け
-        redirect_to admins_products_path(admin_id: current_admin.id, product_id: @product.id)
-    else
-        render :edit
+
+    @product.update(product_params)
+
+    discs = Disc.where(product_id: @product.id)
+    discs.each do |d|
+        order = 1
+        songs = Tune.where(disc_id: d.id)
+        songs.each do |s|
+            s.order = order
+            s.update(disc_id: d.id)
+            order += 1
+        end
     end
+    redirect_to admins_products_path(admin_id: current_admin.id, product_id: @product.id)
  end
 
  def destroy
