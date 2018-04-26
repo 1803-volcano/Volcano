@@ -17,7 +17,7 @@
 
       <h1 class="midashi">会員情報の編集</h1>
       <hr>
-	  <%= form_for(@user) do |f| %>
+	  <%= form_for(@user, url: admins_user_path) do |f| %>
 		<table class="table">
 	      <tbody>
 			<tr>

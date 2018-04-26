@@ -2,7 +2,7 @@ class ProductsController < ApplicationController
 
  def index
  	# @search = Product.search(params[:q])
- 	@products = @search.result
+ 	@products = @search.result  && Product.true #検索かつフラグtrueのデータ
  	# @products = Product.page(params[:page]).reverse_order
  	#並び順も変えられる
  	@commites = Browsing.last(10) ##最新１０件取得
