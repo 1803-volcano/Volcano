@@ -17,6 +17,9 @@
  @import "bootstrap";
 
 
+body {
+  font-family: 'ヒラギノ明朝 ProN','Hiragino Mincho ProN','Meiryo UI','Didot','Marion','Sylfaen',sans-serif;
+}
 .table {
   border: solid 1px #e8e8e8;
   padding:10px;/* セル内に余白を空ける */
@@ -76,7 +79,7 @@ header .headline{
   background-position: center;
 }
 .sidebar{
-  height: 700px;
+  height: 800px;
   background-image: url(img/sub2.jpg);
   justify-content: center;
   position: -webkit-sticky;

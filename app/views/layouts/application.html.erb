@@ -7,6 +7,7 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://fonts.googleapis.com/css?family=Cormorant+Unicase|Jacques+Francois+Shadow" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Great+Vibes|Italianno|Tangerine" rel="stylesheet">
     <script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
 
 <!-- jquery読み込み様だが、今回は必要なし 画像エラーもrequire turbolinksを削除することで機能する
@@ -49,7 +50,7 @@
           <!--検索窓-->
           <%= search_form_for @search do |f| %>
           <span class="input-group">
-            <%= f.text_field :cd_title_or_artist_or_genre_or_label_cont, class: "form-control", :size=>"40",style: "margin: 8px 0;", placeholder: "キーワードを入力" %>
+            <%= f.text_field :cd_title_or_artist_or_genre_or_label_cont, class: "form-control", :size=>"40",style: "margin: 8px 0;", placeholder: "検索（CDタイトル、アーティスト名)" %>
             <span class="input-group-btn">
               <button type="submit" name="commit" value="検索" class="btn btn-default" data-disable-with="検索中">
                 <i class="glyphicon glyphicon-search" ></i>
@@ -86,6 +87,8 @@
 
     <footer>
       <div class="container">
+
+        <!-- Footer-Left -->
         <div class="col-xs-4 text-left" style="font-size: 20px;">
           CDジャンル
           <hr>
@@ -100,13 +103,38 @@
             <p><%= link_to "▶ アニメ", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"アニメ", "commit"=>"Search" }}) %></p>
           </div>
         </div>
+
+        <!-- Footer-Center -->
         <div class="col-xs-4 text-left" style="font-size: 20px;">
+        <% if user_signed_in? %>
           会員機能
           <hr>
           <div style="font-size: 20px;">
-
+            <p><%= link_to "▶ マイページ", user_path(current_user.id) %></p>
+            <p><%= link_to "▶ 購入履歴", user_purchasers_path(current_user.id) %></p>
+            <p><%= link_to "▶ お気に入り", favorites_path %></p>
+            <p><%= link_to "▶ 会員情報の編集", edit_user_path(current_user.id) %></p>
+            <p><%= link_to "▶ 退会手続き", unsubscribe_user_path(current_user.id) %></p>
           </div>
+        <% elsif admin_signed_in? %>
+          管理者機能一覧
+          <hr>
+          <div style="font-size: 20px;">
+            <div class="subteki", style="color: black;">・商品管理</div>
+              <p><%= link_to " ▶︎ 新規商品登録", new_admins_product_path %></p>
+              <p><%= link_to " ▶︎ 商品の編集/一覧", admins_products_path %></p>
+            <div class="subteki", style="color: black;">・受注管理</div>
+              <p><%= link_to " ▶︎ 注文履歴一覧", admins_purchasers_path %></p>
+            <div class="subteki", style="color: black;">・会員情報管理</div>
+              <p><%= link_to " ▶︎ 会員情報の編集/一覧", admins_users_path %></p>
+            <div class="subteki", style="color: black;">・その他</div>
+              <p><%= link_to " ▶︎ 管理Topページへ", admins_top_path(current_admin) %></p>
+              <p><%= link_to " ▶︎ 会員Topページへ", root_path %></p>
+          </div>
+        <% end %>
         </div>
+
+        <!-- Footer-Right -->
         <div class="col-xs-4 text-left" style="font-size: 20px;">
           その他
           <hr>

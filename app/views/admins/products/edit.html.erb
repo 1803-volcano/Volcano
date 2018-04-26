@@ -2,7 +2,19 @@
     <div class="row">
         <%= render partial: "top/sidebar" %>
         <div class="col-xs-10">
-            <h2 class="midashi form-header-title">商品の編集</h2>
+
+<!-- 上部リンク -->
+      <div clas="link-top", style="margin: 20px; text-decoration: underline;">
+        <span class="nav-list-item">
+          <%= link_to "前のページに戻る", :back %>
+        </span>
+        <span class="nav-list-item", style="float: right; text-decoration: underline;">
+          <%= link_to "TOP画面に戻る", admins_top_path(current_admin) %>
+        </span>
+      </div>
+
+           <div class="", style="width:80%; margin: 0 0 0 30px;">
+            <h1 class="midashi">商品の編集</h1>
             <hr>
 
 <!-- Nested Form Gem を使用 -->
@@ -51,7 +63,13 @@
                     <tr>
                         <td>
                             <label>価格</label><br>
-                            <%= f.text_field :price %>
+                            <%= f.number_field :price %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label>在庫数</label><br>
+                            <%= f.number_field :stock %>
                         </td>
                     </tr>
                     <tr>
@@ -66,29 +84,22 @@
                                 <label>ディスク名</label><br>
                                     <%= d.text_field :disc_name %>
                                     <%= d.link_to_remove "ディスクを削除" %><br>
+                                    <label>曲名</label><br>
                                     <%= d.fields_for :tunes do |t| %>
-                                        <label>曲名</label><br>
                                         <%= t.text_field :song_title %>
                                         <%= t.time_field :song_time %>
-                                        <br>
                                         <%= t.link_to_remove "曲を削除" %>
                                     <% end %>
-                                        <%= d.link_to_add "曲を追加", :tunes %>
+                                    <%= d.link_to_add "曲を追加", :tunes %>
                             <% end %>
-                                <%= f.link_to_add "ディスクを追加", :discs %>
+                            <%= f.link_to_add "ディスクを追加", :discs %>
                         </td>
                     </tr>
                     <tr>
                         <td>
 
                             <label>音楽データ</label><br>
-                            <%= f.text_field :sound_source %>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <label>在庫数</label><br>
-                            <%= f.text_field :stock %>
+                            <%= f.text_field :sound_source, :size=>"90" %>
                         </td>
                     </tr>
                     <tr>
@@ -103,7 +114,7 @@
             </table>
 <!-- </form> -->
 <% end %>
-
+</div>
 
 
 

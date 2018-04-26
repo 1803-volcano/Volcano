@@ -13,7 +13,7 @@
           </span>
         </div>
 
-
+            <div class="", style="width:80%; margin: 0 0 0 50px;">
 			<h1 class="midashi">商品詳細</h1>
 			<hr>
 
@@ -24,7 +24,7 @@
 
 				<div class="col-xs-7">
 					<h2><%= @product.cd_title %></h2>
-					<h5><b><%= @product.artist %></b></h5>
+					<h4><b><%= @product.artist %></b></h4>
 					<hr>
 					<h3>価格（税込）：￥<%= @product.price %></h3>
 
@@ -80,10 +80,10 @@
 					<% @discs.each do |disc| %>
 						<h6 style="margin-top: 30px;"><b>[ <%= disc.disc_name %> ]</b></h6>
 						<% tunes = Tune.order(:order).where(disc_id: disc.id).pluck(:id) %>
-						<table>
+						<table class="table-hover table-bordered">
 							<thead>
 								<tr>
-									<th colspan="2">タイトル</th>
+									<th width="300px;">タイトル>タイトル</th>
 									<th>再生時間</th>
 								</tr>
 							</thead>
@@ -92,7 +92,6 @@
 									<% tune = Tune.find(music) %>
 									<tr>
 										<td><%= tune.order %>.<%= tune.song_title %></td>
-										<td>　　　　　　　</td>
 										<td><%= tune.song_time.strftime('%H:%M') %></td>
 									</tr>
 								<% end %>
@@ -107,6 +106,7 @@
 			<!--音源-->
 			<iframe src="<%= @product.sound_source %>" width="100%" height="354" frameborder="0" allowtransparency="true" marginHeight="50"></iframe>
 
+            </div>
 		</div>
 	</div>
 </div>
