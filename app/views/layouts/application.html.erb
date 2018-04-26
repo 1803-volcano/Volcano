@@ -7,6 +7,7 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://fonts.googleapis.com/css?family=Cormorant+Unicase|Jacques+Francois+Shadow" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Great+Vibes|Italianno|Tangerine" rel="stylesheet">
     <script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
 
 <!-- jquery読み込み様だが、今回は必要なし 画像エラーもrequire turbolinksを削除することで機能する
@@ -49,7 +50,7 @@
           <!--検索窓-->
           <%= search_form_for @search do |f| %>
           <span class="input-group">
-            <%= f.text_field :cd_title_or_artist_or_genre_or_label_cont, class: "form-control", :size=>"40",style: "margin: 8px 0;", placeholder: "キーワードを入力" %>
+            <%= f.text_field :cd_title_or_artist_or_genre_or_label_cont, class: "form-control", :size=>"40",style: "margin: 8px 0;", placeholder: "検索（CDタイトル、アーティスト名)" %>
             <span class="input-group-btn">
               <button type="submit" name="commit" value="検索" class="btn btn-default" data-disable-with="検索中">
                 <i class="glyphicon glyphicon-search" ></i>
