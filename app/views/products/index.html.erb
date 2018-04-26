@@ -45,7 +45,7 @@
 							<label>アーティスト: </label><%= product.artist %>
 						</td>
 
-						<td>￥<%= product.price %></td>
+						<td>￥<%= number_with_delimiter(product.price) %></td>
 
 						<td>
                         <% if user_signed_in? %>
