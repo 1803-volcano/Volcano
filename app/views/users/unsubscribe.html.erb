@@ -40,19 +40,18 @@
 
 
         <%= form_for(@user) do |f| %>
-          <%= link_to user_path(current_user) do %>
           <div class="", style="margin: 0 0 0 100px;">
-          <button type="button" class="btn btn-danger", style="display: inline-block; width: 300px; margin: 10px; color:">
+            <%= link_to user_path(current_user) do %>
+              <button type="button" class="btn btn-danger", style="display: inline-block; width: 300px; margin: 10px;">
                 キャンセル
               </button>
             <% end %>
             <input type="hidden" name="user[customer_flg]" value="false">
-              <button type="submit" class="btn btn-danger", style="display: inline-block; width: 300px; margin: 10px;">
-                退会手続きを進める
+            <button type="submit" class="btn btn-danger", style="display: inline-block; width: 300px; margin: 10px;">退会手続きを進める
             </button>
           </div>
         <% end %>
+      </div>
     </div>
-  </div>
   </div>
 </div>
