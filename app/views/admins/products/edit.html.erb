@@ -25,13 +25,13 @@
                     <tr>
                         <td width="500", height="60">
                             <label>タイトル:</label><br>
-                            <%= f.text_field :cd_title %>
+                            <%= f.text_field :cd_title, required:true %>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <label>アーティスト:</label><br>
-                            <%= f.text_field :artist %>
+                            <%= f.text_field :artist, required:true %>
                         </td>
                     </tr>
                     <tr>
@@ -43,7 +43,7 @@
                     <tr>
                         <td>
                             <label>レーベル</label><br>
-                            <%= f.text_field :label %>
+                            <%= f.text_field :label, required:true %>
                         </td>
                     </tr>
                     <tr>
@@ -63,31 +63,31 @@
                     <tr>
                         <td>
                             <label>価格</label><br>
-                            <%= f.number_field :price %>
+                            <%= f.number_field :price, required:true %>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <label>在庫数</label><br>
-                            <%= f.number_field :stock %>
+                            <%= f.number_field :stock, min:0, required:true %>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <label>発売日</label><br>
-                            <%= f.date_field :start_date %>
+                            <%= f.date_field :start_date, required:true %>
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <%= f.fields_for :discs do |d| %>
                                 <label>ディスク名</label><br>
-                                    <%= d.text_field :disc_name %>
+                                    <%= d.text_field :disc_name, required:true %>
                                     <%= d.link_to_remove "ディスクを削除" %><br>
                                     <label>曲名</label><br>
                                     <%= d.fields_for :tunes do |t| %>
-                                        <%= t.text_field :song_title %>
-                                        <%= t.time_field :song_time %>
+                                        <%= t.text_field :song_title, required:true %>
+                                        <%= t.time_field :song_time, required:true %>
                                         <%= t.link_to_remove "曲を削除" %>
                                     <% end %>
                                     <%= d.link_to_add "曲を追加", :tunes %>
