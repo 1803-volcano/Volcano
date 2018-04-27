@@ -56,7 +56,9 @@
 						<label>アーティスト: </label><%= product.artist %>
 						</td>
 					    <td>￥<%= number_with_delimiter(product.price) %><br>
-						<%= product.product_flg %>
+					    	<% if product.product_flg == "false" %>
+					    	<h5 style="color: red;">販売停止中</h3>
+					    	<% end %>
 					    </td>
 					    <td>
 						<%= link_to '編集', edit_admins_product_path(product.id) %>
