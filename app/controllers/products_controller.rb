@@ -2,7 +2,8 @@ class ProductsController < ApplicationController
 
  def index
  	# @search = Product.search(params[:q])
- 	@products = @search.result  && Product.true #検索かつフラグtrueのデータ
+ 	products = @search.result# && Product.true #検索かつフラグtrueのデータ 検索機能が無効にされるので修正
+ 	@products = products.where(product_flg: true)
  	# @products = Product.page(params[:page]).reverse_order
  	#並び順も変えられる
  	@commites = Browsing.last(10) ##最新１０件取得

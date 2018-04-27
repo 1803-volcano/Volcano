@@ -21,8 +21,12 @@ class CartsController < ApplicationController
  end
 
  def select
- 	@quantity = params[:quantity]
+ 	if @quantity = params[:quantity]
  	@commites = Browsing.last(10) ##最新１０件取得
+ 	else
+ 		cart = Cart.where(user_id: current_user.id).pluck(:id)
+ 		redirect_to cart_path(cart)
+ 	end
  end
 
  def confirm

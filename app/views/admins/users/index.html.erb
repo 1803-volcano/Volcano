@@ -20,18 +20,18 @@
 
 
 	  	<!--並び替え機能-->
-	  <div class="pull-left sort", style="margin: 0 0 0 60px; background-color: rgba( 0, 0, 0, 0.1);">
+	  <div class="pull-right sort", style="margin: 0 0 0 60px; background-color: rgba( 0, 0, 0, 0.1);">
 		Search Sort <span class="glyphicon glyphicon-search"></span>:
         <button type="button" class="btn btn-link">
-          <%= sort_link(@search, :name_sei, "名前で並び替え") %>
+          <%= sort_link(@search_user, :name_sei, "名前で並び替え") %>
         </button>
         <button type="button" class="btn btn-link">
-          <%= sort_link(@search, :region, "住所で並び替え") %>
+          <%= sort_link(@search_user, :region, "住所で並び替え") %>
         </button>
       </div>
 
 
-      <table class = "table table table-hover table-bordered", style="width: 90%;">
+      <table class = "table table table-hover table-bordered", style="width: 95%;">
 	  	<thead>
 	  		<tr class="info">
 	  			<td width="600">会員情報</td>
@@ -62,6 +62,8 @@
   </div>
 </div>
 </div>
+
+
 
 <style type="text/css">
 		<!--
