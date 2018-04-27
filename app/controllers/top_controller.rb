@@ -6,5 +6,17 @@ class TopController < ApplicationController
  	@commites = Browsing.last(10) ##最新１０件取得
  end
 
+ def cantact
+ end
+
+ def about
+ end
+
+ def genre
+ end
+
+ def company
+ end
+
 end
 

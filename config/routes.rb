@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
   root 'top#show'
 
+  get 'top/contact' => 'top#contact', as: 'contact_top'
+  get 'top/about' => 'top#about', as: 'about_top'
   get 'top/genre' => 'top#genre', as: 'genre_top'
   get 'top/company' => 'top#company', as: 'company_top'
 

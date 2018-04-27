@@ -1,0 +1,52 @@
+ <div class="container">
+  <div class="row content">
+    <%= render partial: "top/sidebar" %>
+    <div class="main col-xs-10 text-left">
+
+      <!-- 上部リンク -->
+      <div clas="link-top", style="margin: 20px; text-decoration: underline;">
+        <span class="nav-list-item">
+          <%= link_to "前のページに戻る", :back %>
+        </span>
+        <span class="nav-list-item", style="float: right; text-decoration: underline;">
+          <%= link_to "TOP画面に戻る", root_path %>
+        </span>
+      </div>
+
+      <h2 class="text-center", style="margin-top: 80px;">運営サイト情報</h2>
+      <hr>
+
+      <table class="table">
+        <tbody>
+          <tr>
+            <th>商号</th>
+            <td>ボルケーノ株式会社(Volcano CO.,LTD.)</td>
+          </tr>
+          <tr>
+            <th>所在地</th>
+            <td>〒000-0000<br>
+                東京都渋谷区ボルケーノ通りボルケーノ町１−１−１
+            </td>
+          </tr>
+          <tr>
+            <th>電話</th>
+            <td>秘密</td>
+          </tr>
+          <tr>
+            <th>代表取締役</th>
+            <td>秘密</td>
+          </tr>
+          <tr>
+            <th>事業内容</th>
+            <td>特に何も</td>
+          </tr>
+          <tr>
+            <th>主要取引先</th>
+            <td>色々</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>
