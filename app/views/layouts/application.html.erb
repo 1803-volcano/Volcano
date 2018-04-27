@@ -63,7 +63,7 @@
           <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
               <% if user_signed_in? %>
-              <li><a href="/users/<%= current_user.id %>" class="glyphicon glyphicon glyphicon-star"> マイページ</a></li>
+              <li><a href="/users/mypage" class="glyphicon glyphicon glyphicon-star"> マイページ</a></li>
               <li><a href="/carts/<%= current_user.id %>" class="glyphicon glyphicon-shopping-cart"> カート</a></li>
               <li><a href="/users/sign_out" class="glyphicon glyphicon-log-out" data-method="delete"> ログアウト</a></li>
               <% elsif admin_signed_in? %>
@@ -93,14 +93,15 @@
           CDジャンル
           <hr>
           <div style="font-size: 20px;">
-            <p><%= link_to "▶ J-POP", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"J-POP", "commit"=>"Search" }}) %></p>
-            <p><%= link_to "▶ ロック＆ポップス", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"ロック＆ポップス", "commit"=>"Search" }}) %></p>
-            <p><%= link_to "▶ R＆B/ソウル", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"R＆B/ソウル", "commit"=>"Search" }}) %></p>
-            <p><%= link_to "▶ ヒップホップ", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"ヒップホップ", "commit"=>"Search" }}) %></p>
-            <p><%= link_to "▶ クラブ/ダンス", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"クラブ/ダンス", "commit"=>"Search" }}) %></p>
-            <p><%= link_to "▶ ワールド", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"ワールド", "commit"=>"Search" }}) %></p>
-            <p><%= link_to "▶ 洋楽", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"洋楽", "commit"=>"Search" }}) %></p>
-            <p><%= link_to "▶ アニメ", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"アニメ", "commit"=>"Search" }}) %></p>
+            <p><%= link_to " ▶ J-POP", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"J-POP", "commit"=>"Search" }}) %></p>
+            <p><%= link_to " ▶ ロック＆ポップス", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"ロック＆ポップス", "commit"=>"Search" }}) %></p>
+            <p><%= link_to " ▶ R＆B/ソウル", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"R＆B/ソウル", "commit"=>"Search" }}) %></p>
+            <p><%= link_to " ▶ ヒップホップ", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"ヒップホップ", "commit"=>"Search" }}) %></p>
+            <p><%= link_to " ▶ ジャズ/ブルース", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"ジャズ/ブルース", "commit"=>"Search" }}) %></p>
+            <p><%= link_to " ▶ クラブ/ダンス", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"クラブ/ダンス", "commit"=>"Search" }}) %></p>
+            <p><%= link_to " ▶ クラシック", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"クラシック", "commit"=>"Search" }}) %></p>
+            <p><%= link_to " ▶ サウンドトラック", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"サウンドトラック", "commit"=>"Search" }}) %></p>
+            <p><%= link_to " ▶ アニメーション", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"アニメーション", "commit"=>"Search" }}) %></p>
           </div>
         </div>
 
@@ -110,10 +111,10 @@
           会員機能
           <hr>
           <div style="font-size: 20px;">
-            <p><%= link_to "▶ マイページ", user_path(current_user.id) %></p>
+            <p><%= link_to "▶ マイページ", mypage_user_path %></p>
             <p><%= link_to "▶ 購入履歴", user_purchasers_path(current_user.id) %></p>
             <p><%= link_to "▶ お気に入り", favorites_path %></p>
-            <p><%= link_to "▶ 会員情報の編集", edit_user_path(current_user.id) %></p>
+            <p><%= link_to "▶ アカウント情報", user_path(current_user.id) %></p>
             <p><%= link_to "▶ 退会手続き", unsubscribe_user_path(current_user.id) %></p>
           </div>
         <% elsif admin_signed_in? %>
