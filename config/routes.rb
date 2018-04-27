@@ -14,6 +14,9 @@ Rails.application.routes.draw do
 
   root 'top#show'
 
+  get 'top/genre' => 'top#genre', as: 'genre_top'
+  get 'top/company' => 'top#company', as: 'company_top'
+
   resources :products, only: [:index, :show] do
     resource :cart_items, only: [:create]
     resource :browsings, only: [:create, :destroy]
@@ -35,6 +38,7 @@ Rails.application.routes.draw do
   post '/carts/:id/confirm' => 'carts#purchase'
   get '/carts/:id/complete' => 'carts#complete', as: 'complete_cart'
 
+  get '/users/mypage' => 'users#mypage', as: 'mypage_user'
   resources :users, only: [:show, :edit, :update] do
     resources :purchasers, only: [:index, :show]
     #resources :favorites, only: [:index]

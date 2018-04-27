@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+	  <%= render partial: "top/sidebar" %>
+	  <div class="main col-xs-10">
+
+
+      <div clas="link-top", style="margin: 20px; text-decoration: underline;">
+        <span class="nav-list-item">
+          <%= link_to "前のページに戻る", :back %>
+        </span>
+        <span class="nav-list-item", style="float: right; text-decoration: underline;">
+          <%= link_to "TOP画面に戻る", root_path %>
+        </span>
+      </div>
+
+
+	    <h1 class="midashi">マイページ</h1>
+		  <hr>
+      <div style="width: 70%; margin: auto;">
+
+        <%= link_to user_purchasers_path(current_user.id) do %>
+          <button type="button" class="btn btn-default btn-lg btn-block" style="margin:20px;">
+	        <span class="glyphicon glyphicon-gift" aria-hidden="true" style="font-size: 40px; color: pink;"></span>  購入履歴</button>
+        <% end %>
+
+        <%= link_to favorites_path do %>
+          <button type="button" class="btn btn-default btn-lg btn-block" style="margin:20px;">
+	        <span class="glyphicon glyphicon-star" aria-hidden="true" style="font-size: 40px; color: gold;"></span>  お気に入り</button>
+        <% end %>
+
+        <%= link_to user_path(current_user.id) do %>
+          <button type="button" class="btn btn-default btn-lg btn-block" style="margin:20px;">
+	        <span class="glyphicon glyphicon-lock" aria-hidden="true" style="font-size: 40px; color: green;"></span>  アカウント情報</button>
+        <% end %>
+
+        <%= link_to unsubscribe_user_path(current_user.id) do %>
+          <button type="button" class="btn btn-default btn-lg btn-block" style="margin:20px;">
+	        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true" style="font-size: 40px; color: red;"></span>  退会手続き（アカウント停止について）</button>
+        <% end %>
+
+
+        </div>
+      </div>
+	  </div>
+  </div>
+</div>
