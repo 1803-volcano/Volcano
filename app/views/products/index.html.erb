@@ -17,8 +17,11 @@
 			<h1 class="midashi">商品一覧</h1>
 			<hr>
 
+        <div style="background-color: rgba( 0, 0, 0, 0.1); margin-left: 50px; height: 36px; display: flex; justify-content: center; align-items: center; width: 944px;">
+            <span><%= page_entries_info @products %></span>
+
 			<!--並び替え機能-->
-			<div class="pull-right sort", style="margin: 0 0 0 60px; background-color: rgba( 0, 0, 0, 0.1);">
+			<span class="pull-right sort", style="margin: 0 0 0 60px; font-size: 17px;">
 				Search Sort <span class="glyphicon glyphicon-search"></span>:
                 <button type="button" class="btn btn-link">
                     <%= sort_link(@search, :cd_title, "CDタイトル") %>
@@ -32,11 +35,10 @@
 				<!--<button type="button" class="btn btn-link">
                     <%= sort_link(@search, :start_date, "発売日で並び替え") %>
                 </button>-->
-			</div>
+			</span>
+        </div>
 
-            <%= page_entries_info @products %>
-
-			<table class = "table table-hover">
+			<table class = "table table-hover" style="margin-top:0;">
 				<tbody>
 					<% @products.each do |product| %>
 					<tr>
@@ -55,14 +57,14 @@
                         <% if user_signed_in? %>
                             <%= link_to product_browsings_path(product), method: :post do %>
                             <button type="button" class="btn btn-link", style="display: block;">
-                                <span class="glyphicon glyphicon-play-circle" aria-hidden="true" style="font-size: 30px; color: orange;"></span>
+                                <span class="glyphicon glyphicon-link" aria-hidden="true" style="font-size: 30px; color: #808000;"></span>
                             詳細ページへ
                             </button>
                             <% end %>
                         <% else %>
                             <%= link_to product_path(product) do %>
                             <button type="button" class="btn btn-link", style="display: block;">
-                                <span class="glyphicon glyphicon-play-circle" aria-hidden="true" style="font-size: 30px; color: orange;"></span>
+                                <span class="glyphicon glyphicon-link" aria-hidden="true" style="font-size: 30px; color: #808000;"></span>
                             詳細ページへ
                             </button>
                             <% end %>
@@ -105,8 +107,8 @@
 
 <style type="text/css">
 		<!--
-		button a{color: black; font-size: 15px;}
-		.sort{display: inline-block; margin: 20px 10px 0 0;}
+		button a{color: black; font-size: 17px;}
+		.sort{display: inline-block;}
 		-->
 </style>
 

@@ -18,9 +18,11 @@
 	  <h1 class="midashi">会員一覧</h1>
 	  <hr>
 
+	<div style="background-color: rgba( 0, 0, 0, 0.1); margin-left: 50px; height: 36px; display: flex; justify-content: center; align-items: center; width: 95%;">
+	  <span><%= page_entries_info @users %></span>
 
 	  	<!--並び替え機能-->
-	  <div class="pull-right sort", style="margin: 0 0 0 60px; background-color: rgba( 0, 0, 0, 0.1);">
+	  <span class="pull-right sort", style="margin: 0 0 0 60px; font-size: 17px;">
 		Search Sort <span class="glyphicon glyphicon-search"></span>:
         <button type="button" class="btn btn-link">
           <%= sort_link(@search_user, :name_sei, "名前で並び替え") %>
@@ -28,11 +30,10 @@
         <button type="button" class="btn btn-link">
           <%= sort_link(@search_user, :region, "住所で並び替え") %>
         </button>
-      </div>
+      </span>
+    </div>
 
-      <%= page_entries_info @users %>
-
-      <table class = "table table table-hover table-bordered", style="width: 95%;">
+      <table class = "table table table-hover table-bordered", style="width: 95%; margin-top: 0;">
 	  	<thead>
 	  		<tr class="info">
 	  			<td width="600">会員情報</td>
@@ -71,7 +72,7 @@
 
 <style type="text/css">
 		<!--
-		button a{color: black; font-size: 15px;}
+		button a{color: black; font-size: 17px;}
 		.sort{display: inline-block; margin:20px 10px 0 0;}
 		-->
 </style>
