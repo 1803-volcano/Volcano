@@ -1,0 +1,27 @@
+ <div class="container">
+  <div class="row content">
+    <%= render partial: "top/sidebar" %>
+    <div class="main col-xs-10 text-left">
+
+      <!-- 上部リンク -->
+      <div clas="link-top", style="margin: 20px; text-decoration: underline;">
+        <span class="nav-list-item">
+          <%= link_to "前のページに戻る", :back %>
+        </span>
+        <span class="nav-list-item", style="float: right; text-decoration: underline;">
+          <%= link_to "TOP画面に戻る", root_path %>
+        </span>
+      </div>
+
+      <h2 class="text-center", style="margin-top: 80px;">Volcano OnLineShopについて</h2>
+      <hr>
+      <div style="font-size: 30px; text-align: left; margin: 50px;">フィクションにつき、当サイトでは何も販売しておりません
+      会員様におかれましては、一切のご購入が行えませんのでご了承ください</div>
+
+      <%= image_tag ('img/test3.jpg') %>
+
+
+
+    </div>
+  </div>
+</div>
