@@ -22,11 +22,11 @@
 	      <tbody>
 			<tr>
 			  <th>氏名</th>
-              <td>姓　<%= f.text_field :name_sei, placeholder:"例）渋谷" %>名　<%= f.text_field :name_mei, placeholder:"例）太郎" %>（全角）</td>
+              <td>姓　<%= f.text_field :name_sei, placeholder:"例）渋谷", required: true %>名　<%= f.text_field :name_mei, placeholder:"例）太郎", required: true %>（全角）</td>
 			</tr>
 			<tr>
 			  <th>フリガナ</th>
-			  <td>セイ<%= f.text_field :name_kana_sei, placeholder:"例）シブヤ" %>メイ<%= f.text_field :name_kana_mei, placeholder:"例）タロウ" %>（全角カナ）</td>
+			  <td>セイ<%= f.text_field :name_kana_sei, placeholder:"例）シブヤ", required: true %>メイ<%= f.text_field :name_kana_mei, placeholder:"例）タロウ", required: true %>（全角カナ）</td>
 			</tr>
 			<tr>
 		      <th>生年月日</th>
@@ -49,26 +49,26 @@
 			</tr>
 			<tr>
 			  <th>都道府県</th>
-			  <td><%= f.text_field :region, :size=>"30", placeholder:"例）東京都" %></td>
+			  <td><%= f.text_field :region, :size=>"30", placeholder:"例）東京都", required: true %></td>
 			</tr>
 			<tr>
 			  <th>市区町村以下</th>
-			  <td><%= f.text_field :street, :size=>"60", placeholder:"例）港区麻布１−２−３タワーマンション２０１" %></td>
+			  <td><%= f.text_field :street, :size=>"60", placeholder:"例）港区麻布１−２−３タワーマンション２０１", required: true %></td>
 			</tr>
 			<tr>
 			  <th>電話番号</th>
-			  <td><%= f.text_field :phone, :size=>"30", placeholder:"例）09012345678"  %>（半角数字　ハイフン入力不要）</td>
+			  <td><%= f.text_field :phone, :size=>"30", placeholder:"例）09012345678", required: true  %>（半角数字　ハイフン入力不要）</td>
 			</tr>
 			<tr>
 			  <th>メールアドレス</th>
-			  <td><%= f.email_field :email, :size=>"60", placeholder:"例）abc@volcano.ne.jp"  %></td>
+			  <td><%= f.email_field :email, :size=>"60", placeholder:"例）abc@volcano.ne.jp", required: true  %></td>
 			</tr>
 
 
 			<!-- flg確認用test
 			<tr>
 			  <th>flg</th>
-			  <td><%= f.text_field :customer_flg, :size=>"60", placeholder:"例）abc@volcano.ne.jp"  %></td>
+			  <td><%= f.text_field :customer_flg, :size=>"60", placeholder:"例）abc@volcano.ne.jp", required: true %></td>
 			</tr> -->
 						<!-- password -->
 			  <!-- <tr>
