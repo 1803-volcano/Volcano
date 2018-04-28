@@ -4,9 +4,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  #def active_for_authentication?
-    #super && self.customer_flg?
-  #end
+  def active_for_authentication?
+    super && self.customer_flg?
+  end
 
   def inactive_message
     self.customer_flg? ? super : :special_condition_is_not_valid
