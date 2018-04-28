@@ -88,11 +88,12 @@
     <footer>
       <div class="container">
 
+　　　 <% if user_signed_in? %>
         <!-- Footer-Left -->
         <div class="col-xs-4 text-left" style="font-size: 20px;">
           CDジャンル
           <hr>
-          <div style="font-size: 20px;">
+          <div style="font-size: 18px;">
             <p><%= link_to " ▶ J-POP", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"J-POP", "commit"=>"Search" }}) %></p>
             <p><%= link_to " ▶ ロック＆ポップス", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"ロック＆ポップス", "commit"=>"Search" }}) %></p>
             <p><%= link_to " ▶ R＆B/ソウル", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"R＆B/ソウル", "commit"=>"Search" }}) %></p>
@@ -104,23 +105,52 @@
             <p><%= link_to " ▶ アニメーション", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"アニメーション", "commit"=>"Search" }}) %></p>
           </div>
         </div>
-
         <!-- Footer-Center -->
         <div class="col-xs-4 text-left" style="font-size: 20px;">
-        <% if user_signed_in? %>
           会員機能
           <hr>
-          <div style="font-size: 20px;">
+          <div style="font-size: 18px;">
             <p><%= link_to "▶ マイページ", mypage_user_path %></p>
             <p><%= link_to "▶ 購入履歴", user_purchasers_path(current_user.id) %></p>
             <p><%= link_to "▶ お気に入り", favorites_path %></p>
             <p><%= link_to "▶ アカウント情報", user_path(current_user.id) %></p>
             <p><%= link_to "▶ 退会手続き", unsubscribe_user_path(current_user.id) %></p>
           </div>
-        <% elsif admin_signed_in? %>
+        </div>
+        <!-- Footer-Right -->
+        <div class="col-xs-3 text-left" style="font-size: 20px;">
+          その他
+          <hr>
+          <div style="font-size: 18px;">
+            <p><%= link_to " ▶︎ お問い合わせ",  contact_top_path %></p>
+            <p><%= link_to " ▶︎ Volcanoオンラインについて", about_top_path %></p>
+            <p><%= link_to " ▶︎ CDジャンル区分について", genre_top_path %></p>
+            <p><%= link_to " ▶︎ 会社概要", company_top_path %></p>
+          </div>
+        </div>
+
+      <% elsif admin_signed_in? %>
+        <!-- Footer-Left -->
+        <div class="col-xs-4 text-left" style="font-size: 20px;">
+          CDジャンル
+          <hr>
+          <div style="font-size: 18px;">
+            <p><%= link_to " ▶ J-POP", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"J-POP", "commit"=>"Search" }}) %></p>
+            <p><%= link_to " ▶ ロック＆ポップス", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"ロック＆ポップス", "commit"=>"Search" }}) %></p>
+            <p><%= link_to " ▶ R＆B/ソウル", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"R＆B/ソウル", "commit"=>"Search" }}) %></p>
+            <p><%= link_to " ▶ ヒップホップ", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"ヒップホップ", "commit"=>"Search" }}) %></p>
+            <p><%= link_to " ▶ ジャズ/ブルース", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"ジャズ/ブルース", "commit"=>"Search" }}) %></p>
+            <p><%= link_to " ▶ クラブ/ダンス", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"クラブ/ダンス", "commit"=>"Search" }}) %></p>
+            <p><%= link_to " ▶ クラシック", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"クラシック", "commit"=>"Search" }}) %></p>
+            <p><%= link_to " ▶ サウンドトラック", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"サウンドトラック", "commit"=>"Search" }}) %></p>
+            <p><%= link_to " ▶ アニメーション", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"アニメーション", "commit"=>"Search" }}) %></p>
+          </div>
+        </div>
+        <!-- Footer-Center -->
+        <div class="col-xs-4 text-left" style="font-size: 20px;">
           管理者機能一覧
           <hr>
-          <div style="font-size: 20px;">
+          <div style="font-size: 18px;">
             <div class="subteki", style="color: black;">・商品管理</div>
               <p><%= link_to " ▶︎ 新規商品登録", new_admins_product_path %></p>
               <p><%= link_to " ▶︎ 商品の編集/一覧", admins_products_path %></p>
@@ -132,23 +162,53 @@
               <p><%= link_to " ▶︎ 管理Topページへ", admins_top_path(current_admin) %></p>
               <p><%= link_to " ▶︎ 会員Topページへ", root_path %></p>
           </div>
-        <% end %>
         </div>
-
         <!-- Footer-Right -->
-        <div class="col-xs-4 text-left" style="font-size: 20px;">
+        <div class="col-xs-3 text-left" style="font-size: 20px;">
           その他
           <hr>
-　        <div style="font-size:20px;">
+          <div style="font-size: 18px;">
             <p><%= link_to " ▶︎ お問い合わせ",  contact_top_path %></p>
             <p><%= link_to " ▶︎ Volcanoオンラインについて", about_top_path %></p>
             <p><%= link_to " ▶︎ CDジャンル区分について", genre_top_path %></p>
             <p><%= link_to " ▶︎ 会社概要", company_top_path %></p>
-
           </div>
         </div>
+
+      <% else %>
+        <!-- Footer-Left -->
+        <div class="col-xs-6 text-left" style="font-size: 20px;">
+          CDジャンル
+          <hr>
+          <div style="font-size: 18px;">
+            <p><%= link_to " ▶ J-POP", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"J-POP", "commit"=>"Search" }}) %></p>
+            <p><%= link_to " ▶ ロック＆ポップス", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"ロック＆ポップス", "commit"=>"Search" }}) %></p>
+            <p><%= link_to " ▶ R＆B/ソウル", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"R＆B/ソウル", "commit"=>"Search" }}) %></p>
+            <p><%= link_to " ▶ ヒップホップ", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"ヒップホップ", "commit"=>"Search" }}) %></p>
+            <p><%= link_to " ▶ ジャズ/ブルース", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"ジャズ/ブルース", "commit"=>"Search" }}) %></p>
+            <p><%= link_to " ▶ クラブ/ダンス", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"クラブ/ダンス", "commit"=>"Search" }}) %></p>
+            <p><%= link_to " ▶ クラシック", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"クラシック", "commit"=>"Search" }}) %></p>
+            <p><%= link_to " ▶ サウンドトラック", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"サウンドトラック", "commit"=>"Search" }}) %></p>
+            <p><%= link_to " ▶ アニメーション", products_path({"utf8"=>"✓", "q"=>{"genre_cont"=>"アニメーション", "commit"=>"Search" }}) %></p>
+          </div>
+        </div>
+        <!-- Footer-Right -->
+        <div class="col-xs-5 text-left" style="font-size: 20px;">
+          その他
+          <hr>
+          <div style="font-size: 18px;">
+            <p><%= link_to " ▶︎ お問い合わせ",  contact_top_path %></p>
+            <p><%= link_to " ▶︎ Volcanoオンラインについて", about_top_path %></p>
+            <p><%= link_to " ▶︎ CDジャンル区分について", genre_top_path %></p>
+            <p><%= link_to " ▶︎ 会社概要", company_top_path %></p>
+          </div>
+        </div>
+      <% end %>
+
       </div>
     </footer>
   </body>
 </html>
+
+
 
