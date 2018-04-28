@@ -27,13 +27,21 @@
                     <tr>
                         <td width="500", height="60">
                             <label>タイトル:</label><br>
-                            <input type="text" name="cd_title" size="60" required>
+                            <input type="text" name="cd_title" size="60" required><br>
+                            <label>フリガナ:</label>
+                            <input type="text" name="cd_kana" size="52"><br>
+                            <label>ふりがな:</label>
+                            <input type="text" name="cd_hira" size="52">
                         </td>
                     </tr>
                     <tr>
                         <td>
                             <label>アーティスト:</label><br>
-                            <input type="text" name="artist" size="60" required>
+                            <input type="text" name="artist" size="60" required><br>
+                            <label>フリガナ:</label>
+                            <input type="text" name="a_kana" size="52"><br>
+                            <label>ふりがな:</label>
+                            <input type="text" name="a_hira" size="52">
                         </td>
                     </tr>
                     <tr>
@@ -98,7 +106,7 @@
                                         <label>曲名</label><br>
                                         <div data-repeater-list="song">
                                             <div data-repeater-item>
-                                                <input type="text" name="song_title" placeholder="例）曲名" required/>
+                                                <input type="text" name="song_title" placeholder="例）曲名" size="50" required/>
                                                 <input type="time" name="song_time" required/>
                                                 <input data-repeater-delete type="button" value="曲を削除" />
                                             </div>

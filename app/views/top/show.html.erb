@@ -1,15 +1,27 @@
 
 <!-- 上部スライダー -->
-  <ul class="bxslider-top">
+  <div class="bxslider-top">
+    <p><%= link_to products_path({"utf8"=>"✓", "q"=>{"artist_cont"=>"crazyboy", "commit"=>"Search" }}) do %>
+       <%= image_tag ('img/hed1.jpg') %>
+       <% end %></p>
+    <p><%= link_to products_path({"utf8"=>"✓", "q"=>{"artist_cont"=>"乃木坂", "commit"=>"Search" }}) do %>
+       <%= image_tag ('img/hed2.jpg') %>
+       <% end %></p>
+    <p><%= link_to products_path({"utf8"=>"✓", "q"=>{"artist_cont"=>"twice", "commit"=>"Search" }}) do %>
+       <%= image_tag ('img/hed3.jpg') %>
+       <% end %></p>
+    <p><%= link_to products_path({"utf8"=>"✓", "q"=>{"artist_cont"=>"和楽器", "commit"=>"Search" }}) do %>
+       <%= image_tag ('img/hed4.jpg') %>
+       <% end %></p>
+    <p><%= link_to products_path({"utf8"=>"✓", "q"=>{"artist_cont"=>"aquatimz", "commit"=>"Search" }}) do %>
+       <%= image_tag ('img/hed5.jpg') %>
+       <% end %></p>
+    <p><%= link_to products_path({"utf8"=>"✓", "q"=>{"artist_cont"=>"e-girls", "commit"=>"Search" }}) do %>
+       <%= image_tag ('img/hed6.jpg') %>
+       <% end %></p>
+  </div>
 
-    <li><%= image_tag ('img/test7.jpg') %></li>
-    <li><%= image_tag ("img/tes5.jpg") %></li>
-    <li><%= image_tag ('img/tes4.jpg') %></li>
-    <li><%= image_tag ('img/tes1.jpg') %></li>
-    <li><%= image_tag ('img/tes2.jpg') %></li>
-    <li><%= image_tag ('img/tes3.jpg')%></li>
 
-  </ul>
 
 
   <div class="container">
