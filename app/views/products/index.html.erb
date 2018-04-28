@@ -21,14 +21,17 @@
 			<div class="pull-right sort", style="margin: 0 0 0 60px; background-color: rgba( 0, 0, 0, 0.1);">
 				Search Sort <span class="glyphicon glyphicon-search"></span>:
                 <button type="button" class="btn btn-link">
-                    <%= sort_link(@search, :cd_title, "追加日で並び替え") %>
+                    <%= sort_link(@search, :cd_title, "CDタイトル") %>
+                </button>
+                <button type="button" class="btn btn-link">
+                    <%= sort_link(@search, :id, "追加日で並び替え") %>
                 </button>
                 <button type="button" class="btn btn-link">
                     <%= sort_link(@search, :price, "価格で並び替え") %>
                 </button>
-				<button type="button" class="btn btn-link">
+				<!--<button type="button" class="btn btn-link">
                     <%= sort_link(@search, :start_date, "発売日で並び替え") %>
-                </button>
+                </button>-->
 			</div>
 
 

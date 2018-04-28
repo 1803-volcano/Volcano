@@ -29,8 +29,9 @@
 					<hr>
 					<h3>価格（税込）：￥<%= number_with_delimiter(@product.price) %></h3>
                     <h3>在庫数　：<%= @product.stock %></h3>
-                    <h3><%= @product.product_flg %></h3>
-
+                    <% if @product.product_flg == "false" %>
+                    <h3 style="color: red;">販売停止中</h3>
+                    <% end %>
 				</div>
 			</div>
 
@@ -82,9 +83,15 @@
                       編集ページへ
                     </button>
                   <% end %>
+                  <% if @product.product_flg == "true" %>
                     <input type="hidden" name="product[product_flg]" value="false">
                     <button type="submit" class="btn btn-danger", style="display: inline-block; width: 300px; margin: 10px;">販売中止
                     </button>
+                  <% else %>
+                    <input type="hidden" name="product[product_flg]" value="true">
+                    <button type="submit" class="btn btn-info", style="display: inline-block; width: 300px; margin: 10px;">販売再開
+                    </button>
+                  <% end %>
                 </div>
               <% end %>
 

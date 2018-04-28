@@ -60,7 +60,7 @@ class Admins::ProductsController < ApplicationController
             order += 1
         end
     end
-    redirect_to product_path(@product)
+    redirect_to admins_product_path(admin_id: current_admin.id, id: @product.id)
     #redirect_to admins_top_path(current_admin.id)
  end
 
@@ -85,7 +85,7 @@ class Admins::ProductsController < ApplicationController
             order += 1
         end
     end
-    redirect_to admins_products_path(admin_id: current_admin.id, product_id: @product.id)
+    redirect_to admins_product_path(admin_id: current_admin.id, product_id: @product.id)
  end
 
  def destroy
