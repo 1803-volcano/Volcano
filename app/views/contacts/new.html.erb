@@ -1,0 +1,83 @@
+
+      <!-- 上部リンク -->
+      <div clas="link-top", style="margin: 20px; text-decoration: underline;">
+        <span class="nav-list-item">
+          <%= link_to "前のページに戻る", :back %>
+        </span>
+        <span class="nav-list-item", style="float: right; text-decoration: underline;">
+          <%= link_to "TOP画面に戻る", root_path %>
+        </span>
+      </div>
+
+
+      <div class="container">
+  <div class="main row inputmenu" style="width: 80%; margin-bottom: 50px;">
+    <h1 class="midashi">お問合せフォーム</h1>
+    <hr>
+      <%= form_for(@contact) do |f| %>
+      <table class="table">
+      <tbody>
+      	<tr>
+      	  <th>お問合せ項目</th>
+      	  <td><%= f.select :title, [["商品について", "商品について"], ["発送について", "発送について"], ["会員登録について", "会員登録について"], ["その他", "その他"]] %></td>
+      	</tr>
+      	<tr>
+      	  <th>お問合せ内容</th>
+      	  <td><%= f.text_area :body, :size => "50x10" %></td>
+      	</tr>
+        <tr>
+          <th>メールアドレス</th>
+          <td><%= f.text_field :email, :size => "40x1" %><br />
+              ＊こちらのメールアドレスに回答させて頂きます</td>
+        </tr>
+        <tr>
+          <th>氏名</th>
+          <td>姓　<input type="text" name="user[name_sei]" placeholder="例）渋谷" required> 名　<input type="text" name="user[name_mei]" placeholder="例）太郎" required>（全角）</td>
+        </tr>
+        <tr>
+          <th>フリガナ</th>
+          <td>セイ<input type="text" name="user[name_kana_sei]" placeholder="例）シブヤ" required>   メイ<input type="text" name="user[name_kana_mei]" placeholder="例）タロウ" required>（全角カナ）</td>
+        </tr>
+        <tr>
+          <th>生年月日</th>
+            <td><%= f.date_select(:birthday,
+                       start_year: 1930,
+                       end_year:   (Time.now.year),
+                       default:    Date.new(1930, 1, 1),
+                       date_separator: '/') %>
+            </td>
+        </tr>
+        <tr>
+          <th>性別</th>
+          <td>
+            <input type="radio" name="user[sex]" value="male">  男　
+            <input type="radio" name="user[sex]" value="female">  女
+          </td>
+        </tr>
+        <tr>
+          <th>郵便番号</th>
+          <td>〒<input type="text" name="user[postal_code]" placeholder="例）1235678" onKeyUp="AjaxZip3.zip2addr(this,'','user[region]','user[street]');">（半角数字　ハイフン入力不要）<br />
+          ＊郵便番号入力で自動検索されます</td>
+        </tr>
+        <tr>
+          <th>都道府県</th>
+          <td><input type="text" name="user[region]" size='22' placeholder="例）東京都" required></td>
+        </tr>
+        <tr>
+          <th>市区町村以下</th>
+          <td><input type="text" name="user[street]" size='80' placeholder="例）港区麻布１−２−３タワーマンション２０１" required></td>
+        </tr>
+        <tr>
+          <th>電話番号</th>
+          <td><input type="tel" name="user[phone]" size='50' placeholder="例）09012345678" required>（半角数字　ハイフン入力不要）</td>
+        </tr>
+      </tbody>
+      </table>
+    <div class="actions button1">
+    <%= f.submit "確認画面へ", class:"btn btn-md btn-block btn-danger" %>
+    </div>
+    <% end %>
+  </div>
+</div>
+
+

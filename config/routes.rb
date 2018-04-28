@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+    resources :contacts
+
   devise_for :admins, :controllers => {
     :registrations => 'admins/registrations',
     :sessions => 'admins/sessions',
