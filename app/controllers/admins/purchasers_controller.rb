@@ -4,7 +4,8 @@ class Admins::PurchasersController < ApplicationController
 	protect_from_forgery except: :update
 
  def index
- 	@purchasers = Purchaser.all
+ 	@search_purchaser = Purchaser.search(params[:q])
+ 	@purchasers = @search_purchaser.result
  	@purchasers = @purchasers.page(params[:page])
  end
 

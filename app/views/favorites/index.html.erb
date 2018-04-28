@@ -18,7 +18,14 @@
       <h1 class="midashi">お気に入り一覧</h1>
       <hr>
 
-	    <table class = "table table table-hover">
+	    <table class = "table table-hover table-bordered" style="margin-top: 0;">
+	  	  <thead align="center">
+	  	    <tr class="info">
+	  	      <td colspan="2">商品情報</td>
+	  		  <td>価格</td>
+	  		  <td></td>
+	  		</tr>
+	  	  </thead>
 		  <tbody>
 		  <% @favorites.each do |favorite| %>
 		    <% product = Product.find(favorite.product_id) %>
@@ -33,7 +40,7 @@
 			  <td>￥<%= number_with_delimiter(product.price) %></td>
 			  <td>
 
-                     <button type="button" class="btn btn-danger" ><%= link_to "削除", favorite_path(favorite),
+                     <button type="button" class="btn btn-danger" ><%= link_to "お気に入り解除", favorite_path(favorite),
                       method: :delete  %></button>
 		      </td>
 			</tr>
