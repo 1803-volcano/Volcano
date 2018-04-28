@@ -1,4 +1,5 @@
 class Admins::TopController < ApplicationController
+    before_action :authenticate_admin!
 
  def show
  	@new_purchasers = Purchaser.limit(10).order("created_at DESC").where(status: "発送準備中")

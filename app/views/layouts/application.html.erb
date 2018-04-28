@@ -50,7 +50,7 @@
           <!--検索窓-->
           <%= search_form_for @search do |f| %>
           <span class="input-group">
-            <%= f.text_field :cd_title_or_artist_or_genre_or_label_cont, class: "form-control", :size=>"40",style: "margin: 8px 0;", placeholder: "検索（CDタイトル、アーティスト名)" %>
+            <%= f.text_field :cd_title_or_cd_kana_or_cd_hira_or_artist_or_a_kana_or_a_hira_or_genre_or_label_cont, class: "form-control", :size=>"40",style: "margin: 8px 0;", placeholder: "検索（CDタイトル、アーティスト名)" %>
             <span class="input-group-btn">
               <button type="submit" name="commit" value="検索" class="btn btn-default" data-disable-with="検索中">
                 <i class="glyphicon glyphicon-search" ></i>
