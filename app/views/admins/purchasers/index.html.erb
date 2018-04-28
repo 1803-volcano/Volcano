@@ -18,6 +18,20 @@
       <hr>
     <div style="background-color: rgba( 0, 0, 0, 0.1); margin-left: 50px; height: 36px; display: flex; align-items: center; width: 944px;">
       <span><%= page_entries_info @purchasers %></span>
+
+      <!--並び替え機能-->
+	  <span class="pull-right sort", style="margin: 0 0 0 330px; font-size: 17px;">
+	    Search Sort <span class="glyphicon glyphicon-search"></span>:
+        <button type="button" class="btn btn-link">
+          <%= sort_link(@search_purchaser, :d_name, "名前") %>
+        </button>
+        <button type="button" class="btn btn-link">
+          <%= sort_link(@search_purchaser, :created_at, "購入日") %>
+        </button>
+        <button type="button" class="btn btn-link">
+          <%= sort_link(@search_purchaser, :status, "発送状況") %>
+        </button>
+	  </span>
     </div>
 
 	  <table class = "table table-hover table-bordered" style="margin-top: 0;">
@@ -47,9 +61,7 @@
 
 		      <% end %>
 		      <td>
-		      	<% customer = User.find(p.user_id) %>
-		      	<% customer_name = customer.name_sei + customer.name_mei %>
-		      	購入者：<%= customer_name %> 様<br>
+		      	購入者：<%= p.d_name %>様<br>
 		      	購入数：合計 <%= total_quantity %>点<br>
 				総計： ￥<%= number_with_delimiter(total_price) %>（税込み）
 			  </td>
@@ -77,8 +89,8 @@
 
 <style type="text/css">
 		<!--
-		button a{color: #fff; font-size: 16px;}
-		.sort{display: inline-block; margin:20px 0 10px 0;}
+		button a{color: black; font-size: 17px;}
+		.sort{display: inline-block;}
 		-->
 </style>
 

@@ -59,9 +59,9 @@
 			  <tr>
 			  	<th>会員ステータス</th>
 			  	<% if @user.customer_flg == true %>
-			    <td>－－－－</td>
+			    <td>登録</td>
 			    <% else %>
-			    <td>退会済み</td>
+			    <td style="color: red;">退会済み</td>
 			    <% end %>
 			  </tr>
 

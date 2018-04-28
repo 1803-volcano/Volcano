@@ -22,7 +22,7 @@
 	  <span><%= page_entries_info @users %></span>
 
 	  	<!--並び替え機能-->
-	  <span class="pull-right sort", style="margin: 0 0 0 60px; font-size: 17px;">
+	  <span class="pull-right sort", style="margin: 0 0 0 130px; font-size: 17px;">
 		Search Sort <span class="glyphicon glyphicon-search"></span>:
         <button type="button" class="btn btn-link">
           <%= sort_link(@search_user, :name_sei, "名前で並び替え") %>
@@ -53,7 +53,10 @@
               </td>
 
 			  <td>
-				<%= link_to '会員情報詳細', admins_user_path(user.id) %>
+				<%= link_to '会員情報詳細', admins_user_path(user.id) %><br>
+				<% if user.customer_flg == false %>
+			    <h4 style="color: red;">退会済み</h4>
+			    <% end %>
 
 			  </td>
 		    </tr>

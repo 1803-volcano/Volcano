@@ -14,8 +14,8 @@
       </div>
 
 
-			<h1 class="midashi">商品一覧</h1>
-			<hr>
+	  <h1 class="midashi">商品一覧</h1>
+	  <hr>
 
         <div style="background-color: rgba( 0, 0, 0, 0.1); margin-left: 50px; height: 36px; display: flex; justify-content: center; align-items: center; width: 944px;">
             <span><%= page_entries_info @products %></span>
@@ -38,16 +38,22 @@
 			</span>
         </div>
 
-			<table class = "table table-hover" style="margin-top:0;">
+		<table class = "table table-hover table-bordered" style="margin-top: 0;">
+          <thead align="center">
+            <tr class="info">
+              <td colspan="2">商品情報</td>
+              <td>価格</td>
+              <td>詳細リンク</td>
+            </tr>
+          </thead>
 				<tbody>
 					<% @products.each do |product| %>
 					<tr>
 						<td width="150", height="100">
-							<%= attachment_image_tag product, :picture, width: "100", height: "100", format: "jpeg", fallback: "img/no_image.jpg" %></td>
-
-							<td>
+							<%= attachment_image_tag product, :picture, width: "100", height: "100", format: "jpeg", fallback: "img/no_image.jpg" %>
+                        </td>
+						<td width="500" >
 							<label>CDタイトル: </label><%= product.cd_title %><br>
-
 							<label>アーティスト: </label><%= product.artist %>
 						</td>
 
