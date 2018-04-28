@@ -30,7 +30,7 @@
                 <label>アーティスト: </label><%= product.artist %>
 			  </td>
 
-			  <td>￥<%= product.price %></td>
+			  <td>￥<%= number_with_delimiter(product.price) %></td>
 			  <td>
 
                      <button type="button" class="btn btn-danger" ><%= link_to "削除", favorite_path(favorite),

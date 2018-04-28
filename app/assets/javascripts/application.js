@@ -143,4 +143,3 @@ function defaultDestination() {
   r.removeAttribute("required");
   s.removeAttribute("required");
 }
-
