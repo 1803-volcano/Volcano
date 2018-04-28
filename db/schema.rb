@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180428084355) do
+ActiveRecord::Schema.define(version: 20180428082141) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -103,10 +103,10 @@ ActiveRecord::Schema.define(version: 20180428084355) do
     t.boolean "product_flg"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "cd_hira"
     t.string "cd_kana"
-    t.string "a_hira"
+    t.string "cd_hira"
     t.string "a_kana"
+    t.string "a_hira"
   end
 
   create_table "purchasers", force: :cascade do |t|
@@ -172,6 +172,10 @@ ActiveRecord::Schema.define(version: 20180428084355) do
     t.date "bday_year"
     t.date "bday_month"
     t.date "bday_day"
+    t.string "cd_kana"
+    t.string "cd_hira"
+    t.string "a_kana"
+    t.string "a_hira"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

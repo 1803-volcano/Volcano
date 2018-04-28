@@ -31,7 +31,11 @@ class Admins::ProductsController < ApplicationController
  def create
     @product = Product.new(product_params)
     @product.cd_title = params[:cd_title]
+    @product.cd_kana = params[:cd_kana]
+    @product.cd_hira = params[:cd_hira]
     @product.artist = params[:artist]
+    @product.a_kana = params[:a_kana]
+    @product.a_hira = params[:a_hira]
     @product.picture_id = params[:picture]
     @product.label = params[:label]
     @product.genre = params[:genre]
@@ -98,9 +102,13 @@ private
     def product_params
         params.require(:product).permit(
         :artist,
+        :a_kana,
+        :a_hira,
         :sound_source,
         :picture,
         :cd_title,
+        :cd_kana,
+        :cd_hira,
         :picture_id,
         :price,
         :label,
