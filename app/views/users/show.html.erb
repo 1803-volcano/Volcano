@@ -34,7 +34,11 @@
             </tr>
             <tr>
               <th>性別</th>
-              <td><%= @user.sex %></td>
+              <% if @user.sex == "male" %>
+              <td>男性</td>
+              <% elsif @user.sex == "female" %>
+              <td>女性</td>
+              <% end %>
             </tr>
             <tr>
               <th>郵便番号</th>

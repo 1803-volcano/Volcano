@@ -39,7 +39,7 @@
 			　<td>
 				タイトル：<%= product.cd_title %><br>
 				アーティスト：<%= product.artist %><br>
-				価格：￥<%= receipt.sale_price %>
+				価格：￥<%= number_with_delimiter(receipt.sale_price) %>
 			  </td>
 			  <td>
 			    <%= receipt.sale %> 点<br>

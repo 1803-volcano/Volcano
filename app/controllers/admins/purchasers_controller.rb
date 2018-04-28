@@ -5,7 +5,7 @@ class Admins::PurchasersController < ApplicationController
 
  def index
  	@purchasers = Purchaser.all
-
+ 	@purchasers = @purchasers.page(params[:page])
  end
 
  def show

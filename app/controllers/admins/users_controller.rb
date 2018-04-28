@@ -4,6 +4,7 @@ class Admins::UsersController < ApplicationController
  def index
  	@search_user = User.search(params[:q])
  	@users = @search_user.result
+ 	@users = @users.page(params[:page])
  end
 
  def show

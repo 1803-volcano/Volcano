@@ -30,6 +30,7 @@
         </button>
       </div>
 
+      <%= page_entries_info @users %>
 
       <table class = "table table table-hover table-bordered", style="width: 95%;">
 	  	<thead>
@@ -58,6 +59,9 @@
 		  <% end %>
 		</tbody>
 	  </table>
+
+	  <%= paginate @users %>
+
 	</div>
   </div>
 </div>
