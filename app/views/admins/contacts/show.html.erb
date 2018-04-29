@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row">
+  <%= render partial: "top/sidebar" %>
+    <div class="main col-xs-10 text-left">
+
+
+<!-- 上部リンク -->
+      <div clas="link-top", style="margin: 20px; text-decoration: underline;">
+        <span class="nav-list-item">
+          <%= link_to "前のページに戻る", :back %>
+        </span>
+        <span class="nav-list-item", style="float: right; text-decoration: underline;">
+          <%= link_to "管理TOP画面に戻る", admins_top_path(current_admin) %>
+        </span>
+      </div>
+
+      <div class="", style="width:80%; margin: 0 0 0 30px;">
+        <h1 class="midashi">お問い合わせの回答</h1>
+        <hr>
+
+        <%= form_for(@contact, url: admins_contact_path) do |f| %>
+            <table class="table", style="font-size: 24px;">
+              <tbody>
+                <tr>
+                  <th>お問い合わせ項目</th>
+                  <td><%= @contact.title %></td>
+                </tr>
+                <tr>
+                  <th>お問い合わせ内容</th>
+                  <td><%= @contact.body %></td>
+                </tr>
+                <tr>
+                  <th>お問い合わせに対する回答</th>
+                  <td><%= f.text_area :reply, :size => "50x10" %></td>
+                </tr>
+              </tbody>
+            </table>
+
+          <%= f.submit '回答', class:"btn btn-md btn-block btn-danger" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<style type="text/css">
+    <!--
+    button a{color: black; font-size: 15px;}
+    .sort{display: inline-block; margin:20px 0 10px 0;}
+    -->
+</style>

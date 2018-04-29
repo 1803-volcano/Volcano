@@ -1,0 +1,69 @@
+<div class="container">
+	<div class="row">
+		<%= render partial: "top/sidebar" %>
+		<div class="col-xs-10">
+
+<!-- 上部リンク -->
+      <div clas="link-top", style="margin: 20px; text-decoration: underline;">
+        <span class="nav-list-item">
+          <%= link_to "前のページに戻る", :back %>
+        </span>
+        <span class="nav-list-item", style="float: right; text-decoration: underline;">
+          <%= link_to "管理TOP画面に戻る", admins_top_path(current_admin) %>
+        </span>
+      </div>
+
+
+			<h1 class="midashi">お問い合わせ一覧</h1>
+			<hr>
+
+			<!--並び替え機能-->
+
+
+			<table class = "table table-hover table-bordered">
+	  	<thead>
+	  		<tr class="info">
+	  			<td>お問い合わせ日時</td>
+	  			<td>お問い合わせ項目</td>
+	  			<td>詳細リンク</td>
+	  			<td>回答状況</td>
+
+	  		</tr>
+	  	</thead>
+				<tbody>
+					<% @contacts.each do |contact| %>
+
+					<tr>
+						<td>
+			　　　　　　　　　<%= contact.created_at.strftime('%Y年%m月%d日 %H時%M分') %>
+			            </td>
+						<td>
+							<%= contact.title %>
+						</td>
+					    <td>
+						    <%= link_to '回答', admins_contact_path(contact) %>
+						</td>
+						<td>
+                            <% if contact.reply? %>
+                                回答済み
+                            <% else %>
+                                <p style="color: red;">未回答</p>
+                            <% end %>
+						</td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+
+
+		</div>
+	</div>
+</div>
+
+
+<style type="text/css">
+		<!--
+		button a{color: black; font-size: 15px;}
+		.sort{display: inline-block; margin:20px 0 10px 0;}
+		-->
+</style>
