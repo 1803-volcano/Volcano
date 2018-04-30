@@ -4,13 +4,11 @@ class PurchasersController < ApplicationController
  def index
  	@purchasers = Purchaser.where(user_id: current_user.id).all
  	@purchasers = @purchasers.page(params[:page])
- 	@commites = Browsing.last(10) ##最新１０件取得
  end
 
  def show
  	@purchaser = Purchaser.find(params[:id])
  	@receipts = Receipt.where(purchaser_id: params[:id])
- 	@commites = Browsing.last(10) ##最新１０件取得
  end
 
 end

@@ -17,12 +17,10 @@ class CartsController < ApplicationController
  	# @cart = Cart.where(user_id: current_user.id).last
  	@cart_items = CartItem.where(cart_id: @cart.id)
  	@item_count = @cart_items.count
- 	@commites = Browsing.last(10) ##最新１０件取得
  end
 
  def select
  	if @quantity = params[:quantity]
- 	@commites = Browsing.last(10) ##最新１０件取得
  	else
  		cart = Cart.where(user_id: current_user.id).pluck(:id)
  		redirect_to cart_path(cart)
@@ -30,7 +28,6 @@ class CartsController < ApplicationController
  end
 
  def confirm
- 	@commites = Browsing.last(10) ##最新１０件取得
  	cart = Cart.where(user_id: current_user.id).last
  	@cart_items = CartItem.where(cart_id: cart.id)
  	#個数
@@ -85,7 +82,6 @@ class CartsController < ApplicationController
  end
 
  def complete
- 	@commites = Browsing.last(10) ##最新１０件取得
  end
 
 private

@@ -33,7 +33,12 @@
                     <% if user_signed_in? %>
 
 
-                    	<% if @product.stock == 0 %>
+                    	<% if @product.product_flg == "false" %>
+                    		<button type="button" class="btn btn-info", style="display: inline-block; height: 80px; width: 200px; background-color: #330008;">
+	                            <span class="glyphicon glyphicon-remove" aria-hidden="true" style="font-size: 30px; color: #ff0026;"></span><br>
+	                                END OF SALES
+	                           </button>
+                    	<% elsif @product.stock == 0 %>
                     		<%= image_tag "img/soldout.jpg", style: "height: 80px; width: 200px; border: solid 5px black;" %>
                     	<% else %>
 	                        <%= link_to product_cart_items_path(@product.id), method: :post do %>

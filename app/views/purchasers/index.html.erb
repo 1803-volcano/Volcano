@@ -47,8 +47,14 @@
 
 		      <% end %>
 		      <td>
+		      	<% if total_price >= 5000 %>
+					<% postage = 0 %>
+				<% elsif total_price < 5000 %>
+					<% postage = 350 %>
+				<% end %>
+				<% confirm_price = total_price + postage %>
 		      	購入数：合計 <%= total_quantity %>点<br>
-				総計： ￥<%= number_with_delimiter(total_price) %>（税込み）
+				総計： ￥<%= number_with_delimiter(confirm_price) %>（税込み）
 			  </td>
 		      </td>
 			  <td>

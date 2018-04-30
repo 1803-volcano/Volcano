@@ -3,7 +3,6 @@ class FavoritesController < ApplicationController
 
  def index
     @favorites = Favorite.where(user_id: current_user.id).all
-    @commites = Browsing.last(10) ##最新１０件取得
  end
 
  def create
