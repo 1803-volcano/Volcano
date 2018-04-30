@@ -1,5 +1,10 @@
+<div class="container">
+  <div class="row">
+  <%= render partial: "top/sidebar" %>
+    <div class="main col-xs-10 text-left">
 
-      <!-- 上部リンク -->
+
+<!-- 上部リンク -->
       <div clas="link-top", style="margin: 20px; text-decoration: underline;">
         <span class="nav-list-item">
           <%= link_to "前のページに戻る", :back %>
@@ -10,67 +15,38 @@
       </div>
 
 
-      <div class="container">
-  <div class="main row inputmenu" style="width: 80%; margin-bottom: 50px;">
-    <h1 class="midashi">お問合せフォーム</h1>
-    <hr>
-      <table class="table">
-      <tbody>
-      	<tr>
-      	  <th>お問合せ項目</th>
-      	  <td><%= @contact.title %></td>
-      	</tr>
-      	<tr>
-      	  <th>お問合せ内容</th>
-      	  <td><%= @contact.body, :size => "50x10" %></td>
-      	</tr>
+      <div class="", style="width:80%; margin: 0 0 0 30px;">
+        <h1 class="midashi">お問い合わせ詳細</h1>
+        <hr>
+      <table class="table", style="font-size: 24px;">
+          <tbody>
         <tr>
-          <th>メールアドレス</th>
-          <td><%= @contact.email, :size => "40x1" %><br />
-              ＊こちらのメールアドレスに回答させて頂きます</td>
+          <th>お問い合わせ項目</th>
+          <td><%= @contact.title %></td>
         </tr>
         <tr>
-          <th>氏名</th>
-          <td>姓<%= @contact.name_sei%> 名　<%= @contact.name_mei%></td>
+          <th>お問い合わせ内容</th>
+          <td><%= @contact.body %></td>
         </tr>
         <tr>
-          <th>フリガナ</th>
-          <td>セイ<%= @contact.name_kana_sei%>   メイ<%= @contact.name_kana_mei%></td>
+          <th>お問い合わせに対する回答</th>
+              <% if @contact.reply? %>
+          <td><%= @contact.reply %></td>
+              <% else %>
+          <td>回答まで今しばらくお待ちください。</td>
+              <% end %>
         </tr>
-        <tr>
-          <th>生年月日</th>
-            <td><%= @contact.birthday %>
-            </td>
-        </tr>
-        <tr>
-          <th>性別</th>
-          <td>
-            <%= @contact.sex%>
-          </td>
-        </tr>
-        <tr>
-          <th>郵便番号</th>
-          <td>〒<%= @contact.postal_code %></td>
-        </tr>
-        <tr>
-          <th>都道府県</th>
-          <td><%= @region %></td>
-        </tr>
-        <tr>
-          <th>市区町村以下</th>
-          <td><%= @contact.street %></td>
-        </tr>
-        <tr>
-          <th>電話番号</th>
-          <td><%= @contact.phone %></td>
-        </tr>
-      </tbody>
+        </tbody>
       </table>
-    <div class="actions button1">
-    <%= f.submit "確認画面へ", class:"btn btn-md btn-block btn-danger" %>
+      </div>
     </div>
-    <% end %>
   </div>
 </div>
 
 
+<style type="text/css">
+    <!--
+    button a{color: black; font-size: 15px;}
+    .sort{display: inline-block; margin:20px 0 10px 0;}
+    -->
+</style>

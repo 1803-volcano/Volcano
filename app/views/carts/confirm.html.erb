@@ -55,7 +55,7 @@
 						</tr>
 						<!--purchaseアクションに送信する-->
 						<%= number_field_tag "quantity[]", quantity, style:"display:none;" %>
-						<%= number_field_tag "subtotal[]", subtotal, style:"display:none;" %>
+						<%= number_field_tag "price[]", product.price, style:"display:none;" %>
 						<%= number_field_tag "product[]", product.id, style:"display:none;" %>
 
 						<% end %>

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-    resources :contacts
+    resources :contacts, only: [:index, :show, :create, :new]
 
   devise_for :admins, :controllers => {
     :registrations => 'admins/registrations',
@@ -56,6 +56,7 @@ Rails.application.routes.draw do
     put '/users/:id' => 'users#delete', as: 'delete_user'
     resources :products, only: [:new, :create, :edit, :update, :index, :show]
     resources :purchasers, only: [:index, :show, :update]
+    resources :contacts, only: [:index, :show, :update]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

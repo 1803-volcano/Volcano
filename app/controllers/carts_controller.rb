@@ -67,10 +67,10 @@ class CartsController < ApplicationController
  	purchaser.status = "発送準備中"
  	purchaser.save
 
- 	params[:quantity].zip(params[:subtotal], params[:product]).each do |quantity, subtotal, product|
+ 	params[:quantity].zip(params[:price], params[:product]).each do |quantity, price, product|
  		receipt = purchaser.receipts.build#(receipt_params)
  		receipt.sale = quantity.to_i
- 		receipt.sale_price = subtotal.to_i
+ 		receipt.sale_price = price.to_i
  		receipt.product_id = product.to_i
  		receipt.save
  		productn = Product.find(receipt.product_id)
