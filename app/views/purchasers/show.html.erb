@@ -39,7 +39,7 @@
 			　<td>
 				タイトル：<%= product.cd_title %><br>
 				アーティスト：<%= product.artist %><br>
-				価格：￥<%= receipt.sale_price %>
+				価格：￥<%= number_with_delimiter(receipt.sale_price) %>
 			  </td>
 			  <td>
 			    <%= receipt.sale %> 点<br>
@@ -54,9 +54,16 @@
 			<% end %>
 			<tr class="active">
 			  <td colspan="4">
+			  	<% if total_price >= 5000 %>
+					<% postage = 0 %>
+				<% elsif total_price < 5000 %>
+					<% postage = 350 %>
+				<% end %>
+				<% confirm_price = total_price + postage %>
 				<p class="pull-right" style="margin-bottom:0;">購入数：合計 <%= total_quantity %>点</p><br>
-				<p class="pull-right" style="margin-bottom:0;">送料：￥０</p><br>
-				<h3 class="pull-right">総計： ￥<%= number_with_delimiter(total_price) %>（税込み）</h3>
+				<p class="pull-right" style="margin-bottom:0;">送料：￥<%= postage %></p><br>
+				<p class="pull-right" style="margin-bottom:0;">(￥5,000以上で送料無料)</p><br>
+				<h3 class="pull-right">総計： ￥<%= number_with_delimiter(confirm_price) %>（税込み）</h3>
 			  </td>
 			</tr>
 		  </tbody>
