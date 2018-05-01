@@ -52,7 +52,7 @@ class CartsController < ApplicationController
  	end
  end
 
- def purchase
+def purchase
  	purchaser = current_user.purchasers.new#(purchaser_params)
  	#purchaser = Purchaser.new
  	#purchaser.user_id = current_user.id
@@ -64,6 +64,9 @@ class CartsController < ApplicationController
  	purchaser.status = "発送準備中"
  	purchaser.save
 
+    total_price = 0
+    subtotal_price = 0
+
  	params[:quantity].zip(params[:price], params[:product]).each do |quantity, price, product|
  		receipt = purchaser.receipts.build#(receipt_params)
  		receipt.sale = quantity.to_i
@@ -73,12 +76,23 @@ class CartsController < ApplicationController
  		productn = Product.find(receipt.product_id)
  		salen = productn.stock - receipt.sale
  		productn.update(stock: salen)
+ 		subtotal_price = quantity.to_i * price.to_i
+ 		total_price += subtotal_price
  	end
+
+ 	if params[:pay] == "クレジットカードでお支払い"
+ 	Payjp.api_key = PAYJP_SECRET_KEY
+ 	charge= Payjp::Charge.create(
+ 		:currency => 'jpy',
+ 		:amount => total_price,
+ 		:card  => params['payjp-token']
+ 		)
+    end
 
 	cart = current_user.carts.build
 	cart.save
+	redirect_to complete_cart_path
 
- 	redirect_to complete_cart_path
  end
 
  def complete
@@ -92,6 +106,7 @@ private
 
  def purchaser_params
  	params.require(:purchaser).permit(:p_code, :d_name, :d_region, :d_street, :pay, :status)
+    params.permit('payjp-token')
  end
 
   def receipt_params

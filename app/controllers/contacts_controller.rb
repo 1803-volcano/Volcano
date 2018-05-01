@@ -1,7 +1,6 @@
 class ContactsController < ApplicationController
   def new
-      @contact = current_user.contacts.new
-      @user = User.find(current_user.id)
+      @contact = Contact.new(user_id: current_user.id)
   end
 
   def create
@@ -15,8 +14,7 @@ class ContactsController < ApplicationController
   end
 
   def index
-      #@contacts = Contact.where(user_id: current_user.id).all
-      @contacts =Contact.where(user_id: current_user.id).all
+      @contacts =Contact.where(user_id: current_user.id)
   end
 
 
@@ -25,6 +23,6 @@ class ContactsController < ApplicationController
   private
 
   def contact_params
-  	  params.require(:contact).permit(:title, :body)
+  	  params.require(:contact).permit(:user_id, :title, :body)
   end
 end
