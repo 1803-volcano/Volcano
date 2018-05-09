@@ -138,6 +138,8 @@ GEM
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
     orm_adapter (0.5.0)
+    payjp (0.0.6)
+      rest-client (~> 2.0)
     polyamorous (1.3.3)
       activerecord (>= 3.0)
     public_suffix (3.0.2)
@@ -264,6 +266,7 @@ DEPENDENCIES
   kaminari
   listen (>= 3.0.5, < 3.2)
   nested_form
+  payjp
   puma (~> 3.7)
   rails (~> 5.1.6)
   ransack
