@@ -19,8 +19,8 @@
 			<h1 class="midashi">ご注文内容の確認</h1>
 			<hr>
 
-			<form action="confirm" method="post">
-
+			<!-- <form action="confirm" method="post"> -->
+            <%= form_tag(action: :purchase, method: :post) do %>
 
 			<div class="">
 
@@ -106,12 +106,17 @@
 				</div>
 			</div>
             <div class="">
-				<div class="form-group", style="margin: 0 200px 100px 200px;">
-			        <input type="submit" value="注文を確定する" class="btn btn-primary btn-primary btn-md btn-block">
+				<!--<div class="form-group", style="margin: 0 200px 100px 200px;"> -->
+			    <div class="form-group", style="margin: 0 200px 100px 200px;">
+					<% if @pay == '代金引換' %>
+ 			          <input type="submit" value="注文を確定する" class="btn btn-primary btn-primary btn-md btn-block">
+			        <% elsif @pay =='クレジットカードでお支払い' %>
+			          <script type="text/javascript" src="https://checkout.pay.jp" class="payjp-button" data-key="pk_test_247ea01a44fce4fcf527ddce" ></script>
+			        <% end %>
 		         </div>
 	        </div>
 
-			</form>
+			<% end %>
 
 
             </div>
@@ -122,4 +127,8 @@
 
 <!-- 下部スライダー -->
 <%= render 'top/browsing', commites: @commites, product: @product %>
-
+<style>
+<!-- #payjp_checkout_box input[type=button] {
+	width: 100%;
+	} -->
+</style>

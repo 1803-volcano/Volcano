@@ -1,13 +1,14 @@
 class ContactsController < ApplicationController
   def new
-      @contact = current_user.contacts.new
-      @user = User.find(current_user.id)
+      #@contact = Contact.new
+      @contact = Contact.new
   end
 
   def create
-  		@contact = current_user.contacts.new(contact_params)
-      @contact.save
-      redirect_to mypage_user_path
+  		@contact = Contact.new(contact_params)
+      @contact.user_id = current_user.id
+       @contact.save
+       redirect_to mypage_user_path
   end
 
   def show
@@ -16,10 +17,8 @@ class ContactsController < ApplicationController
 
   def index
       #@contacts = Contact.where(user_id: current_user.id).all
-      @contacts =Contact.where(user_id: current_user.id).all
+      @contacts =Contact.where(user_id: current_user.id)
   end
-
-
 
 
   private
